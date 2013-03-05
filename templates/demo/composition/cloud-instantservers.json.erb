@@ -1,0 +1,336 @@
+{
+    "compositions": [
+        {
+            "agent_facts": {}, 
+            "agent_pool_id": 1, 
+            "composition_tasks": [
+                {
+                    "composition_id": 25, 
+                    "created_at": "2012-10-08T16:29:12+00:00", 
+                    "id": 107, 
+                    "is_from_parent": false, 
+                    "name": "InstantServers provision", 
+                    "options": {
+                        "dataset": {
+                            "description": "The image of the software on your machine. It contains the software packages that will be available on newly provisioned machines. In the case of virtual machines, the dataset also includes the operating system", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "centos-6"
+                        }, 
+                        "name": {
+                            "description": "name of the started vm", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": "myvm"
+                        }, 
+                        "number_of_vms": {
+                            "description": "number of instances to start", 
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 1
+                        }, 
+                        "package": {
+                            "description": "Describe the \u2018sizes\u2019 of either a smart machine or a virtual machine", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": "Small 2GB"
+                        }, 
+                        "password": {
+                            "description": "password", 
+                            "required": true, 
+                            "type": "Password", 
+                            "value": "password"
+                        }, 
+                        "private_key": {
+                            "description": "ssh private key content to use to connect to the server", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "private_key_path": {
+                            "description": "ssh private key path in the agent to use to connect to the server (instead of private_key content)", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": "/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem"
+                        }, 
+                        "ssh_commands": {
+                            "description": "commands to execute in the server once it is started", 
+                            "required": false, 
+                            "type": "Array", 
+                            "value": [
+                                "hostname"
+                            ]
+                        }, 
+                        "ssh_user": {
+                            "description": "username to use for ssh connection", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": "root"
+                        }, 
+                        "url": {
+                            "description": "API endpoint", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "https://api-mad.instantservers.es"
+                        }, 
+                        "username": {
+                            "description": "user name", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "instantservers"
+                        }
+                    }, 
+                    "position": 1, 
+                    "sources": [
+                        {
+                            "name": "Instant Servers"
+                        }
+                    ], 
+                    "task_id": 54, 
+                    "updated_at": "2012-10-08T16:29:37+00:00" 
+                }, 
+                {
+                    "composition_id": 25, 
+                    "created_at": "2012-10-08T16:29:12+00:00", 
+                    "id": 109, 
+                    "is_from_parent": false, 
+                    "name": "confirmation", 
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Server ready at #{fields[:joyent_ips].first}. Continue to deprovision"
+                        }, 
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail", 
+                            "required": false, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "position": 2, 
+                    "sources": [], 
+                    "task_id": 23, 
+                    "updated_at": "2012-10-08T16:29:37+00:00" 
+                }, 
+                {
+                    "composition_id": 25, 
+                    "created_at": "2012-10-08T16:29:12+00:00", 
+                    "id": 108, 
+                    "is_from_parent": false, 
+                    "name": "InstantServers deprovision", 
+                    "options": {}, 
+                    "position": 3, 
+                    "sources": [], 
+                    "task_id": 53, 
+                    "updated_at": "2012-10-08T16:29:37+00:00" 
+                }
+            ], 
+            "created_at": "2012-10-08T16:26:59+00:00", 
+            "description": "Joyent cloud at instantservers.es", 
+            "fail_on_cancel": false, 
+            "fail_type": "fast", 
+            "fail_type_id": 1, 
+            "id": 25, 
+            "name": "Joyent at InstantServers", 
+            "on_error_composition": null, 
+            "on_error_id": null, 
+            "parent_id": null, 
+            "reuse_agent": true, 
+            "schedule": "", 
+            "sources": [
+                {
+                    "created_at": "2012-10-04T15:41:49+00:00", 
+                    "description": "Instant servers credentials", 
+                    "id": 6, 
+                    "name": "Instant Servers", 
+                    "options": {
+                        "dataset": "centos-6", 
+                        "package": "Small 2GB", 
+                        "password": "yourpassword", 
+                        "private_key_path": "/var/local/maestro-agent/.ssh/id_rsa", 
+                        "username": "yourusername"
+                    }, 
+                    "project_id": 0, 
+                    "source_type": "instant servers", 
+                    "source_type_id": 11, 
+                    "updated_at": "2012-10-04T16:05:41+00:00", 
+                    "uri": "some uri"
+                }
+            ], 
+            "state": null, 
+            "tags": [
+                ""
+            ], 
+            "tasks": [
+                {
+                    "code": null, 
+                    "command": "/confirmation/work", 
+                    "created_at": "2011-08-04T22:31:28+00:00", 
+                    "dependencies": null, 
+                    "description": "Allows User Confirmation Before Continuing, A Notification Will Be Displayed Below. Confirming Will Allow The Composition To Continue, Rejecting Will Cancel The Composition", 
+                    "id": 23, 
+                    "image": null, 
+                    "klass": null, 
+                    "language": null, 
+                    "name": "confirmation", 
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail", 
+                            "required": false, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "plugin_id": null, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Actions"
+                    ], 
+                    "type": "confirmation", 
+                    "updated_at": "2012-10-08T16:14:03+00:00" 
+                }, 
+                {
+                    "code": null, 
+                    "command": "/joyent/deprovision", 
+                    "created_at": "2012-10-02T19:59:22+00:00", 
+                    "dependencies": [
+                        {
+                            "name": "fog", 
+                            "source": "http://rubygems.org/", 
+                            "version": "1.6.0"
+                        }
+                    ], 
+                    "description": "Deprovision servers on InstantServers cloud. Deprovisions all servers started in a previous provision task.", 
+                    "id": 53, 
+                    "image": "instantservers.png", 
+                    "klass": "MaestroDev::JoyentWorker", 
+                    "language": "ruby", 
+                    "name": "InstantServers deprovision", 
+                    "options": {}, 
+                    "plugin_id": 20, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Cloud"
+                    ], 
+                    "type": "remote", 
+                    "updated_at": "2012-10-08T14:45:50+00:00" 
+                }, 
+                {
+                    "code": null, 
+                    "command": "/joyent/provision", 
+                    "created_at": "2012-10-02T19:59:22+00:00", 
+                    "dependencies": [
+                        {
+                            "name": "fog", 
+                            "source": "http://rubygems.org/", 
+                            "version": "1.6.0"
+                        }
+                    ], 
+                    "description": "Provision servers on InstantServers", 
+                    "id": 54, 
+                    "image": "instantservers.png", 
+                    "klass": "MaestroDev::JoyentWorker", 
+                    "language": "ruby", 
+                    "name": "InstantServers provision", 
+                    "options": {
+                        "dataset": {
+                            "description": "The image of the software on your machine. It contains the software packages that will be available on newly provisioned machines. In the case of virtual machines, the dataset also includes the operating system", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "centos-6"
+                        }, 
+                        "name": {
+                            "description": "name of the started vm", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "number_of_vms": {
+                            "description": "number of instances to start", 
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 1
+                        }, 
+                        "package": {
+                            "description": "Describe the \u2018sizes\u2019 of either a smart machine or a virtual machine", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": "Small 2GB"
+                        }, 
+                        "password": {
+                            "description": "password", 
+                            "required": true, 
+                            "type": "Password", 
+                            "value": null
+                        }, 
+                        "private_key": {
+                            "description": "ssh private key content to use to connect to the server", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "private_key_path": {
+                            "description": "ssh private key path in the agent to use to connect to the server (instead of private_key content)", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "ssh_commands": {
+                            "description": "commands to execute in the server once it is started", 
+                            "required": false, 
+                            "type": "Array", 
+                            "value": []
+                        }, 
+                        "ssh_user": {
+                            "description": "username to use for ssh connection", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": "root"
+                        }, 
+                        "url": {
+                            "description": "API endpoint", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "https://api-mad.instantservers.es"
+                        }, 
+                        "username": {
+                            "description": "user name", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": null
+                        }
+                    }, 
+                    "plugin_id": 21, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Cloud"
+                    ], 
+                    "type": "remote", 
+                    "updated_at": "2012-10-08T14:45:52+00:00" 
+                }
+            ], 
+            "updated_at": "2012-10-08T16:26:59+00:00" 
+        }
+    ], 
+    "created_at": "2012-10-08T16:26:26+00:00", 
+    "description": "Cloud provisioning examples", 
+    "home_url": null, 
+    "id": 12, 
+    "name": "Cloud", 
+    "scm_url": null, 
+    "tags": [
+        ""
+    ], 
+    "updated_at": "2012-10-08T16:26:26+00:00" 
+}

@@ -1,0 +1,361 @@
+{
+  "id": 13,
+  "name": "CollabNet TeamForge Examples",
+  "description": "CollabNet TeamForge Examples",
+  "home_url": "/projects/13",
+  "scm_url": null,
+  "tags": [
+    ""
+  ],
+  "parameters": null,
+  "created_at": "2012-09-19T23:00:53+02:00",
+  "updated_at": "2013-03-05T01:15:38+01:00",
+  "compositions": [
+    {
+      "id": 25,
+      "name": "Upload from Archiva",
+      "description": "",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+                        },
+      "tags": [
+        ""
+      ],
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2012-09-19T23:03:58+02:00",
+      "updated_at": "2013-03-05T01:15:38+01:00",
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "fail_type_id": 1,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 94,
+          "options": {
+            "body": {
+              "description": "The String To Be Displayed In The Action Pane",
+              "required": true,
+              "type": "String",
+              "value": "Promote release #{maestro.version} to File Releases?"
+                                                                                    },
+            "fail_on_cancel": {
+              "description": "If The User Declines The Action, The Composition Will Fail",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+                                                                                    }
+                                                            },
+          "position": 1,
+          "name": "confirmation",
+          "is_from_parent": false,
+          "created_at": "2012-09-19T23:09:23+02:00",
+          "updated_at": "2013-03-05T02:20:04+01:00",
+          "composition_id": 25,
+          "task_id": 28,
+          "sources": [
+
+          ]
+                                        },
+        {
+          "id": 95,
+          "options": {
+            "artifactClassifier": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "artifactGroupId": {
+              "required": true,
+              "type": "String",
+              "value": "com.maestrodev"
+                                                                                    },
+            "artifactId": {
+              "required": true,
+              "type": "String",
+              "value": "collabnet-utils"
+                                                                                    },
+            "artifactType": {
+              "required": true,
+              "type": "String",
+              "value": "jar"
+                                                                                    },
+            "artifactVersion": {
+              "required": true,
+              "type": "String",
+              "value": "#{maestro.version}"
+                                                                                    },
+            "createRelease": {
+              "required": true,
+              "type": "Boolean",
+              "value": true
+                                                                                    },
+            "overwrite": {
+              "required": false,
+              "type": "Boolean",
+              "value": false
+                                                                                    },
+            "package": {
+              "required": true,
+              "type": "String",
+              "value": "Maestro 4 Test"
+                                                                                    },
+            "packageDescription": {
+              "required": false,
+              "type": "String",
+              "value": "Test Package"
+                                                                                    },
+            "project": {
+              "required": true,
+              "type": "String",
+              "value": "myproject"
+                                                                                    },
+            "release": {
+              "required": false,
+              "type": "String",
+              "value": "September 2012"
+                                                                                    },
+            "releaseDescription": {
+              "required": false,
+              "type": "String",
+              "value": "Test Release"
+                                                                                    },
+            "releaseMaturity": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "releaseStatus": {
+              "required": false,
+              "type": "String",
+              "value": "pending"
+                                                                                    },
+            "repositoryPassword": {
+              "required": false,
+              "type": "Password",
+              "value": "admin1"
+                                                                                    },
+            "repositoryUrl": {
+              "required": true,
+              "type": "Url",
+              "value": "http://localhost:8082/archiva/repository/all"
+                                                                                    },
+            "repositoryUsername": {
+              "required": false,
+              "type": "String",
+              "value": "admin"
+                                                                                    },
+            "teamForgePassword": {
+              "required": true,
+              "type": "Password",
+              "value": "password"
+                                                                                    },
+            "teamForgeUrl": {
+              "required": true,
+              "type": "Url",
+              "value": "https://teamforge.acme.com/"
+                                                                                    },
+            "teamForgeUsername": {
+              "required": true,
+              "type": "String",
+              "value": "user"
+                                                                                    }
+                                                            },
+          "position": 2,
+          "name": "collabnet copy artifact to file release",
+          "is_from_parent": false,
+          "created_at": "2012-09-19T23:09:23+02:00",
+          "updated_at": "2013-03-05T01:15:38+01:00",
+          "composition_id": 25,
+          "task_id": 53,
+          "sources": [
+
+          ]
+                                        }
+      ],
+      "fail_type": "fast",
+      "on_error_composition": null,
+      "tasks": [
+        {
+          "id": 28,
+          "name": "confirmation",
+          "description": "Allows User Confirmation Before Continuing, A Notification Will Be Displayed Below. Confirming Will Allow The Composition To Continue, Rejecting Will Cancel The Composition",
+          "position": 1,
+          "options": {
+            "body": {
+              "description": "The String To Be Displayed In The Action Pane",
+              "required": true,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "fail_on_cancel": {
+              "description": "If The User Declines The Action, The Composition Will Fail",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+                                                                                    }
+                                                            },
+          "type": "confirmation",
+          "command": "/confirmation/work",
+          "tool_name": [
+            "Actions"
+          ],
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": null,
+          "created_at": "2011-08-05T00:31:28+02:00",
+          "updated_at": "2013-03-05T02:20:04+01:00",
+          "plugin_id": null
+                                        },
+        {
+          "id": 53,
+          "name": "collabnet copy artifact to file release",
+          "description": "Copy an artifact from a repository to the CollabNet File Releases section.",
+          "position": 1,
+          "options": {
+            "artifactClassifier": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "artifactGroupId": {
+              "required": true,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "artifactId": {
+              "required": true,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "artifactType": {
+              "required": true,
+              "type": "String",
+              "value": "jar"
+                                                                                    },
+            "artifactVersion": {
+              "required": true,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "createRelease": {
+              "required": true,
+              "type": "Boolean",
+              "value": true
+                                                                                    },
+            "overwrite": {
+              "required": false,
+              "type": "Boolean",
+              "value": false
+                                                                                    },
+            "package": {
+              "required": true,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "packageDescription": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "project": {
+              "required": true,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "release": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "releaseDescription": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "releaseMaturity": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "releaseStatus": {
+              "required": false,
+              "type": "String",
+              "value": "pending"
+                                                                                    },
+            "repositoryPassword": {
+              "required": false,
+              "type": "Password",
+              "value": ""
+                                                                                    },
+            "repositoryUrl": {
+              "required": true,
+              "type": "Url",
+              "value": ""
+                                                                                    },
+            "repositoryUsername": {
+              "required": false,
+              "type": "String",
+              "value": ""
+                                                                                    },
+            "teamForgePassword": {
+              "required": true,
+              "type": "Password",
+              "value": ""
+                                                                                    },
+            "teamForgeUrl": {
+              "required": true,
+              "type": "Url",
+              "value": ""
+                                                                                    },
+            "teamForgeUsername": {
+              "required": true,
+              "type": "String",
+              "value": ""
+                                                                                    }
+                                                            },
+          "type": "remote",
+          "command": "/collabnet/frsCopy",
+          "tool_name": [
+            "Deploy"
+          ],
+          "code": null,
+          "klass": "com.maestrodev.plugins.collabnet.FrsCopyWorker",
+          "dependencies": [
+            {
+              "name": "collabnet-maestro-plugin-1.2-SNAPSHOT.jar"
+                                                                                    },
+            {
+              "name": "pom.xml"
+                                                                                    }
+          ],
+          "language": "java",
+          "pom": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--\n  Copyright 2012 MaestroDev\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n      http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n  -->\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n  <modelVersion>4.0.0</modelVersion>\n  <parent>\n    <artifactId>collabnet-plugins</artifactId>\n    <groupId>com.maestrodev</groupId>\n    <version>1.2-SNAPSHOT</version>\n  </parent>\n\n  <artifactId>collabnet-maestro-plugin</artifactId>\n  <name>CollabNet TeamForge Plugin for Maestro</name>\n\n  <properties>\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    <slf4j.version>1.5.8</slf4j.version>\n  </properties>\n\n  <scm>\n    <connection>scm:git:ssh://git@github.com/maestrodev/collabnet-plugins.git</connection>\n    <developerConnection>scm:git:ssh://git@github.com/maestrodev/collabnet-plugins.git</developerConnection>\n    <url>https://github.com/maestrodev/collabnet-plugins</url>\n  </scm>\n\n  <repositories>\n    <repository>\n      <id>maestrodev-snapshots</id>\n      <url>https://repo.maestrodev.com/archiva/repository/all/</url>\n      <snapshots>\n      </snapshots>\n    </repository>\n  </repositories>\n\n  <dependencies>\n    <dependency>\n      <groupId>com.maestrodev</groupId>\n      <artifactId>maestro-plugin</artifactId>\n      <version>1.2-SNAPSHOT</version>\n    </dependency>\n    <dependency>\n      <groupId>com.maestrodev</groupId>\n      <artifactId>collabnet-utils</artifactId>\n      <version>${project.version}</version>\n    </dependency>\n    <dependency>\n      <groupId>org.apache.maven</groupId>\n      <artifactId>maven-artifact-manager</artifactId>\n      <version>2.2.1</version>\n    </dependency>\n    <dependency>\n      <groupId>com.btr.proxy</groupId>\n      <artifactId>proxy-vole</artifactId>\n      <version>20111102</version>\n    </dependency>\n\n    <dependency>\n      <groupId>org.slf4j</groupId>\n      <artifactId>slf4j-log4j12</artifactId>\n      <version>${slf4j.version}</version>\n    </dependency>\n    <dependency>\n      <groupId>junit</groupId>\n      <artifactId>junit</artifactId>\n      <version>4.10</version>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>commons-io</groupId>\n      <artifactId>commons-io</artifactId>\n      <version>2.3</version>\n      <scope>test</scope>\n    </dependency>\n  </dependencies>\n  <build>\n    <resources>\n      <resource>\n        <directory>src/main/resources</directory>\n        <filtering>true</filtering>\n      </resource>\n    </resources>\n    <plugins>\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-compiler-plugin</artifactId>\n        <version>2.5.1</version>\n      </plugin>\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-assembly-plugin</artifactId>\n        <version>2.3</version>\n        <configuration>\n          <descriptors>\n            <descriptor>src/main/assembly/zip.xml</descriptor>\n          </descriptors>\n        </configuration>\n        <executions>\n          <execution>\n            <id>make-assembly</id>\n            <phase>package</phase>\n            <goals>\n              <goal>single</goal>\n            </goals>\n          </execution>\n        </executions>\n      </plugin>\n      <plugin>\n        <groupId>org.codehaus.mojo</groupId>\n        <artifactId>buildnumber-maven-plugin</artifactId>\n        <version>1.1</version>\n        <executions>\n          <execution>\n            <phase>validate</phase>\n            <goals>\n              <goal>create</goal>\n            </goals>\n          </execution>\n        </executions>\n        <configuration>\n          <shortRevisionLength>5</shortRevisionLength>\n        </configuration>\n      </plugin>\n    </plugins>\n  </build>\n</project>\n",
+          "image": null,
+          "created_at": "2012-06-06T06:04:24+02:00",
+          "updated_at": "2013-03-05T01:15:38+01:00",
+          "plugin_id": 4
+                                        }
+      ],
+      "composition_configurations": [
+        {
+          "name": "version",
+          "value": "4.2",
+          "is_from_parent": false,
+          "created_at": "2013-03-05T02:21:40+01:00",
+          "updated_at": "2013-03-05T02:21:40+01:00",
+          "composition_id": 25
+                                        }
+      ],
+      "sources": [
+
+      ]
+            }
+  ]
+}

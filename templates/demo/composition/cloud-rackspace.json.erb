@@ -1,0 +1,333 @@
+{
+    "compositions": [
+        {
+            "agent_facts": {}, 
+            "agent_pool_id": 1, 
+            "composition_tasks": [
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-10-08T16:31:30+00:00", 
+                    "id": 110, 
+                    "is_from_parent": false, 
+                    "name": "rackspace provision", 
+                    "options": {
+                        "api_key": {
+                            "required": true, 
+                            "type": "Password", 
+                            "value": "qwerty"
+                        }, 
+                        "version": {
+                          "description": "API version to use: v1 or v2 for Open Cloud Servers",
+                          "required": false,
+                          "type": "String",
+                          "value": "v1"
+                        },
+                        "auth_url": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "flavor_id": {
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 1
+                        }, 
+                        "image_id": {
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 49
+                        }, 
+                        "name": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "number_of_vms": {
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 1
+                        }, 
+                        "private_key": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "private_key_path": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "public_key": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "ssh_commands": {
+                            "required": false, 
+                            "type": "Array", 
+                            "value": [
+                                "hostname"
+                            ]
+                        }, 
+                        "ssh_user": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": "root"
+                        }, 
+                        "username": {
+                            "required": true, 
+                            "type": "String", 
+                            "value": "rackspace1"
+                        }
+                    }, 
+                    "position": 1, 
+                    "sources": [
+                        {
+                            "name": "rackspace production"
+                        }
+                    ], 
+                    "task_id": 7, 
+                    "updated_at": "2012-10-08T16:32:04+00:00" 
+                }, 
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-10-08T16:31:30+00:00", 
+                    "id": 111, 
+                    "is_from_parent": false, 
+                    "name": "confirmation", 
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Server ready at #{fields[:rackspace_ips].first}. Continue to deprovision"
+                        }, 
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail", 
+                            "required": false, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "position": 2, 
+                    "sources": [], 
+                    "task_id": 23, 
+                    "updated_at": "2012-10-08T16:32:04+00:00" 
+                }, 
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-10-08T16:31:30+00:00", 
+                    "id": 112, 
+                    "is_from_parent": false, 
+                    "name": "rackspace deprovision", 
+                    "options": {}, 
+                    "position": 3, 
+                    "sources": [], 
+                    "task_id": 8, 
+                    "updated_at": "2012-10-08T16:32:04+00:00" 
+                }
+            ], 
+            "created_at": "2012-10-08T16:30:49+00:00", 
+            "description": "Rackspace Cloudservers", 
+            "fail_on_cancel": false, 
+            "fail_type": "fast", 
+            "fail_type_id": 1, 
+            "id": 26, 
+            "name": "Rackspace", 
+            "on_error_composition": null, 
+            "on_error_id": null, 
+            "parent_id": null, 
+            "reuse_agent": true, 
+            "schedule": "", 
+            "sources": [
+                {
+                    "created_at": "2012-09-17T16:57:44+00:00", 
+                    "description": "Rackspace production keys", 
+                    "id": 4, 
+                    "name": "rackspace production", 
+                    "options": {
+                        "api_key": "myapikey", 
+                        "username": "rackspace"
+                    }, 
+                    "project_id": 0, 
+                    "source_type": "rackspace", 
+                    "source_type_id": 3, 
+                    "updated_at": "2012-10-01T16:02:41+00:00", 
+                    "uri": "some uri"
+                }
+            ], 
+            "state": null, 
+            "tags": [
+                ""
+            ], 
+            "tasks": [
+                {
+                    "code": null, 
+                    "command": "/rackspace/provision", 
+                    "created_at": "2012-10-01T16:02:37+00:00", 
+                    "dependencies": [
+                        {
+                            "name": "fog", 
+                            "source": "http://rubygems.org/", 
+                            "version": "1.6.0"
+                        }
+                    ], 
+                    "description": "Provision servers in Rackspace.<br>[username] Rackspace username<br>[api_key] Rackspace api key<br>[image_id] id of the image to use (ie. 49 for Ubuntu)<br>[flavor_id] Flavor id that defines ram, cpu,...<br>[name] name of the started vm<br>[number_of_vms] number of instances to start<br>[ssh_user] username to use for ssh connection<br>[ssh_commands] commands to execute in the server once it is started<br>[public_key] ssh public key to copy to the server<br>[private_key] ssh private key content to use to connect to the server<br>[private_key_path] ssh private key path in the agent to use to connect to the server (instead of private_key content)", 
+                    "id": 7, 
+                    "image": "rackspace.png", 
+                    "klass": "MaestroDev::RackspaceWorker", 
+                    "language": "ruby", 
+                    "name": "rackspace provision", 
+                    "options": {
+                        "api_key": {
+                            "required": true, 
+                            "type": "Password", 
+                            "value": null
+                        }, 
+                        "version": {
+                          "description": "API version to use: v1 or v2 for Open Cloud Servers",
+                          "required": false,
+                          "type": "String",
+                          "value": "v2"
+                        },
+                        "auth_url": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "flavor_id": {
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 1
+                        }, 
+                        "image_id": {
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 49
+                        }, 
+                        "name": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "number_of_vms": {
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 1
+                        }, 
+                        "private_key": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "private_key_path": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "public_key": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": null
+                        }, 
+                        "ssh_commands": {
+                            "required": false, 
+                            "type": "Array", 
+                            "value": []
+                        }, 
+                        "ssh_user": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": "root"
+                        }, 
+                        "username": {
+                            "required": true, 
+                            "type": "String", 
+                            "value": null
+                        }
+                    }, 
+                    "plugin_id": 7, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Cloud"
+                    ], 
+                    "type": "remote", 
+                    "updated_at": "2012-10-08T14:45:54+00:00" 
+                }, 
+                {
+                    "code": null, 
+                    "command": "/rackspace/deprovision", 
+                    "created_at": "2012-10-01T16:02:37+00:00", 
+                    "dependencies": [
+                        {
+                            "name": "fog", 
+                            "source": "http://rubygems.org/", 
+                            "version": "1.6.0"
+                        }
+                    ], 
+                    "description": "Deprovision servers in Rackspace. Deprovisions all servers started in a previous provision tasks.", 
+                    "id": 8, 
+                    "image": "rackspace.png", 
+                    "klass": "MaestroDev::RackspaceWorker", 
+                    "language": "ruby", 
+                    "name": "rackspace deprovision", 
+                    "options": {}, 
+                    "plugin_id": 8, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Cloud"
+                    ], 
+                    "type": "remote", 
+                    "updated_at": "2012-10-08T14:45:51+00:00" 
+                }, 
+                {
+                    "code": null, 
+                    "command": "/confirmation/work", 
+                    "created_at": "2011-08-04T22:31:28+00:00", 
+                    "dependencies": null, 
+                    "description": "Allows User Confirmation Before Continuing, A Notification Will Be Displayed Below. Confirming Will Allow The Composition To Continue, Rejecting Will Cancel The Composition", 
+                    "id": 23, 
+                    "image": null, 
+                    "klass": null, 
+                    "language": null, 
+                    "name": "confirmation", 
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail", 
+                            "required": false, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "plugin_id": null, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Actions"
+                    ], 
+                    "type": "confirmation", 
+                    "updated_at": "2012-10-08T16:14:03+00:00" 
+                }
+            ], 
+            "updated_at": "2012-10-08T16:30:49+00:00" 
+        }
+    ], 
+    "created_at": "2012-10-08T16:26:26+00:00", 
+    "description": "Cloud provisioning examples", 
+    "home_url": null, 
+    "id": 12, 
+    "name": "Cloud", 
+    "scm_url": null, 
+    "tags": [
+        ""
+    ], 
+    "updated_at": "2012-10-08T16:26:26+00:00" 
+}

@@ -1,0 +1,507 @@
+{
+    "compositions": [
+        {
+            "agent_facts": {}, 
+            "agent_pool_id": 1, 
+            "composition_tasks": [
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-09-19T22:46:26+02:00", 
+                    "id": 113, 
+                    "is_from_parent": false, 
+                    "name": "jira create issue", 
+                    "options": {
+                        "description": {
+                            "description": "longer description for new issue", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Composition #{fields[:composition]['name']} failed"
+                        }, 
+                        "host": {
+                            "description": "name of server the JIRA is running on", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "jira.acme.com"
+                        }, 
+                        "issue_type_name": {
+                            "description": "type of issue to create", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Bug"
+                        }, 
+                        "password": {
+                            "description": "", 
+                            "required": true, 
+                            "type": "Password", 
+                            "value": "password"
+                        }, 
+                        "port": {
+                            "description": "port JIRA is listening to", 
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 443
+                        }, 
+                        "project_key": {
+                            "description": "token for referencing the project", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "MDINTTST"
+                        }, 
+                        "summary": {
+                            "description": "summary description for new issue", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Project failed QA"
+                        }, 
+                        "use_ssl": {
+                            "description": "Use ssl encryption", 
+                            "required": true, 
+                            "type": "Boolean", 
+                            "value": true
+                        }, 
+                        "username": {
+                            "description": "username to create issue as", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "jira_user"
+                        }, 
+                        "web_path": {
+                            "description": "context path for the JIRA webapp", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }
+                    }, 
+                    "position": 1, 
+                    "sources": [], 
+                    "task_id": 58, 
+                    "updated_at": "2012-09-19T22:46:26+02:00"
+                }, 
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-09-19T22:46:26+02:00", 
+                    "id": 116, 
+                    "is_from_parent": false, 
+                    "name": "confirmation", 
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Please confirm the issue reported in #{fields[:jira][\"key\"]} is fixed"
+                        }, 
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail", 
+                            "required": false, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "position": 2, 
+                    "sources": [], 
+                    "task_id": 6, 
+                    "updated_at": "2012-09-20T19:56:26+02:00"
+                }, 
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-09-19T22:46:26+02:00", 
+                    "id": 114, 
+                    "is_from_parent": false, 
+                    "name": "jira transition issues", 
+                    "options": {
+                        "comment": {
+                            "description": "description for issue transition", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Issue fixed"
+                        }, 
+                        "host": {
+                            "description": "name of server the JIRA is running on", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "jira.acme.com"
+                        }, 
+                        "issue_keys": {
+                            "description": "list of issue keys to be transitioned", 
+                            "required": true, 
+                            "type": "Array", 
+                            "value": [
+                                "#{fields[:jira][\"key\"]}"
+                            ]
+                        }, 
+                        "password": {
+                            "description": "", 
+                            "required": true, 
+                            "type": "Password", 
+                            "value": "password"
+                        }, 
+                        "port": {
+                            "description": "port JIRA is listening to", 
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 443
+                        }, 
+                        "transition_name": {
+                            "description": "name of the issue transition", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Resolve Issue"
+                        }, 
+                        "use_ssl": {
+                            "description": "Use ssl encryption", 
+                            "required": true, 
+                            "type": "Boolean", 
+                            "value": true
+                        }, 
+                        "username": {
+                            "description": "username to create issue as", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "jira_user"
+                        }, 
+                        "web_path": {
+                            "description": "context path for the JIRA webapp", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }
+                    }, 
+                    "position": 3, 
+                    "sources": [], 
+                    "task_id": 59, 
+                    "updated_at": "2012-09-19T22:46:26+02:00"
+                }, 
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-09-19T22:46:26+02:00", 
+                    "id": 117, 
+                    "is_from_parent": false, 
+                    "name": "confirmation", 
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Please verify the fix previously provided"
+                        }, 
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail", 
+                            "required": false, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "position": 4, 
+                    "sources": [], 
+                    "task_id": 6, 
+                    "updated_at": "2012-09-20T19:56:26+02:00"
+                }, 
+                {
+                    "composition_id": 26, 
+                    "created_at": "2012-09-19T22:46:26+02:00", 
+                    "id": 115, 
+                    "is_from_parent": false, 
+                    "name": "jira transition issues", 
+                    "options": {
+                        "comment": {
+                            "description": "description for issue transition", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Issue verified"
+                        }, 
+                        "host": {
+                            "description": "name of server the JIRA is running on", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "jira.acme.com"
+                        }, 
+                        "issue_keys": {
+                            "description": "list of issue keys to be transitioned", 
+                            "required": true, 
+                            "type": "Array", 
+                            "value": [
+                                "#{fields[:jira][\"key\"]}"
+                            ]
+                        }, 
+                        "password": {
+                            "description": "", 
+                            "required": true, 
+                            "type": "Password", 
+                            "value": "password"
+                        }, 
+                        "port": {
+                            "description": "port JIRA is listening to", 
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 443
+                        }, 
+                        "transition_name": {
+                            "description": "name of the issue transition", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Close Issue"
+                        }, 
+                        "use_ssl": {
+                            "description": "Use ssl encryption", 
+                            "required": true, 
+                            "type": "Boolean", 
+                            "value": true
+                        }, 
+                        "username": {
+                            "description": "username to create issue as", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "jira_user"
+                        }, 
+                        "web_path": {
+                            "description": "context path for the JIRA webapp", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }
+                    }, 
+                    "position": 5, 
+                    "sources": [], 
+                    "task_id": 59, 
+                    "updated_at": "2012-09-19T22:46:26+02:00"
+                }
+            ], 
+            "created_at": "2012-09-19T22:12:38+02:00", 
+            "description": "", 
+            "fail_on_cancel": false, 
+            "fail_type": "fast", 
+            "fail_type_id": 1, 
+            "id": 26, 
+            "name": "JIRA Example", 
+            "on_error_composition": null, 
+            "on_error_id": null, 
+            "parent_id": null, 
+            "reuse_agent": true, 
+            "schedule": "", 
+            "sources": [], 
+            "state": null, 
+            "tags": [
+                ""
+            ], 
+            "tasks": [
+                {
+                    "code": null, 
+                    "command": "/confirmation/work", 
+                    "created_at": "2011-08-04T15:31:28+02:00", 
+                    "dependencies": null, 
+                    "description": "Allows User Confirmation Before Continuing, A Notification Will Be Displayed Below. Confirming Will Allow The Composition To Continue, Rejecting Will Cancel The Composition", 
+                    "id": 6, 
+                    "image": null, 
+                    "klass": null, 
+                    "language": null, 
+                    "name": "confirmation", 
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail", 
+                            "required": false, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "plugin_id": null, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Actions"
+                    ], 
+                    "type": "confirmation", 
+                    "updated_at": "2012-09-20T19:56:25+02:00"
+                }, 
+                {
+                    "code": null, 
+                    "command": "/jira/createIssue", 
+                    "created_at": "2012-09-19T22:39:40+02:00", 
+                    "dependencies": [
+                        {
+                            "name": "maestro-jira-plugin-1.0-SNAPSHOT.jar"
+                        }, 
+                        {
+                            "name": "pom.xml"
+                        }
+                    ], 
+                    "description": "Create An Issue In Jira", 
+                    "id": 58, 
+                    "image": null, 
+                    "klass": "com.maestrodev.JiraWorker", 
+                    "language": "java", 
+                    "name": "jira create issue", 
+                    "options": {
+                        "description": {
+                            "description": "longer description for new issue", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "host": {
+                            "description": "name of server the JIRA is running on", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "issue_type_name": {
+                            "description": "type of issue to create", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Bug"
+                        }, 
+                        "password": {
+                            "description": "", 
+                            "required": true, 
+                            "type": "Password", 
+                            "value": ""
+                        }, 
+                        "port": {
+                            "description": "port JIRA is listening to", 
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 8080
+                        }, 
+                        "project_key": {
+                            "description": "token for referencing the project", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "PROJECT_KEY"
+                        }, 
+                        "summary": {
+                            "description": "summary description for new issue", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "use_ssl": {
+                            "description": "Use ssl encryption", 
+                            "required": true, 
+                            "type": "Boolean", 
+                            "value": false
+                        }, 
+                        "username": {
+                            "description": "username to create issue as", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "web_path": {
+                            "description": "context path for the JIRA webapp", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }
+                    }, 
+                    "plugin_id": 21, 
+                    "pom": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n  <modelVersion>4.0.0</modelVersion>\n\n  <groupId>com.maestrodev</groupId>\n  <artifactId>maestro-jira-plugin</artifactId>\n  <version>1.0-SNAPSHOT</version>\n  <name>maestro-jira-plugin</name>\n\n  <properties>\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    <slf4j.version>1.5.8</slf4j.version>\n  </properties>\n\n  <scm>\n    <developerConnection>scm:git:git@github.com:maestrodev/maestro-jira-plugin.git</developerConnection>\n    <connection>scm:git:git@github.com:maestrodev/maestro-jira-plugin.git</connection>\n  </scm>\n\n  <distributionManagement>\n    <repository>\n      <id>maestro-deploy</id>\n      <url>https://repo.maestrodev.com/archiva/repository/public-releases/</url>\n    </repository>\n    <snapshotRepository>\n      <id>maestro-deploy</id>\n      <url>https://repo.maestrodev.com/archiva/repository/public-snapshots/</url>\n    </snapshotRepository>\n  </distributionManagement>\n\n  <repositories>\n    <repository>\n      <id>atlassian</id>\n      <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>\n    </repository>\n    <repository>\n      <id>maestrodev-snapshots</id>\n      <url>https://repo.maestrodev.com/archiva/repository/all/</url>\n      <snapshots>\n      </snapshots>\n    </repository>\n  </repositories>\n\n  <dependencies>\n    \n    \n    <dependency>\n      <groupId>com.maestrodev</groupId>\n      <artifactId>maestro-plugin</artifactId>\n      <version>1.2-SNAPSHOT</version>\n      <exclusions>\n      </exclusions>\n    </dependency>\n\n<!--    <dependency>\n        <groupId>com.ghosthack</groupId>\n        <artifactId>jira-json-client</artifactId>\n        <version>1.0.0</version>\n    </dependency>-->\n    <dependency>\n            <groupId>com.atlassian.jira</groupId>\n            <artifactId>jira-rest-java-client</artifactId>\n            <version>0.5</version>\n    </dependency>\n<!--\n    <dependency>\n            <groupId>com.sun.jersey</groupId>\n            <artifactId>jersey-client</artifactId>\n            <version>1.5</version>\n    </dependency>-->\n\n\n    <dependency>\n      <groupId>org.slf4j</groupId>\n      <artifactId>slf4j-log4j12</artifactId>\n      <version>${slf4j.version}</version>\n    </dependency>\n    <dependency>\n      <groupId>junit</groupId>\n      <artifactId>junit</artifactId>\n      <version>4.10</version>\n      <scope>test</scope>\n    </dependency>\n\n<!--    <dependency>\n      <groupId>com.sun.jersey</groupId>\n      <artifactId>jersey-core</artifactId>\n      <version>1.5</version>\n    </dependency>\n    <dependency>\n      <groupId>com.sun.jersey</groupId>\n      <artifactId>jersey-json</artifactId>\n      <version>1.5</version>\n    </dependency>-->\n    <dependency>\n      <groupId>commons-io</groupId>\n      <artifactId>commons-io</artifactId>\n      <version>2.3</version>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <artifactId>commons-codec</artifactId>\n      <groupId>commons-codec</groupId>\n      <type>jar</type>\n      <version>1.2</version>\n    </dependency>\n    <dependency>\n      <groupId>com.sun.xml.security</groupId>\n      <artifactId>xml-security-impl</artifactId>\n      <version>1.0</version>\n    </dependency>\n  </dependencies>\n  <build>\n    <resources>\n      <resource>\n        <directory>src/main/resources</directory>\n        <filtering>true</filtering>\n      </resource>\n    </resources>\n    <plugins>\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-compiler-plugin</artifactId>\n        <version>2.5.1</version>\n      </plugin>\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-assembly-plugin</artifactId>\n        <version>2.3</version>\n        <configuration>\n          <descriptors>\n            <descriptor>src/main/assembly/zip.xml</descriptor>\n          </descriptors>\n        </configuration>\n        <executions>\n          <execution>\n            <id>make-assembly</id>\n            <phase>package</phase>\n            <goals>\n              <goal>single</goal>\n            </goals>\n          </execution>\n        </executions>\n      </plugin>\n      <plugin>\n        <groupId>org.codehaus.mojo</groupId>\n        <artifactId>buildnumber-maven-plugin</artifactId>\n        <version>1.1</version>\n        <executions>\n          <execution>\n            <phase>validate</phase>\n            <goals>\n              <goal>create</goal>\n            </goals>\n          </execution>\n        </executions>\n        <configuration>\n          <shortRevisionLength>5</shortRevisionLength>\n        </configuration>\n      </plugin>\n    </plugins>\n  </build>\n</project>\n", 
+                    "position": 1, 
+                    "tool_name": [
+                        "ALM"
+                    ], 
+                    "type": "remote", 
+                    "updated_at": "2012-09-19T22:39:40+02:00"
+                }, 
+                {
+                    "code": null, 
+                    "command": "/jira/transitionIssues", 
+                    "created_at": "2012-09-19T22:39:40+02:00", 
+                    "dependencies": [
+                        {
+                            "name": "maestro-jira-plugin-1.0-SNAPSHOT.jar"
+                        }, 
+                        {
+                            "name": "pom.xml"
+                        }
+                    ], 
+                    "description": "Transitions Issues In Jira To A New State", 
+                    "id": 59, 
+                    "image": null, 
+                    "klass": "com.maestrodev.JiraWorker", 
+                    "language": "java", 
+                    "name": "jira transition issues", 
+                    "options": {
+                        "comment": {
+                            "description": "description for issue transition", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "host": {
+                            "description": "name of server the JIRA is running on", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "issue_keys": {
+                            "description": "list of issue keys to be transitioned", 
+                            "required": true, 
+                            "type": "Array", 
+                            "value": ""
+                        }, 
+                        "password": {
+                            "description": "", 
+                            "required": true, 
+                            "type": "Password", 
+                            "value": ""
+                        }, 
+                        "port": {
+                            "description": "port JIRA is listening to", 
+                            "required": true, 
+                            "type": "Integer", 
+                            "value": 8080
+                        }, 
+                        "transition_name": {
+                            "description": "name of the issue transition", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": "Resolve Issue"
+                        }, 
+                        "use_ssl": {
+                            "description": "Use ssl encryption", 
+                            "required": true, 
+                            "type": "Boolean", 
+                            "value": false
+                        }, 
+                        "username": {
+                            "description": "username to create issue as", 
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "web_path": {
+                            "description": "context path for the JIRA webapp", 
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }
+                    }, 
+                    "plugin_id": 22, 
+                    "pom": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n  <modelVersion>4.0.0</modelVersion>\n\n  <groupId>com.maestrodev</groupId>\n  <artifactId>maestro-jira-plugin</artifactId>\n  <version>1.0-SNAPSHOT</version>\n  <name>maestro-jira-plugin</name>\n\n  <properties>\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    <slf4j.version>1.5.8</slf4j.version>\n  </properties>\n\n  <scm>\n    <developerConnection>scm:git:git@github.com:maestrodev/maestro-jira-plugin.git</developerConnection>\n    <connection>scm:git:git@github.com:maestrodev/maestro-jira-plugin.git</connection>\n  </scm>\n\n  <distributionManagement>\n    <repository>\n      <id>maestro-deploy</id>\n      <url>https://repo.maestrodev.com/archiva/repository/public-releases/</url>\n    </repository>\n    <snapshotRepository>\n      <id>maestro-deploy</id>\n      <url>https://repo.maestrodev.com/archiva/repository/public-snapshots/</url>\n    </snapshotRepository>\n  </distributionManagement>\n\n  <repositories>\n    <repository>\n      <id>atlassian</id>\n      <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>\n    </repository>\n    <repository>\n      <id>maestrodev-snapshots</id>\n      <url>https://repo.maestrodev.com/archiva/repository/all/</url>\n      <snapshots>\n      </snapshots>\n    </repository>\n  </repositories>\n\n  <dependencies>\n    \n    \n    <dependency>\n      <groupId>com.maestrodev</groupId>\n      <artifactId>maestro-plugin</artifactId>\n      <version>1.2-SNAPSHOT</version>\n      <exclusions>\n      </exclusions>\n    </dependency>\n\n<!--    <dependency>\n        <groupId>com.ghosthack</groupId>\n        <artifactId>jira-json-client</artifactId>\n        <version>1.0.0</version>\n    </dependency>-->\n    <dependency>\n            <groupId>com.atlassian.jira</groupId>\n            <artifactId>jira-rest-java-client</artifactId>\n            <version>0.5</version>\n    </dependency>\n<!--\n    <dependency>\n            <groupId>com.sun.jersey</groupId>\n            <artifactId>jersey-client</artifactId>\n            <version>1.5</version>\n    </dependency>-->\n\n\n    <dependency>\n      <groupId>org.slf4j</groupId>\n      <artifactId>slf4j-log4j12</artifactId>\n      <version>${slf4j.version}</version>\n    </dependency>\n    <dependency>\n      <groupId>junit</groupId>\n      <artifactId>junit</artifactId>\n      <version>4.10</version>\n      <scope>test</scope>\n    </dependency>\n\n<!--    <dependency>\n      <groupId>com.sun.jersey</groupId>\n      <artifactId>jersey-core</artifactId>\n      <version>1.5</version>\n    </dependency>\n    <dependency>\n      <groupId>com.sun.jersey</groupId>\n      <artifactId>jersey-json</artifactId>\n      <version>1.5</version>\n    </dependency>-->\n    <dependency>\n      <groupId>commons-io</groupId>\n      <artifactId>commons-io</artifactId>\n      <version>2.3</version>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <artifactId>commons-codec</artifactId>\n      <groupId>commons-codec</groupId>\n      <type>jar</type>\n      <version>1.2</version>\n    </dependency>\n    <dependency>\n      <groupId>com.sun.xml.security</groupId>\n      <artifactId>xml-security-impl</artifactId>\n      <version>1.0</version>\n    </dependency>\n  </dependencies>\n  <build>\n    <resources>\n      <resource>\n        <directory>src/main/resources</directory>\n        <filtering>true</filtering>\n      </resource>\n    </resources>\n    <plugins>\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-compiler-plugin</artifactId>\n        <version>2.5.1</version>\n      </plugin>\n      <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-assembly-plugin</artifactId>\n        <version>2.3</version>\n        <configuration>\n          <descriptors>\n            <descriptor>src/main/assembly/zip.xml</descriptor>\n          </descriptors>\n        </configuration>\n        <executions>\n          <execution>\n            <id>make-assembly</id>\n            <phase>package</phase>\n            <goals>\n              <goal>single</goal>\n            </goals>\n          </execution>\n        </executions>\n      </plugin>\n      <plugin>\n        <groupId>org.codehaus.mojo</groupId>\n        <artifactId>buildnumber-maven-plugin</artifactId>\n        <version>1.1</version>\n        <executions>\n          <execution>\n            <phase>validate</phase>\n            <goals>\n              <goal>create</goal>\n            </goals>\n          </execution>\n        </executions>\n        <configuration>\n          <shortRevisionLength>5</shortRevisionLength>\n        </configuration>\n      </plugin>\n    </plugins>\n  </build>\n</project>\n", 
+                    "position": 1, 
+                    "tool_name": [
+                        "ALM"
+                    ], 
+                    "type": "remote", 
+                    "updated_at": "2012-09-19T22:39:40+02:00"
+                }
+            ], 
+            "updated_at": "2012-09-19T22:12:38+02:00"
+        }
+    ], 
+    "created_at": "2012-09-19T22:10:35+02:00", 
+    "description": "Application Lifecycle Management Functions", 
+    "home_url": null, 
+    "id": 11, 
+    "name": "ALM Examples", 
+    "scm_url": null, 
+    "tags": [
+        ""
+    ], 
+    "updated_at": "2012-09-19T22:59:53+02:00"
+}

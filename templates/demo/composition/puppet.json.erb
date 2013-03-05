@@ -1,0 +1,101 @@
+{
+    "compositions": [
+        {
+            "agent_pool_id": 1, 
+            "composition_tasks": [
+                {
+                    "composition_id": 9, 
+                    "created_at": "2012-06-12T23:57:00+02:00", 
+                    "id": 62, 
+                    "is_from_parent": false, 
+                    "name": "puppet runonce", 
+                    "options": {
+                        "agent": {
+                            "required": true, 
+                            "type": "String", 
+                            "value": "puppet.acme.com"
+                        }, 
+                        "verbose": {
+                            "required": true, 
+                            "type": "Boolean", 
+                            "value": true
+                        }
+                    }, 
+                    "position": 1, 
+                    "sources": [], 
+                    "task_id": 37, 
+                    "updated_at": "2012-08-20T20:31:41+02:00"
+                }
+            ], 
+            "created_at": "2012-06-12T23:55:50+02:00", 
+            "description": "Run Puppet on demo agent", 
+            "fail_on_cancel": false, 
+            "fail_type": null, 
+            "fail_type_id": null, 
+            "id": 9, 
+            "name": "Run Puppet on demo agent", 
+            "on_error_composition": null, 
+            "on_error_id": null, 
+            "parent_id": null, 
+            "reuse_agent": true, 
+            "schedule": "", 
+            "sources": [], 
+            "state": null, 
+            "tags": [], 
+            "tasks": [
+                {
+                    "code": null, 
+                    "command": "/puppet/runonce", 
+                    "created_at": "2012-06-12T23:52:24+02:00", 
+                    "dependencies": [
+                        {
+                            "name": "mcollective-client", 
+                            "source": "http://rubygems.org/", 
+                            "version": "2.0.0"
+                        }, 
+                        {
+                            "name": "stomp", 
+                            "source": "http://rubygems.org/", 
+                            "version": "1.2.2"
+                        }
+                    ], 
+                    "description": "Run Puppet on a select number of agents", 
+                    "id": 37, 
+                    "image": null, 
+                    "klass": "MaestroDev::PuppetWorker", 
+                    "language": "ruby", 
+                    "name": "puppet runonce", 
+                    "options": {
+                        "agent": {
+                            "required": true, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "verbose": {
+                            "required": true, 
+                            "type": "Boolean", 
+                            "value": false
+                        }
+                    }, 
+                    "plugin_id": 5, 
+                    "pom": null, 
+                    "position": 1, 
+                    "tool_name": [
+                        "Deploy"
+                    ], 
+                    "type": "remote", 
+                    "updated_at": "2012-08-20T20:31:41+02:00"
+                }
+            ], 
+            "updated_at": "2012-07-31T13:11:23+02:00"
+        }
+    ], 
+    "created_at": "2012-06-12T23:55:08+02:00", 
+    "description": "Puppet demonstration compositions", 
+    "home_url": null, 
+    "id": 5, 
+    "name": "Puppet Management", 
+    "scm_url": null, 
+    "tags": null, 
+    "updated_at": "2012-08-20T20:43:29+02:00"
+}

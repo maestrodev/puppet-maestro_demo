@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Server", 
+        "options": {
+            "host": "String", 
+            "port": "Integer", 
+            "username": "String"
+        }
+    }, 
+    {
+        "name": "Git", 
+        "options": {
+            "branch": "String", 
+            "path": "String", 
+            "url": "String"
+        }
+    }, 
+    {
+        "name": "Subversion", 
+        "options": {
+            "path": "String", 
+            "url": "String"
+        }
+    },
+   {
+     "name":"Jenkins",
+     "options": {
+       "host":"String",
+       "port":"Integer",
+       "username":"String",
+       "password":"Password",
+       "web_path":"String"
+     }
+   }
+]
