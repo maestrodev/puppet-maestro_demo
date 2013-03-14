@@ -13,7 +13,6 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   maestro_demo::demo::composition::generic { 'cloud-instantservers': }
   maestro_demo::demo::composition::generic { 'cloud-rackspace': }
   maestro_demo::demo::composition::generic { 'cloud': }
-  maestro_demo::demo::composition::generic { 'collabnet': }
   maestro_demo::demo::composition::generic { 'maestro': }
   maestro_demo::demo::composition::generic { 'wordpress': }
 
@@ -21,6 +20,7 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   class { 'maestro_demo::demo::composition::database': }
   class { 'maestro_demo::demo::composition::mobile': }
   class { 'maestro_demo::demo::composition::rackspace_load': enabled => false }
+  class { 'maestro_demo::demo::composition::collabnet': }
 
   # Broken compositions (dependencies borked)
 #  class { 'maestro_demo::demo::composition::puppet': }    # Puppet plugin causes hang
