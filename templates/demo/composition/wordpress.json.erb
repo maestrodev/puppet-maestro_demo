@@ -21,7 +21,7 @@
                             "value": ""
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "<%= working_copy_dir %>/wordpress"
                         }, 
@@ -29,6 +29,12 @@
                             "required": true, 
                             "type": "Url", 
                             "value": "http://core.svn.wordpress.org/trunk/"
+                        },
+                        "force_build": {
+                            "description": "Build If No Update Is Found",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
                         }
                     }, 
                     "position": 1, 
@@ -178,6 +184,12 @@
                             "type": "String", 
                             "value": "#{fields[:instance_dns]}"
                         }, 
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
                         "key_path": {
                             "required": true, 
                             "type": "String", 
@@ -202,6 +214,12 @@
                             "required": true, 
                             "type": "String", 
                             "value": "root"
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
                         }
                     }, 
                     "position": 4, 
@@ -229,6 +247,12 @@
                             "type": "String", 
                             "value": "#{fields[:instance_dns]}"
                         }, 
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
                         "key_path": {
                             "required": true, 
                             "type": "String", 
@@ -243,6 +267,12 @@
                             "required": true, 
                             "type": "String", 
                             "value": "root"
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
                         }
                     }, 
                     "position": 5, 
@@ -271,6 +301,12 @@
                             "type": "String", 
                             "value": "#{fields[:instance_dns]}"
                         }, 
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
                         "key_path": {
                             "required": true, 
                             "type": "String", 
@@ -285,6 +321,12 @@
                             "required": true, 
                             "type": "String", 
                             "value": "root"
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
                         }
                     }, 
                     "position": 6, 
@@ -312,6 +354,12 @@
                             "type": "String", 
                             "value": "#{fields[:instance_dns]}"
                         }, 
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
                         "key_path": {
                             "required": true, 
                             "type": "String", 
@@ -326,6 +374,12 @@
                             "required": true, 
                             "type": "String", 
                             "value": "root"
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
                         }
                     }, 
                     "position": 7, 
@@ -430,7 +484,7 @@
                             "value": ""
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": ""
                         }, 
@@ -438,6 +492,12 @@
                             "required": true, 
                             "type": "Url", 
                             "value": ""
+                        },
+                        "force_build": {
+                            "description": "Build If No Update Is Found",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
                         }
                     }, 
                     "pom": null, 
@@ -528,6 +588,12 @@
                             "type": "String", 
                             "value": "localhost"
                         }, 
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
                         "key_path": {
                             "required": true, 
                             "type": "String", 
@@ -541,6 +607,12 @@
                         "user": {
                             "required": true, 
                             "type": "String", 
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
                             "value": ""
                         }
                     }, 
@@ -566,6 +638,12 @@
                             "type": "String", 
                             "value": "localhost"
                         }, 
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
                         "key_path": {
                             "required": true, 
                             "type": "String", 
@@ -589,6 +667,12 @@
                         "user": {
                             "required": true, 
                             "type": "String", 
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
                             "value": ""
                         }
                     }, 

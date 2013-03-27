@@ -21,7 +21,7 @@
                             "value": true
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "<%= working_copy_dir %>/centrepoint-release"
                         }, 
@@ -29,6 +29,12 @@
                             "required": true, 
                             "type": "Url", 
                             "value": "https://github.com/maestrodev/centrepoint.git"
+                        },
+                        "force_build": {
+                            "description": "Build If No Update Is Found",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
                         }
                     }, 
                     "position": 1, 
@@ -78,7 +84,7 @@
                             ]
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "<%= working_copy_dir %>/git/centrepoint"
                         }, 
@@ -142,7 +148,7 @@
                             "value": "demo-release tag to 1.2"
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "<%= working_copy_dir %>/git/centrepoint"
                         }, 
@@ -231,7 +237,7 @@
                             ]
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "<%= working_copy_dir %>/git/centrepoint"
                         }, 
@@ -314,7 +320,7 @@
                             "value": false
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": ""
                         }, 
@@ -322,6 +328,12 @@
                             "required": true, 
                             "type": "Url", 
                             "value": ""
+                        },
+                        "force_build": {
+                            "description": "Build If No Update Is Found",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
                         }
                     }, 
                     "plugin_id": null, 
@@ -353,7 +365,7 @@
                             "value": ""
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": ""
                         }, 

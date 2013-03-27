@@ -21,7 +21,7 @@
                             "value": false
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "<%= working_copy_dir %>/hello-ivy"
                         }, 
@@ -29,6 +29,12 @@
                             "required": true, 
                             "type": "Url", 
                             "value": "https://github.com/maestrodev/hello-ivy.git"
+                        },
+                        "force_build": {
+                            "description": "Build If No Update Is Found",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
                         }
                     }, 
                     "position": 1, 
@@ -48,7 +54,7 @@
                             "value": ""
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "<%= working_copy_dir %>/hello-ivy"
                         }, 
@@ -106,7 +112,7 @@
                             "value": false
                         }, 
                         "path": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": ""
                         }, 
@@ -114,6 +120,12 @@
                             "required": true, 
                             "type": "Url", 
                             "value": ""
+                        },
+                        "force_build": {
+                            "description": "Build If No Update Is Found",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
                         }
                     }, 
                     "pom": null, 
