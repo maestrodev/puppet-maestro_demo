@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'json'
 
 describe 'maestro_demo' do
   let(:facts) {{
@@ -59,6 +60,15 @@ describe 'maestro_demo' do
     it "should generate demo composition with sonar goals using deploy" do
       file_content("centrepoint").should =~ /org.codehaus.mojo:sonar-maven-plugin:2.0:sonar/
       file_content("centrepoint").should =~ /mvn deploy/
+    end
+  end
+
+  context "jenkins source" do
+    it "should generate Jenkins source with default values" do
+      options = json_content("sources/jenkins")[0]["options"]
+      options["host"].should eq('localhost')
+      options["port"].should eq("8181")
+      options["web_path"].should eq('/')
     end
   end
 end
