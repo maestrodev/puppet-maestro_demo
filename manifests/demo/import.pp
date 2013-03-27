@@ -39,8 +39,8 @@ define maestro_demo::demo::import(
   # Note - sample files are currently populated into the place where the lucee does its pickup
   # once that no longer occurs we can throw them somewhere like temp if we want
   file { $name:
-    owner   => $maestro::params::user,
-    group   => $maestro::params::group,
+    owner   => $maestro_demo::user,
+    group   => $maestro_demo::group,
     mode    => '0644',
     before  => Service['maestro'],
     require => File['/etc/maestro_lucee.json'],

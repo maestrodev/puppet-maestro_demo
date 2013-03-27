@@ -1,9 +1,12 @@
 #
-# class maestro::demo
+# class maestro_demo
 # Configures demo sources, types, projects, compositions, etc.
 #
-# Requires maestro::maestro to have been loaded
 class maestro_demo (
+  $user             = hiera("maestro::params::user", "maestro"),
+  $group            = hiera("maestro::params::group", "maestro"),
+  $agent_user       = hiera("maestro::params::agent_user", "maestro_agent"),
+  $agent_group      = hiera("maestro::params::agent_group", "maestro_agent"),
   $use_sonar        = undef,
   $use_archiva      = undef,
   $ec2_key_id       = '',
@@ -16,8 +19,7 @@ class maestro_demo (
   $sonar_host       = 'localhost',
   $sonar_port       = '9000',
   $sonar_context_path = '/',
-  $maestro_home     = $maestro::maestro::homedir,
-  $demo_home        = "${maestro::maestro::homedir}/apps/lucee/WEB-INF/config/demo",
+  $demo_home        = "/usr/local/maestro/apps/lucee/WEB-INF/config/demo",
   $agent_home       = '/var/local/maestro-agent/',
   $working_copy_dir = '/var/local/maestro-agent/wc',
   $demo_keypair     = '/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem' ) {

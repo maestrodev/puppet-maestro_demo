@@ -14,8 +14,8 @@ class maestro_demo::demo::composition::rackspace_load ( $enabled = true ) {
                                             enabled => $enabled } ->
 
   file { "$loc/rackspace-load.rb":
-    owner   => $maestro::params::user,
-    group   => $maestro::params::group,
+    owner   => $maestro_demo::user,
+    group   => $maestro_demo::group,
     mode    => '0644',
     require => File['/etc/maestro_lucee.json'],
     source  => "puppet:///modules/maestro_demo/demo/composition/rackspace-load.rb",

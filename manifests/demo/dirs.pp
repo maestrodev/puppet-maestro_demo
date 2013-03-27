@@ -3,8 +3,8 @@ class maestro_demo::demo::dirs ( $basename = $maestro_demo::demo_home ) {
   if !defined(File[$basename]) {
     file { $basename:
       ensure  => directory,
-      owner   => $maestro::params::user,
-      group   => $maestro::params::group,
+      owner   => $maestro_demo::user,
+      group   => $maestro_demo::group,
       mode    => '0644',
       before  => Service['maestro'],
       require => File['/etc/maestro_lucee.json'],
@@ -15,8 +15,8 @@ class maestro_demo::demo::dirs ( $basename = $maestro_demo::demo_home ) {
   if !defined(File["${basename}/disabled"]) {
     file { "${basename}/disabled":
       ensure  => directory,
-      owner   => $maestro::params::user,
-      group   => $maestro::params::group,
+      owner   => $maestro_demo::user,
+      group   => $maestro_demo::group,
       mode    => '0644',
       before  => Service['maestro'],
       require => File[$basename, '/etc/maestro_lucee.json'],
@@ -28,8 +28,8 @@ class maestro_demo::demo::dirs ( $basename = $maestro_demo::demo_home ) {
   if !defined(File["${basename}/sources"]) {
     file { "${basename}/sources":
       ensure  => directory,
-      owner   => $maestro::params::user,
-      group   => $maestro::params::group,
+      owner   => $maestro_demo::user,
+      group   => $maestro_demo::group,
       mode    => '0644',
       before  => Service['maestro'],
       require => File[$basename, '/etc/maestro_lucee.json'],
@@ -39,8 +39,8 @@ class maestro_demo::demo::dirs ( $basename = $maestro_demo::demo_home ) {
   if !defined(File["${basename}/sources/disabled"]) {
     file { "${basename}/sources/disabled":
         ensure  => directory,
-        owner   => $maestro::params::user,
-        group   => $maestro::params::group,
+        owner   => $maestro_demo::user,
+        group   => $maestro_demo::group,
         mode    => '0644',
         before  => Service['maestro'],
         require => File["${basename}/sources", '/etc/maestro_lucee.json'],
