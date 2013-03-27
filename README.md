@@ -3,9 +3,9 @@ puppet-maestro-demo
 
 Demos are processed in the following order:
 
-# SOURCE-TYPES
-# SOURCES
-# COMPOSITIONS
+1. SOURCE-TYPES
+2. SOURCES
+3. COMPOSITIONS
 
 Layout
 ------
