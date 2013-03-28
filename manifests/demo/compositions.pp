@@ -5,23 +5,23 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
 
   # Generics - no special sauce required
   maestro_demo::demo::composition::generic { '_templates': }
-  maestro_demo::demo::composition::generic { 'alm': }
+  maestro_demo::demo::composition::generic { 'alm': enabled => false }
   maestro_demo::demo::composition::generic { 'antwithivy': }
   maestro_demo::demo::composition::generic { 'centrepoint': }
-  maestro_demo::demo::composition::generic { 'centrepoint-production': }
-  maestro_demo::demo::composition::generic { 'centrepoint-rackspace': }
+  maestro_demo::demo::composition::generic { 'centrepoint-production': enabled => false }
+  maestro_demo::demo::composition::generic { 'centrepoint-rackspace': enabled => false }
   maestro_demo::demo::composition::generic { 'cloud-instantservers': }
   maestro_demo::demo::composition::generic { 'cloud-rackspace': }
   maestro_demo::demo::composition::generic { 'cloud': }
   maestro_demo::demo::composition::generic { 'maestro': }
   maestro_demo::demo::composition::generic { 'wordpress': }
-  maestro_demo::demo::composition::generic { 'mobile-ios': }
+  maestro_demo::demo::composition::generic { 'mobile-ios': enabled => false }
 
   # Non-generics - extra stuff makes these work
   class { 'maestro_demo::demo::composition::database': }
   class { 'maestro_demo::demo::composition::mobile_android': }
   class { 'maestro_demo::demo::composition::rackspace_load': enabled => false }
-  class { 'maestro_demo::demo::composition::collabnet': }
+  class { 'maestro_demo::demo::composition::collabnet': enabled => false }
 
   # Broken compositions (dependencies borked)
 #  class { 'maestro_demo::demo::composition::puppet': }    # Puppet plugin causes hang
