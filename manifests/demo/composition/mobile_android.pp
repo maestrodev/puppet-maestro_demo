@@ -1,4 +1,4 @@
-class maestro_demo::demo::composition::mobile {
+class maestro_demo::demo::composition::mobile_android {
   # Add any specific deps here
   # Mobile requires androidsdk
   file { '/etc/facts.d':
@@ -9,5 +9,5 @@ class maestro_demo::demo::composition::mobile {
              group   => $maestro_demo::agent_group,
              home    => $maestro_demo::agent_home } ->
 
-  maestro_demo::demo::composition::base { 'mobile': }
+  maestro_demo::demo::composition::base { 'mobile-android': }
 }
