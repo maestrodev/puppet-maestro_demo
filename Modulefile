@@ -9,4 +9,4 @@ summary 'MaestroDev Maestro Demo Compositions and Projects'
 description 'Install and configure Maestro demo Projects'
 # TODO: until released
 #dependency 'maestrodev/maestro', '>=1.0.2'
-dependency 'maestrodev/maestro_nodes', '>=1.0.3'
+#dependency 'maestrodev/maestro_nodes', '>=1.0.3'
