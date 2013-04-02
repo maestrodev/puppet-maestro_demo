@@ -16,10 +16,10 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   maestro_demo::demo::composition::generic { 'maestro': }
   maestro_demo::demo::composition::generic { 'wordpress': }
   maestro_demo::demo::composition::generic { 'mobile-ios': enabled => false }
+  maestro_demo::demo::composition::generic { 'mobile-android': }
 
   # Non-generics - extra stuff makes these work
   class { 'maestro_demo::demo::composition::database': }
-  class { 'maestro_demo::demo::composition::mobile_android': }
   class { 'maestro_demo::demo::composition::rackspace_load': enabled => false }
   class { 'maestro_demo::demo::composition::collabnet': enabled => false }
 

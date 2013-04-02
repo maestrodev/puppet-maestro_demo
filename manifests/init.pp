@@ -24,5 +24,9 @@ class maestro_demo (
   $working_copy_dir = '/var/local/maestro-agent/wc',
   $demo_keypair     = '/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem' ) {
 
-  class { 'maestro_demo::demo': }
+  include maestro_demo::demo
+
+  if defined(Service['maestro-agent']) {
+    include maestro_demo::agent
+  }
 }
