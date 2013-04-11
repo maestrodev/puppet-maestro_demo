@@ -1,4 +1,4 @@
-class 'maestro_demo::agent' {
+class maestro_demo::agent {
   # Add any specific deps here
   # Mobile requires androidsdk
   if ! defined(File['/etc/facts.d']) {
