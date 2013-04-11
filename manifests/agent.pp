@@ -8,6 +8,6 @@ class 'maestro_demo::agent' {
   class { "maestro_nodes::androidsdk":
              user    => $maestro_demo::agent_user,
              group   => $maestro_demo::agent_group,
-             home    => $maestro_demo::agent_home } ->
+             home    => $maestro_demo::agent_home }
 
 }
