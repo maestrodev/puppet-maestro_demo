@@ -8,4 +8,4 @@ source 'http://github.com/maestrodev/puppet-maestro_demo'
 summary 'MaestroDev Maestro Demo Compositions and Projects'
 description 'Install and configure Maestro demo Projects'
 
-dependency 'maestrodev/maestro_nodes', '>=1.0.3'
+dependency 'maestrodev/android', '>=1.1.0'

@@ -5,7 +5,7 @@ class maestro_demo::agent {
     file { '/etc/facts.d': ensure => directory }
   }
 
-  class { "maestro_nodes::androidsdk":
+  class { "maestro_demo::androidsdk":
              user    => $maestro_demo::agent_user,
              group   => $maestro_demo::agent_group,
              home    => $maestro_demo::agent_home }
