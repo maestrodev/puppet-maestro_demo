@@ -22,6 +22,7 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   class { 'maestro_demo::demo::composition::database': }
   class { 'maestro_demo::demo::composition::rackspace_load': enabled => false }
   class { 'maestro_demo::demo::composition::collabnet': enabled => false }
+  class { 'maestro_demo::demo::composition::rightscale': }
 
   # Broken compositions (dependencies borked)
 #  class { 'maestro_demo::demo::composition::puppet': }    # Puppet plugin causes hang

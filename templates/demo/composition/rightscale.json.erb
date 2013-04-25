@@ -1,0 +1,1641 @@
+{
+    "compositions": [
+        {
+            "agent_facts": {},
+            "agent_pool_id": null,
+            "composition_configurations": [
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:06:14-07:00",
+                    "is_from_parent": false,
+                    "name": "server_number",
+                    "updated_at": "2013-04-24T01:06:14-07:00",
+                    "value": "1"
+                }
+            ],
+            "composition_tasks": [
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:42-07:00",
+                    "id": 218,
+                    "is_from_parent": false,
+                    "name": "wget latest snapshot",
+                    "options": {
+                        "packaging": {
+                            "description": "Artifact Packaging Type",
+                            "required": true,
+                            "type": "String",
+                            "value": "war"
+                        },
+                        "password": {
+                            "description": "User Password For Authentication",
+                            "required": true,
+                            "type": "Password",
+                            "value": "admin1"
+                        },
+                        "path": {
+                            "description": "Local Location For File Download",
+                            "required": true,
+                            "type": "String",
+                            "value": "/tmp"
+                        },
+                        "url": {
+                            "description": "Remote Repository Location Of The Project Containing The Artifact",
+                            "required": true,
+                            "type": "Url",
+                            "value": "http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                        },
+                        "username": {
+                            "description": "Repository User",
+                            "required": true,
+                            "type": "String",
+                            "value": "admin"
+                        }
+                    },
+                    "position": 1,
+                    "sources": [],
+                    "task_id": 19,
+                    "updated_at": "2013-04-24T07:10:20-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:42-07:00",
+                    "id": 220,
+                    "is_from_parent": false,
+                    "name": "rightscale wait for server state",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": "LB Tomcat App Server #{maestro.server_number}"
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "state": {
+                            "description": "Make the composition wait until the server is in this state (pending, booting, stopped, terminated, operational,...)",
+                            "required": true,
+                            "type": "String",
+                            "value": "operational"
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": ""
+                        }
+                    },
+                    "position": 2,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 69,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T04:26:29-07:00",
+                    "id": 226,
+                    "is_from_parent": false,
+                    "name": "rightscale get server",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": ""
+                        }
+                    },
+                    "position": 3,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 81,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T06:46:18-07:00",
+                    "id": 227,
+                    "is_from_parent": false,
+                    "name": "rightscale execute script",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "recipe": {
+                            "description": "The RightScript to run (currently supports recipes only)",
+                            "required": true,
+                            "type": "String",
+                            "value": "lb::do_detach_request"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "wait_for_completion": {
+                            "description": "Make the composition wait until the task is complete",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 4,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 82,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:43-07:00",
+                    "id": 221,
+                    "is_from_parent": false,
+                    "name": "scp upload",
+                    "options": {
+                        "host": {
+                            "description": "Hostname Of The Target Server To Run Remote Commands",
+                            "required": true,
+                            "type": "String",
+                            "value": "#{fields[:rightscale_ip_address]}"
+                        },
+                        "key_path": {
+                            "description": "Type Of Key Encryption",
+                            "required": false,
+                            "type": "String",
+                            "value": "/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem"
+                        },
+                        "key_type": {
+                            "description": "Key Used For Authentication",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "path": {
+                            "description": "Local Path To Files",
+                            "required": true,
+                            "type": "String",
+                            "value": "/tmp/webapp.war"
+                        },
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 22
+                        },
+                        "remote_path": {
+                            "description": "Remote Location To Copy Files",
+                            "required": true,
+                            "type": "String",
+                            "value": "/home/webapps/myapp/ROOT.war"
+                        },
+                        "user": {
+                            "description": "User To Run Commands",
+                            "required": true,
+                            "type": "String",
+                            "value": "root"
+                        }
+                    },
+                    "position": 5,
+                    "sources": [],
+                    "task_id": 23,
+                    "updated_at": "2013-04-24T07:10:23-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:43-07:00",
+                    "id": 223,
+                    "is_from_parent": false,
+                    "name": "HTTP ping",
+                    "options": {
+                        "host": {
+                            "description": "Hostname Of The Webserver",
+                            "required": false,
+                            "type": "String",
+                            "value": "#{fields[:rightscale_ip_address]}"
+                        },
+                        "open_timeout": {
+                            "description": "Time To Wait For Connection Openning",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 60
+                        },
+                        "ping_password": {
+                            "description": "Password For Application User",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "ping_user": {
+                            "description": "Username For Application Server",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "port": {
+                            "description": "Port Webserver Is Bound To",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 8000
+                        },
+                        "timeout": {
+                            "description": "Time To Wait For Connection Response",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 60
+                        },
+                        "web_path": {
+                            "description": "Context Path On The Webserver",
+                            "required": true,
+                            "type": "String",
+                            "value": "/"
+                        }
+                    },
+                    "position": 6,
+                    "sources": [],
+                    "task_id": 29,
+                    "updated_at": "2013-04-24T07:10:29-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:43-07:00",
+                    "id": 224,
+                    "is_from_parent": false,
+                    "name": "confirmation",
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane",
+                            "required": true,
+                            "type": "String",
+                            "value": "Please Run QA Test On http://#{fields[:rightscale_ip_address]}:#{fields[:port]}#{fields[:web_path]}"
+                        },
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
+                        }
+                    },
+                    "position": 7,
+                    "sources": [],
+                    "task_id": 6,
+                    "updated_at": "2013-04-24T07:10:16-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T06:46:18-07:00",
+                    "id": 228,
+                    "is_from_parent": false,
+                    "name": "rightscale execute script",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "recipe": {
+                            "description": "The RightScript to run (currently supports recipes only)",
+                            "required": true,
+                            "type": "String",
+                            "value": "lb::do_attach_request"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "wait_for_completion": {
+                            "description": "Make the composition wait until the task is complete",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 8,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 82,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                }
+            ],
+            "created_at": "2013-04-24T01:01:41-07:00",
+            "description": "Take a server out of the load balancer and redeploy it before re-adding it",
+            "enabled": true,
+            "fail_on_cancel": false,
+            "fail_type": null,
+            "fail_type_id": null,
+            "id": 52,
+            "name": "Redeploy Server 1",
+            "on_error_composition": null,
+            "on_error_id": null,
+            "parent_id": null,
+            "reuse_agent": true,
+            "schedule": "",
+            "sources": [],
+            "state": null,
+            "tags": [],
+            "tasks": [],
+            "updated_at": "2013-04-24T07:04:37-07:00"
+        },
+        {
+            "agent_facts": {},
+            "agent_pool_id": null,
+            "composition_configurations": [
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:06:14-07:00",
+                    "is_from_parent": false,
+                    "name": "server_number",
+                    "updated_at": "2013-04-24T01:06:14-07:00",
+                    "value": "2"
+                }
+            ],
+            "composition_tasks": [
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:42-07:00",
+                    "id": 218,
+                    "is_from_parent": false,
+                    "name": "wget latest snapshot",
+                    "options": {
+                        "packaging": {
+                            "description": "Artifact Packaging Type",
+                            "required": true,
+                            "type": "String",
+                            "value": "war"
+                        },
+                        "password": {
+                            "description": "User Password For Authentication",
+                            "required": true,
+                            "type": "Password",
+                            "value": "admin1"
+                        },
+                        "path": {
+                            "description": "Local Location For File Download",
+                            "required": true,
+                            "type": "String",
+                            "value": "/tmp"
+                        },
+                        "url": {
+                            "description": "Remote Repository Location Of The Project Containing The Artifact",
+                            "required": true,
+                            "type": "Url",
+                            "value": "http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                        },
+                        "username": {
+                            "description": "Repository User",
+                            "required": true,
+                            "type": "String",
+                            "value": "admin"
+                        }
+                    },
+                    "position": 1,
+                    "sources": [],
+                    "task_id": 19,
+                    "updated_at": "2013-04-24T07:10:20-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:42-07:00",
+                    "id": 220,
+                    "is_from_parent": false,
+                    "name": "rightscale wait for server state",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": "LB Tomcat App Server #{maestro.server_number}"
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": "Default Value Not Set"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "state": {
+                            "description": "Make the composition wait until the server is in this state (pending, booting, stopped, terminated, operational,...)",
+                            "required": true,
+                            "type": "String",
+                            "value": "operational"
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": "Default Value Not Set"
+                        }
+                    },
+                    "position": 2,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 69,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T04:26:29-07:00",
+                    "id": 226,
+                    "is_from_parent": false,
+                    "name": "rightscale get server",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": "Default Value Not Set"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": "Default Value Not Set"
+                        }
+                    },
+                    "position": 3,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 81,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T06:46:18-07:00",
+                    "id": 227,
+                    "is_from_parent": false,
+                    "name": "rightscale execute script",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "recipe": {
+                            "description": "The RightScript to run (currently supports recipes only)",
+                            "required": true,
+                            "type": "String",
+                            "value": "lb::do_detach_request"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "wait_for_completion": {
+                            "description": "Make the composition wait until the task is complete",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 4,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 82,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:43-07:00",
+                    "id": 221,
+                    "is_from_parent": false,
+                    "name": "scp upload",
+                    "options": {
+                        "host": {
+                            "description": "Hostname Of The Target Server To Run Remote Commands",
+                            "required": true,
+                            "type": "String",
+                            "value": "#{fields[:rightscale_ip_address]}"
+                        },
+                        "key_path": {
+                            "description": "Type Of Key Encryption",
+                            "required": false,
+                            "type": "String",
+                            "value": "/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem"
+                        },
+                        "key_type": {
+                            "description": "Key Used For Authentication",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "path": {
+                            "description": "Local Path To Files",
+                            "required": true,
+                            "type": "String",
+                            "value": "/tmp/webapp.war"
+                        },
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 22
+                        },
+                        "remote_path": {
+                            "description": "Remote Location To Copy Files",
+                            "required": true,
+                            "type": "String",
+                            "value": "/home/webapps/myapp/ROOT.war"
+                        },
+                        "user": {
+                            "description": "User To Run Commands",
+                            "required": true,
+                            "type": "String",
+                            "value": "root"
+                        }
+                    },
+                    "position": 5,
+                    "sources": [],
+                    "task_id": 23,
+                    "updated_at": "2013-04-24T07:10:23-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:43-07:00",
+                    "id": 223,
+                    "is_from_parent": false,
+                    "name": "HTTP ping",
+                    "options": {
+                        "host": {
+                            "description": "Hostname Of The Webserver",
+                            "required": false,
+                            "type": "String",
+                            "value": "#{fields[:rightscale_ip_address]}"
+                        },
+                        "open_timeout": {
+                            "description": "Time To Wait For Connection Openning",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 60
+                        },
+                        "ping_password": {
+                            "description": "Password For Application User",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "ping_user": {
+                            "description": "Username For Application Server",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "port": {
+                            "description": "Port Webserver Is Bound To",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 8000
+                        },
+                        "timeout": {
+                            "description": "Time To Wait For Connection Response",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 60
+                        },
+                        "web_path": {
+                            "description": "Context Path On The Webserver",
+                            "required": true,
+                            "type": "String",
+                            "value": "/"
+                        }
+                    },
+                    "position": 6,
+                    "sources": [],
+                    "task_id": 29,
+                    "updated_at": "2013-04-24T07:10:29-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T01:01:43-07:00",
+                    "id": 224,
+                    "is_from_parent": false,
+                    "name": "confirmation",
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane",
+                            "required": true,
+                            "type": "String",
+                            "value": "Please Run QA Test On http://#{fields[:rightscale_ip_address]}:#{fields[:port]}#{fields[:web_path]}"
+                        },
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
+                        }
+                    },
+                    "position": 7,
+                    "sources": [],
+                    "task_id": 6,
+                    "updated_at": "2013-04-24T07:10:16-07:00"
+                },
+                {
+                    "composition_id": 52,
+                    "created_at": "2013-04-24T06:46:18-07:00",
+                    "id": 228,
+                    "is_from_parent": false,
+                    "name": "rightscale execute script",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "recipe": {
+                            "description": "The RightScript to run (currently supports recipes only)",
+                            "required": true,
+                            "type": "String",
+                            "value": "lb::do_attach_request"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": null
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "wait_for_completion": {
+                            "description": "Make the composition wait until the task is complete",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 8,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 82,
+                    "updated_at": "2013-04-24T07:04:38-07:00"
+                }
+            ],
+            "created_at": "2013-04-24T01:01:41-07:00",
+            "description": "Take a server out of the load balancer and redeploy it before re-adding it",
+            "enabled": true,
+            "fail_on_cancel": false,
+            "fail_type": null,
+            "fail_type_id": null,
+            "id": 52,
+            "name": "Redeploy Server 2",
+            "on_error_composition": null,
+            "on_error_id": null,
+            "parent_id": null,
+            "reuse_agent": true,
+            "schedule": "",
+            "sources": [],
+            "state": null,
+            "tags": [],
+            "tasks": [],
+            "updated_at": "2013-04-24T07:04:37-07:00"
+        },
+        {
+            "agent_facts": {},
+            "agent_pool_id": null,
+            "composition_configurations": [],
+            "composition_tasks": [
+                {
+                    "composition_id": 54,
+                    "created_at": "2013-04-24T07:21:37-07:00",
+                    "id": 240,
+                    "is_from_parent": false,
+                    "name": "schedule",
+                    "options": {
+                        "Force Schedule Build": {
+                            "description": "Force build the scheduled composition",
+                            "required": true,
+                            "type": "Boolean",
+                            "value": true
+                        },
+                        "composition": {
+                            "description": "Composition name or id to be scheduled",
+                            "required": true,
+                            "type": "String",
+                            "value": "Centrepoint RightScale"
+                        },
+                        "wait_for_completion": {
+                            "description": "Pause this Composition until completion of the scheduled composition",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 1,
+                    "sources": [],
+                    "task_id": 31,
+                    "updated_at": "2013-04-24T07:21:37-07:00"
+                },
+                {
+                    "composition_id": 54,
+                    "created_at": "2013-04-24T07:21:37-07:00",
+                    "id": 241,
+                    "is_from_parent": false,
+                    "name": "schedule",
+                    "options": {
+                        "Force Schedule Build": {
+                            "description": "Force build the scheduled composition",
+                            "required": true,
+                            "type": "Boolean",
+                            "value": true
+                        },
+                        "composition": {
+                            "description": "Composition name or id to be scheduled",
+                            "required": true,
+                            "type": "String",
+                            "value": "Rolling Deployment on RightScale"
+                        },
+                        "wait_for_completion": {
+                            "description": "Pause this Composition until completion of the scheduled composition",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
+                        }
+                    },
+                    "position": 2,
+                    "sources": [],
+                    "task_id": 31,
+                    "updated_at": "2013-04-24T07:21:37-07:00"
+                }
+            ],
+            "created_at": "2013-04-24T07:20:49-07:00",
+            "description": "Composition to manage from commit through deployment",
+            "enabled": true,
+            "fail_on_cancel": false,
+            "fail_type": null,
+            "fail_type_id": null,
+            "id": 54,
+            "name": "RightScale End-to-End",
+            "on_error_composition": null,
+            "on_error_id": null,
+            "parent_id": null,
+            "reuse_agent": true,
+            "schedule": "",
+            "sources": [],
+            "state": null,
+            "tags": [],
+            "tasks": [],
+            "updated_at": "2013-04-24T07:21:36-07:00"
+        },
+        {
+            "agent_facts": {},
+            "agent_pool_id": null,
+            "composition_configurations": [],
+            "composition_tasks": [
+                {
+                    "composition_id": 50,
+                    "created_at": "2013-04-24T00:59:40-07:00",
+                    "id": 216,
+                    "is_from_parent": false,
+                    "name": "schedule",
+                    "options": {
+                        "Force Schedule Build": {
+                            "description": "Force build the scheduled composition",
+                            "required": true,
+                            "type": "Boolean",
+                            "value": true
+                        },
+                        "composition": {
+                            "description": "Composition name or id to be scheduled",
+                            "required": true,
+                            "type": "String",
+                            "value": "Redeploy Server 1"
+                        },
+                        "wait_for_completion": {
+                            "description": "Pause this Composition until completion of the scheduled composition",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 1,
+                    "sources": [],
+                    "task_id": 31,
+                    "updated_at": "2013-04-24T07:10:29-07:00"
+                },
+                {
+                    "composition_id": 50,
+                    "created_at": "2013-04-24T00:59:40-07:00",
+                    "id": 217,
+                    "is_from_parent": false,
+                    "name": "schedule",
+                    "options": {
+                        "Force Schedule Build": {
+                            "description": "Force build the scheduled composition",
+                            "required": true,
+                            "type": "Boolean",
+                            "value": true
+                        },
+                        "composition": {
+                            "description": "Composition name or id to be scheduled",
+                            "required": true,
+                            "type": "String",
+                            "value": "Redeploy Server 2"
+                        },
+                        "wait_for_completion": {
+                            "description": "Pause this Composition until completion of the scheduled composition",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 2,
+                    "sources": [],
+                    "task_id": 31,
+                    "updated_at": "2013-04-24T07:10:29-07:00"
+                }
+            ],
+            "created_at": "2013-04-24T00:57:16-07:00",
+            "description": "Run through a list of servers, taking them out of the load balancer, deploying, and then adding them back",
+            "enabled": true,
+            "fail_on_cancel": false,
+            "fail_type": null,
+            "fail_type_id": null,
+            "id": 50,
+            "name": "Rolling Deployment on RightScale",
+            "on_error_composition": null,
+            "on_error_id": null,
+            "parent_id": null,
+            "reuse_agent": true,
+            "schedule": "",
+            "sources": [],
+            "state": null,
+            "tags": [],
+            "tasks": [],
+            "updated_at": "2013-04-24T00:59:40-07:00"
+        },
+        {
+            "agent_facts": {},
+            "agent_pool_id": null,
+            "composition_tasks": [
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-23T04:46:49-07:00",
+                    "id": 213,
+                    "is_from_parent": false,
+                    "name": "jenkins plugin",
+                    "options": {
+                        "host": {
+                            "description": "Hostname Of The Jenkins Server",
+                            "required": true,
+                            "type": "String",
+                            "value": "localhost"
+                        },
+                        "job": {
+                            "description": "Name Of The Jenkins Job",
+                            "required": true,
+                            "type": "String",
+                            "value": "Centrepoint"
+                        },
+                        "label_axes": {
+                            "description": "Labels for a configuration matrix project",
+                            "required": false,
+                            "type": "Array",
+                            "value": []
+                        },
+                        "override_existing": {
+                            "description": "Overwrite existing jobs, or create if it does not exist",
+                            "required": true,
+                            "type": "Boolean",
+                            "value": true
+                        },
+                        "parameters": {
+                            "description": "Parameters to pass to the job. Name=value formatted.",
+                            "required": false,
+                            "type": "Array",
+                            "value": []
+                        },
+                        "password": {
+                            "description": "Password for jenkins server",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "port": {
+                            "description": "Port Jenkins Is Running On",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 8080
+                        },
+                        "scm_url": {
+                            "description": "Url Of The Source Code Repository",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://github.com/maestrodev/centrepoint.git"
+                        },
+                        "steps": {
+                            "description": "Set Of Steps To Be Executed By Jenkins",
+                            "required": false,
+                            "type": "Array",
+                            "value": [
+                                "mvn clean -U --batch-mode",
+                                "mvn <%= goal %> -U --batch-mode -DrepositoryId=maestro-deploy -Durl=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots -Dproject.repository.url=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/"
+                            ]
+                        },
+                        "use_ssl": {
+                            "description": "use ssl connection",
+                            "required": true,
+                            "type": "Boolean",
+                            "value": false
+                        },
+                        "user_defined_axes": {
+                            "description": "User defined axes used for a configuration matrix project",
+                            "required": false,
+                            "type": "Array",
+                            "value": []
+                        },
+                        "username": {
+                            "description": "Username for jenkins server",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "web_path": {
+                            "description": "path of the jenkins application in the server",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        }
+                    },
+                    "position": 1,
+                    "sources": [
+                        {
+                            "name": "jenkins"
+                        }
+                    ],
+                    "task_id": 40,
+                    "updated_at": "2013-04-23T15:24:58-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-19T06:15:33-07:00",
+                    "id": 192,
+                    "is_from_parent": false,
+                    "name": "wget latest snapshot",
+                    "options": {
+                        "packaging": {
+                            "description": "Artifact Packaging Type",
+                            "required": true,
+                            "type": "String",
+                            "value": "war"
+                        },
+                        "password": {
+                            "description": "User Password For Authentication",
+                            "required": true,
+                            "type": "Password",
+                            "value": "admin1"
+                        },
+                        "path": {
+                            "description": "Local Location For File Download",
+                            "required": true,
+                            "type": "String",
+                            "value": "/tmp"
+                        },
+                        "url": {
+                            "description": "Remote Repository Location Of The Project Containing The Artifact",
+                            "required": true,
+                            "type": "Url",
+                            "value": "http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                        },
+                        "username": {
+                            "description": "Repository User",
+                            "required": true,
+                            "type": "String",
+                            "value": "admin"
+                        }
+                    },
+                    "position": 2,
+                    "sources": [],
+                    "task_id": 19,
+                    "updated_at": "2013-04-23T15:24:57-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-22T05:53:35-07:00",
+                    "id": 203,
+                    "is_from_parent": false,
+                    "name": "rightscale start server",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": "Centrepoint Tomcat v1"
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": "Default Value Not Set"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": "Default Value Not Set"
+                        }
+                    },
+                    "position": 3,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 67,
+                    "updated_at": "2013-04-23T15:24:58-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-19T06:17:13-07:00",
+                    "id": 199,
+                    "is_from_parent": false,
+                    "name": "rightscale wait for server state",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": "Default Value Not Set"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "state": {
+                            "description": "Make the composition wait until the server is in this state (pending, booting, stopped, terminated, operational,...)",
+                            "required": true,
+                            "type": "String",
+                            "value": "operational"
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": "Default Value Not Set"
+                        }
+                    },
+                    "position": 4,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 69,
+                    "updated_at": "2013-04-23T15:24:57-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-19T06:24:15-07:00",
+                    "id": 201,
+                    "is_from_parent": false,
+                    "name": "scp upload",
+                    "options": {
+                        "host": {
+                            "description": "Hostname Of The Target Server To Run Remote Commands",
+                            "required": true,
+                            "type": "String",
+                            "value": "#{fields[:rightscale_ip_address]}"
+                        },
+                        "key_path": {
+                            "description": "Type Of Key Encryption",
+                            "required": false,
+                            "type": "String",
+                            "value": "/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem"
+                        },
+                        "key_type": {
+                            "description": "Key Used For Authentication",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "path": {
+                            "description": "Local Path To Files",
+                            "required": true,
+                            "type": "String",
+                            "value": "/tmp/webapp.war"
+                        },
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 22
+                        },
+                        "remote_path": {
+                            "description": "Remote Location To Copy Files",
+                            "required": true,
+                            "type": "String",
+                            "value": "/home/webapps/myapp/ROOT.war"
+                        },
+                        "user": {
+                            "description": "User To Run Commands",
+                            "required": true,
+                            "type": "String",
+                            "value": "root"
+                        }
+                    },
+                    "position": 5,
+                    "sources": [],
+                    "task_id": 23,
+                    "updated_at": "2013-04-23T15:24:57-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-19T06:24:15-07:00",
+                    "id": 202,
+                    "is_from_parent": false,
+                    "name": "ssh execute (agent)",
+                    "options": {
+                        "commands": {
+                            "description": "Set Of Shell Commands",
+                            "required": true,
+                            "type": "Array",
+                            "value": [
+                                "ln -s /home/webapps/myapp/ROOT/css /home/webapps/myapp/css",
+                                "ln -s /home/webapps/myapp/ROOT/images /home/webapps/myapp/images",
+                                "service iptables stop"
+                            ]
+                        },
+                        "host": {
+                            "description": "Hostname Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "String",
+                            "value": "#{fields[:rightscale_ip_address]}"
+                        },
+                        "key_path": {
+                            "description": "Key Used For Authentication",
+                            "required": false,
+                            "type": "String",
+                            "value": "/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem"
+                        },
+                        "key_type": {
+                            "description": "Type Of Key Encryption",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "Password To Use For Login To Remote",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "port": {
+                            "description": "Port Of The Server To Run Remote Commands",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 22
+                        },
+                        "user": {
+                            "description": "User To Run Commands",
+                            "required": true,
+                            "type": "String",
+                            "value": "root"
+                        }
+                    },
+                    "position": 6,
+                    "sources": [],
+                    "task_id": 21,
+                    "updated_at": "2013-04-23T15:24:58-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-19T06:15:34-07:00",
+                    "id": 194,
+                    "is_from_parent": false,
+                    "name": "HTTP ping",
+                    "options": {
+                        "host": {
+                            "description": "Hostname Of The Webserver",
+                            "required": false,
+                            "type": "String",
+                            "value": "#{fields[:rightscale_ip_address]}"
+                        },
+                        "open_timeout": {
+                            "description": "Time To Wait For Connection Openning",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 60
+                        },
+                        "ping_password": {
+                            "description": "Password For Application User",
+                            "required": false,
+                            "type": "Password",
+                            "value": ""
+                        },
+                        "ping_user": {
+                            "description": "Username For Application Server",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "port": {
+                            "description": "Port Webserver Is Bound To",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 8000
+                        },
+                        "timeout": {
+                            "description": "Time To Wait For Connection Response",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 60
+                        },
+                        "web_path": {
+                            "description": "Context Path On The Webserver",
+                            "required": true,
+                            "type": "String",
+                            "value": "/"
+                        }
+                    },
+                    "position": 7,
+                    "sources": [],
+                    "task_id": 29,
+                    "updated_at": "2013-04-23T15:24:57-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-19T06:15:34-07:00",
+                    "id": 196,
+                    "is_from_parent": false,
+                    "name": "confirmation",
+                    "options": {
+                        "body": {
+                            "description": "The String To Be Displayed In The Action Pane",
+                            "required": true,
+                            "type": "String",
+                            "value": "Please Run QA Test On http://#{fields[:rightscale_ip_address]}:#{fields[:port]}#{fields[:web_path]}"
+                        },
+                        "fail_on_cancel": {
+                            "description": "If The User Declines The Action, The Composition Will Fail",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": false
+                        }
+                    },
+                    "position": 8,
+                    "sources": [],
+                    "task_id": 6,
+                    "updated_at": "2013-04-23T15:24:57-07:00"
+                },
+                {
+                    "composition_id": 48,
+                    "created_at": "2013-04-19T06:17:14-07:00",
+                    "id": 200,
+                    "is_from_parent": false,
+                    "name": "rightscale stop server",
+                    "options": {
+                        "account_id": {
+                            "description": "RightScale account id",
+                            "required": true,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "api_url": {
+                            "description": "RightScale API endpoint URL",
+                            "required": false,
+                            "type": "Url",
+                            "value": "https://my.rightscale.com"
+                        },
+                        "nickname": {
+                            "description": "Server nickname, ignored if server_id is set",
+                            "required": false,
+                            "type": "String",
+                            "value": ""
+                        },
+                        "password": {
+                            "description": "RightScale password",
+                            "required": true,
+                            "type": "Password",
+                            "value": "Default Value Not Set"
+                        },
+                        "server_id": {
+                            "description": "Server id. If not set then nickname is used",
+                            "required": false,
+                            "type": "Integer",
+                            "value": 0
+                        },
+                        "username": {
+                            "description": "RightScale username",
+                            "required": true,
+                            "type": "String",
+                            "value": "Default Value Not Set"
+                        },
+                        "wait_until_stopped": {
+                            "description": "Make the composition wait until the server is stopped",
+                            "required": false,
+                            "type": "Boolean",
+                            "value": true
+                        }
+                    },
+                    "position": 9,
+                    "sources": [
+                        {
+                            "name": "RightScale Demonstration"
+                        }
+                    ],
+                    "task_id": 68,
+                    "updated_at": "2013-04-23T15:24:57-07:00"
+                }
+            ],
+            "created_at": "2013-04-19T06:15:32-07:00",
+            "description": "Centrepoint Build, Deploy and Provision For QA",
+            "enabled": true,
+            "fail_on_cancel": false,
+            "fail_type": null,
+            "fail_type_id": null,
+            "id": 48,
+            "name": "Centrepoint RightScale",
+            "on_error_composition": null,
+            "on_error_id": null,
+            "parent_id": null,
+            "reuse_agent": true,
+            "schedule": "",
+            "state": null,
+            "tags": [],
+            "updated_at": "2013-04-23T15:24:56-07:00"
+        }
+    ],
+    "created_at": "2012-09-12T00:49:48+02:00",
+    "description": "Examples of deploying a Java Web Application on RightScale",
+    "home_url": null,
+    "name": "RightScale Examples",
+    "scm_url": null,
+    "tags": [
+        ""
+    ],
+    "updated_at": "2012-09-12T00:49:48+02:00"
+}
