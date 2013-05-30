@@ -624,7 +624,7 @@
                         "image_id": {
                             "required": true, 
                             "type": "String", 
-                            "value": "ami-66ec560f"
+                            "value": "ami-eb7d1282"
                         }, 
                         "key": {
                             "required": true, 
@@ -655,13 +655,15 @@
                             "required": false, 
                             "type": "Array", 
                             "value": [
-                                "mkdir -p /usr/share/tomcat6/.m2 && chown tomcat.tomcat /usr/share/tomcat6/.m2"
+                                "sudo sed -i ‘s/localhost:8009\//localhost:8009/’ ~/stack/apache-tomcat/conf/tomcat.conf",
+                                "sudo sed -i ‘s/admin-gui"/admin-gui,manager-script"/’ ~/stack/apache-tomcat/conf/tomcat-users.xml",
+                                "sudo /home/bitnami/stack/ctlscript.sh restart tomcat"
                             ]
                         }, 
                         "ssh_user": {
                             "required": true, 
                             "type": "String", 
-                            "value": "root"
+                            "value": "bitnami"
                         }, 
                         "type": {
                             "required": true, 
@@ -698,17 +700,17 @@
                         "ping_password": {
                             "required": false, 
                             "type": "Password", 
-                            "value": "maestro"
+                            "value": "bitnami"
                         }, 
                         "ping_user": {
                             "required": false, 
                             "type": "String", 
-                            "value": "maestro"
+                            "value": "manager"
                         }, 
                         "port": {
                             "required": true, 
                             "type": "Integer", 
-                            "value": 8080
+                            "value": 80
                         }, 
                         "timeout": {
                             "required": false, 
@@ -740,7 +742,7 @@
                         "password": {
                             "required": true, 
                             "type": "Password", 
-                            "value": "maestro"
+                            "value": "bitnami"
                         }, 
                         "path": {
                             "required": true, 
@@ -750,12 +752,12 @@
                         "port": {
                             "required": true, 
                             "type": "Integer", 
-                            "value": "8080"
+                            "value": "80"
                         }, 
                         "user": {
                             "required": true, 
                             "type": "String", 
-                            "value": "maestro"
+                            "value": "manager"
                         }, 
                         "web_path": {
                             "required": true, 
