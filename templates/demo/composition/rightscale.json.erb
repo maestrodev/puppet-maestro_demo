@@ -43,7 +43,7 @@
                             "description": "Remote Repository Location Of The Project Containing The Artifact",
                             "required": true,
                             "type": "Url",
-                            "value": "http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                            "value": "http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
                         },
                         "username": {
                             "description": "Repository User",
@@ -503,7 +503,7 @@
                             "description": "Remote Repository Location Of The Project Containing The Artifact",
                             "required": true,
                             "type": "Url",
-                            "value": "http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                            "value": "http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
                         },
                         "username": {
                             "description": "Repository User",
@@ -1159,7 +1159,7 @@
                             "type": "Array",
                             "value": [
                                 "mvn clean -U --batch-mode",
-                                "mvn <%= goal %> -U --batch-mode -DrepositoryId=maestro-deploy -Durl=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots -Dproject.repository.url=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/"
+                                "mvn <%= @goal %> -U --batch-mode -DrepositoryId=maestro-deploy -Durl=http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots -Dproject.repository.url=http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/"
                             ]
                         },
                         "use_ssl": {
@@ -1225,7 +1225,7 @@
                             "description": "Remote Repository Location Of The Project Containing The Artifact",
                             "required": true,
                             "type": "Url",
-                            "value": "http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                            "value": "http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
                         },
                         "username": {
                             "description": "Repository User",

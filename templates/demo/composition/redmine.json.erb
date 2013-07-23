@@ -23,7 +23,7 @@
                         "path": {
                             "required": false,
                             "type": "String",
-                            "value": "<%= working_copy_dir %>/redmine"
+                            "value": "<%= @working_copy_dir %>/redmine"
                         },
                         "url": {
                             "required": true,
@@ -51,7 +51,7 @@
                         "command_string": {
                             "required": true,
                             "type": "String",
-                            "value": "cp <%= working_copy_dir %>/redmine/config/database.yml.example <%= working_copy_dir %>/redmine/config/database.yml"
+                            "value": "cp <%= @working_copy_dir %>/redmine/config/database.yml.example <%= @working_copy_dir %>/redmine/config/database.yml"
                         },
                         "environment": {
                             "required": false,
@@ -73,7 +73,7 @@
                         "command_string": {
                             "required": true,
                             "type": "String",
-                            "value": "sed -i -e \"s@password:@password: foobar99@\" <%= working_copy_dir %>/redmine/config/database.yml"
+                            "value": "sed -i -e \"s@password:@password: foobar99@\" <%= @working_copy_dir %>/redmine/config/database.yml"
                         },
                         "environment": {
                             "required": false,
@@ -109,7 +109,7 @@
                         "path": {
                             "required": false,
                             "type": "String",
-                            "value": "<%= working_copy_dir %>/redmine"
+                            "value": "<%= @working_copy_dir %>/redmine"
                         },
                         "ruby_version": {
                             "required": false,
@@ -165,7 +165,7 @@
                         "path": {
                             "required": false,
                             "type": "String",
-                            "value": "<%= working_copy_dir %>/redmine"
+                            "value": "<%= @working_copy_dir %>/redmine"
                         },
                         "ruby_version": {
                             "required": false,
@@ -221,7 +221,7 @@
                         "path": {
                             "required": false,
                             "type": "String",
-                            "value": "<%= working_copy_dir %>/redmine"
+                            "value": "<%= @working_copy_dir %>/redmine"
                         },
                         "ruby_version": {
                             "required": false,
@@ -265,7 +265,7 @@
                         "destination": {
                             "required": true,
                             "type": "String",
-                            "value": "<%= working_copy_dir %>"
+                            "value": "<%= @working_copy_dir %>"
                         },
                         "filename": {
                             "required": true,
@@ -275,7 +275,7 @@
                         "path": {
                             "required": true,
                             "type": "String",
-                            "value": "<%= working_copy_dir %>/redmine"
+                            "value": "<%= @working_copy_dir %>/redmine"
                         },
                         "type": {
                             "required": true,
@@ -337,12 +337,12 @@
                         "key": {
                             "required": true,
                             "type": "Password",
-                            "value": "<%= ec2_key %>"
+                            "value": "<%= @ec2_key %>"
                         },
                         "key_id": {
                             "required": true,
                             "type": "Password",
-                            "value": "<%= ec2_key_id %>"
+                            "value": "<%= @ec2_key_id %>"
                         },
                         "key_name": {
                             "required": true,
@@ -401,7 +401,7 @@
                         "key_path": {
                             "required": true,
                             "type": "String",
-                            "value": "<%= demo_keypair %>"
+                            "value": "<%= @demo_keypair %>"
                         },
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -417,7 +417,7 @@
                         "path": {
                             "required": true,
                             "type": "String",
-                            "value": "<%= working_copy_dir %>/redmine.zip"
+                            "value": "<%= @working_copy_dir %>/redmine.zip"
                         },
                         "remote_path": {
                             "required": true,
@@ -462,7 +462,7 @@
                         "key_path": {
                             "required": true,
                             "type": "String",
-                            "value": "<%= demo_keypair %>"
+                            "value": "<%= @demo_keypair %>"
                         },
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -515,7 +515,7 @@
                         "key_path": {
                             "required": true,
                             "type": "String",
-                            "value": "<%= demo_keypair %>"
+                            "value": "<%= @demo_keypair %>"
                         },
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -567,7 +567,7 @@
                         "key_path": {
                             "required": true,
                             "type": "String",
-                            "value": "<%= demo_keypair %>"
+                            "value": "<%= @demo_keypair %>"
                         },
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -628,12 +628,12 @@
                         "key": {
                             "required": true,
                             "type": "Password",
-                            "value": "<%= ec2_key %>"
+                            "value": "<%= @ec2_key %>"
                         },
                         "key_id": {
                             "required": true,
                             "type": "Password",
-                            "value": "<%= ec2_key_id %>"
+                            "value": "<%= @ec2_key_id %>"
                         },
                         "key_name": {
                             "required": true,

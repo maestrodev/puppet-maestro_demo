@@ -23,7 +23,7 @@
                         "path": {
                             "required": false, 
                             "type": "String", 
-                            "value": "<%= working_copy_dir %>/hello-ivy"
+                            "value": "<%= @working_copy_dir %>/hello-ivy"
                         }, 
                         "url": {
                             "required": true, 
@@ -56,7 +56,7 @@
                         "path": {
                             "required": false, 
                             "type": "String", 
-                            "value": "<%= working_copy_dir %>/hello-ivy"
+                            "value": "<%= @working_copy_dir %>/hello-ivy"
                         }, 
                         "propertyfile": {
                             "required": false, 
@@ -67,7 +67,7 @@
                             "required": true, 
                             "type": "Array", 
                             "value": [
-                                "<%= "sonar " if sonar %><%= goal %>"
+                                "<%= "sonar " if sonar %><%= @goal %>"
                             ]
                         }
                     }, 
@@ -164,7 +164,7 @@
                             "required": true, 
                             "type": "Array", 
                             "value": [
-                                "<%= "sonar " if sonar %><%= goal %>"
+                                "<%= "sonar " if sonar %><%= @goal %>"
                             ]
                         }
                     }, 
@@ -204,12 +204,12 @@
                     "host": {
                       "required": true,
                       "type": "String",
-                      "value": "<%= jenkins_host %>"
+                      "value": "<%= @jenkins_host %>"
                                                                                             },
                     "port": {
                       "required": false,
                       "type": "Integer",
-                      "value": <%= jenkins_port %>
+                      "value": <%= @jenkins_port %>
                                                                                             },
                     "job": {
                       "required": true,
@@ -290,12 +290,12 @@
                     "host": {
                       "required": true,
                       "type": "String",
-                      "value": "<%= jenkins_host %>"
+                      "value": "<%= @jenkins_host %>"
                                                                                             },
                     "port": {
                       "required": false,
                       "type": "Integer",
-                      "value": <%= jenkins_port %>
+                      "value": <%= @jenkins_port %>
                                                                                             },
                     "job": {
                       "required": true,

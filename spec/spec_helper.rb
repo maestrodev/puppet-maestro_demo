@@ -1,8 +1,13 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'json'
 
-Puppet::Util::Log.level = :info
-Puppet::Util::Log.newdestination(:console)
+RSpec.configure do |c|
+  c.before(:each) do
+    Puppet::Util::Log.level = :warning
+    Puppet::Util::Log.newdestination(:console)
+  end
+end
+
 
 def file_content(file)
   should contain_file("/usr/local/maestro/apps/lucee/WEB-INF/config/demo/#{file}.json")

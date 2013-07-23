@@ -23,7 +23,7 @@
                         "path": {
                             "required": false, 
                             "type": "String", 
-                            "value": "<%= working_copy_dir %>/centrepoint-release"
+                            "value": "<%= @working_copy_dir %>/centrepoint-release"
                         }, 
                         "url": {
                             "required": true, 
@@ -51,7 +51,7 @@
                         "command_string": {
                             "required": true, 
                             "type": "String", 
-                            "value": "rm -rf <%= working_copy_dir %>/git\nmkdir <%= working_copy_dir %>/git\ncd <%= working_copy_dir %>/git\ngit clone file://localhost<%= working_copy_dir %>/centrepoint-release centrepoint\n"
+                            "value": "rm -rf <%= @working_copy_dir %>/git\nmkdir <%= @working_copy_dir %>/git\ncd <%= @working_copy_dir %>/git\ngit clone file://localhost<%= @working_copy_dir %>/centrepoint-release centrepoint\n"
                         }, 
                         "environment": {
                             "required": false, 
@@ -86,7 +86,7 @@
                         "path": {
                             "required": false, 
                             "type": "String", 
-                            "value": "<%= working_copy_dir %>/git/centrepoint"
+                            "value": "<%= @working_copy_dir %>/git/centrepoint"
                         }, 
                         "profiles": {
                             "required": false, 
@@ -118,7 +118,7 @@
                         "command_string": {
                             "required": true, 
                             "type": "String", 
-                            "value": "cd <%= working_copy_dir %>/git/centrepoint; git commit -am 'demo release'"
+                            "value": "cd <%= @working_copy_dir %>/git/centrepoint; git commit -am 'demo release'"
                         }, 
                         "environment": {
                             "required": false, 
@@ -150,7 +150,7 @@
                         "path": {
                             "required": false, 
                             "type": "String", 
-                            "value": "<%= working_copy_dir %>/git/centrepoint"
+                            "value": "<%= @working_copy_dir %>/git/centrepoint"
                         }, 
                         "remote_branch": {
                             "required": true, 
@@ -188,13 +188,13 @@
                             "required": true, 
                             "type": "Array", 
                             "value": [
-                                "--batch-mode deploy -DrepositoryId=maestro-deploy -Durl=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/Test.Project.releases"
+                                "--batch-mode deploy -DrepositoryId=maestro-deploy -Durl=http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/Test.Project.releases"
                             ]
                         }, 
                         "path": {
                             "required": true, 
                             "type": "String", 
-                            "value": "<%= working_copy_dir %>/git/centrepoint"
+                            "value": "<%= @working_copy_dir %>/git/centrepoint"
                         }, 
                         "profiles": {
                             "required": false, 
@@ -239,7 +239,7 @@
                         "path": {
                             "required": false, 
                             "type": "String", 
-                            "value": "<%= working_copy_dir %>/git/centrepoint"
+                            "value": "<%= @working_copy_dir %>/git/centrepoint"
                         }, 
                         "profiles": {
                             "required": false, 
@@ -271,7 +271,7 @@
                         "command_string": {
                             "required": true, 
                             "type": "String", 
-                            "value": "cd <%= working_copy_dir %>/git/centrepoint; git commit -am 'bump to next snapshot'"
+                            "value": "cd <%= @working_copy_dir %>/git/centrepoint; git commit -am 'bump to next snapshot'"
                         }, 
                         "environment": {
                             "required": false, 
@@ -486,7 +486,7 @@
                         "host": {
                             "required": true, 
                             "type": "String", 
-                            "value": "<%= jenkins_host %>"
+                            "value": "<%= @jenkins_host %>"
                         }, 
                         "job": {
                             "required": true, 
@@ -506,7 +506,7 @@
                         "port": {
                             "required": true, 
                             "type": "Integer", 
-                            "value": "<%= jenkins_port %>"
+                            "value": "<%= @jenkins_port %>"
                         }, 
                         "scm_url": {
                             "required": true, 
@@ -518,7 +518,7 @@
                             "type": "Array", 
                             "value": [
                                 "mvn clean -U --batch-mode", 
-                                "mvn <%= goal %> -U --batch-mode -DrepositoryId=maestro-deploy -Durl=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots -Dproject.repository.url=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/"<%= ",\"mvn -U org.codehaus.mojo:sonar-maven-plugin:2.0:sonar -Dsonar.host.url=http://#{sonar_host}:#{sonar_port}#{sonar_context_path} -Dsonar.jdbc.url=jdbc:postgresql://#{sonar_host}:5432/sonar -Dsonar.jdbc.driverClassName=org.postgresql.Driver -Dsonar.jdbc.username=maestro -Dsonar.jdbc.password=maestro\"" if sonar %>
+                                "mvn <%= @goal %> -U --batch-mode -DrepositoryId=maestro-deploy -Durl=http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots -Dproject.repository.url=http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/"<%= ",\"mvn -U org.codehaus.mojo:sonar-maven-plugin:2.0:sonar -Dsonar.host.url=http://#{sonar_host}:#{sonar_port}#{sonar_context_path} -Dsonar.jdbc.url=jdbc:postgresql://#{sonar_host}:5432/sonar -Dsonar.jdbc.driverClassName=org.postgresql.Driver -Dsonar.jdbc.username=maestro -Dsonar.jdbc.password=maestro\"" if sonar %>
                             ]
                         }, 
                         "use_ssl": {
@@ -567,7 +567,7 @@
                         "url": {
                             "required": true, 
                             "type": "Url", 
-                            "value": "http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                            "value": "http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
                         }, 
                         "username": {
                             "required": true, 
@@ -629,12 +629,12 @@
                         "key": {
                             "required": true, 
                             "type": "Password", 
-                            "value": "<%= ec2_key %>"
+                            "value": "<%= @ec2_key %>"
                         }, 
                         "key_id": {
                             "required": true, 
                             "type": "Password", 
-                            "value": "<%= ec2_key_id %>"
+                            "value": "<%= @ec2_key_id %>"
                         }, 
                         "key_name": {
                             "required": true, 
@@ -801,12 +801,12 @@
                         "key": {
                             "required": true, 
                             "type": "Password", 
-                            "value": "<%= ec2_key %>"
+                            "value": "<%= @ec2_key %>"
                         }, 
                         "key_id": {
                             "required": true, 
                             "type": "Password", 
-                            "value": "<%= ec2_key_id %>"
+                            "value": "<%= @ec2_key_id %>"
                         }, 
                         "key_name": {
                             "required": true, 
@@ -858,7 +858,7 @@
                         "host": {
                             "required": true, 
                             "type": "String", 
-                            "value": "<%= jenkins_host %>"
+                            "value": "<%= @jenkins_host %>"
                         }, 
                         "job": {
                             "required": true, 
@@ -878,7 +878,7 @@
                         "port": {
                             "required": false, 
                             "type": "Integer", 
-                            "value": <%= jenkins_port %>
+                            "value": <%= @jenkins_port %>
                         }, 
                         "scm_url": {
                             "required": false, 
@@ -928,7 +928,7 @@
                         "host": {
                             "required": true, 
                             "type": "String", 
-                            "value": "<%= jenkins_host %>"
+                            "value": "<%= @jenkins_host %>"
                         }, 
                         "job": {
                             "required": true, 
@@ -948,7 +948,7 @@
                         "port": {
                             "required": true, 
                             "type": "Integer", 
-                            "value": "<%= jenkins_port %>"
+                            "value": "<%= @jenkins_port %>"
                         }, 
                         "scm_url": {
                             "required": true, 
@@ -960,7 +960,7 @@
                             "type": "Array", 
                             "value": [
                                 "mvn clean -U --batch-mode", 
-                                "mvn <%= goal %> -U --batch-mode -DrepositoryId=maestro-deploy -Durl=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots -Dproject.repository.url=http://<%= archiva_host %>:<%= archiva_port %>/archiva/repository/snapshots/"<%= ",\"mvn -U org.codehaus.mojo:sonar-maven-plugin:2.0:sonar -Dsonar.host.url=http://#{sonar_host}:#{sonar_port}#{sonar_context_path} -Dsonar.jdbc.url=jdbc:postgresql://#{sonar_host}:5432/sonar -Dsonar.jdbc.driverClassName=org.postgresql.Driver -Dsonar.jdbc.username=maestro -Dsonar.jdbc.password=maestro\"" if sonar %>
+                                "mvn <%= @goal %> -U --batch-mode -DrepositoryId=maestro-deploy -Durl=http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/all -DaltDeploymentRepository=maestro-deploy::default::http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots -Dproject.repository.url=http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/"<%= ",\"mvn -U org.codehaus.mojo:sonar-maven-plugin:2.0:sonar -Dsonar.host.url=http://#{sonar_host}:#{sonar_port}#{sonar_context_path} -Dsonar.jdbc.url=jdbc:postgresql://#{sonar_host}:5432/sonar -Dsonar.jdbc.driverClassName=org.postgresql.Driver -Dsonar.jdbc.username=maestro -Dsonar.jdbc.password=maestro\"" if sonar %>
                             ]
                         }, 
                         "use_ssl": {
@@ -993,7 +993,7 @@
                         "host": {
                             "required": true, 
                             "type": "String", 
-                            "value": "<%= jenkins_host %>"
+                            "value": "<%= @jenkins_host %>"
                         }, 
                         "job": {
                             "required": true, 
@@ -1013,7 +1013,7 @@
                         "port": {
                             "required": true, 
                             "type": "Integer", 
-                            "value": "<%= jenkins_port %>"
+                            "value": "<%= @jenkins_port %>"
                         }, 
                         "scm_url": {
                             "required": true, 
@@ -1075,7 +1075,7 @@
                         "host": {
                             "required": true, 
                             "type": "String", 
-                            "value": "<%= jenkins_host %>"
+                            "value": "<%= @jenkins_host %>"
                         }, 
                         "job": {
                             "required": true, 
@@ -1095,7 +1095,7 @@
                         "port": {
                             "required": false, 
                             "type": "Integer", 
-                            "value": <%= jenkins_port %>
+                            "value": <%= @jenkins_port %>
                         }, 
                         "scm_url": {
                             "required": false, 
