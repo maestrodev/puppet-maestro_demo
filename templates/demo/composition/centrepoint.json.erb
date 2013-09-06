@@ -584,27 +584,17 @@
                     "composition_id": 7, 
                     "created_at": "2012-02-07T23:07:12-05:00", 
                     "id": 122, 
-                    "name": "ec2 provision", 
+                    "name": "AWS provision", 
                     "options": {
                         "availability_zone": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "us-east-1a"
                         }, 
-                        "bootstrap": {
+                        "region": {
                             "required": false, 
                             "type": "String", 
-                            "value": ""
-                        }, 
-                        "deprovision_command": {
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "domain": {
-                            "required": true, 
-                            "type": "String", 
-                            "value": "demo"
+                            "value": "us-east-1"
                         }, 
                         "flavor_id": {
                             "required": true, 
@@ -612,11 +602,11 @@
                             "value": "t1.micro"
                         }, 
                         "groups": {
-                            "required": true, 
-                            "type": "String", 
-                            "value": "quick-start-1"
+                            "required": false, 
+                            "type": "Array", 
+                            "value": [ "quick-start-1" ]
                         }, 
-                        "hostname": {
+                        "name": {
                             "required": false, 
                             "type": "String", 
                             "value": ""
@@ -626,30 +616,30 @@
                             "type": "String", 
                             "value": "ami-eb7d1282"
                         }, 
-                        "key": {
+                        "secret_access_key": {
                             "required": true, 
                             "type": "Password", 
-                            "value": "<%= @ec2_key %>"
+                            "value": ""
                         }, 
-                        "key_id": {
-                            "required": true, 
-                            "type": "Password", 
-                            "value": "<%= @ec2_key_id %>"
-                        }, 
-                        "key_name": {
+                        "access_key_id": {
                             "required": true, 
                             "type": "String", 
+                            "value": ""
+                        }, 
+                        "key_name": {
+                            "required": false, 
+                            "type": "String", 
                             "value": "lucee-demo-keypair"
+                        }, 
+                        "private_key": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
                         }, 
                         "private_key_path": {
                             "required": false, 
                             "type": "String", 
                             "value": "config/lucee-demo-keypair.pem"
-                        }, 
-                        "provision_command": {
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
                         }, 
                         "ssh_commands": {
                             "required": false, 
@@ -661,14 +651,24 @@
                             ]
                         }, 
                         "ssh_user": {
-                            "required": true, 
+                            "required": false, 
                             "type": "String", 
                             "value": "bitnami"
                         }, 
-                        "type": {
+                        "ssh_password": {
+                            "required": false, 
+                            "type": "Password", 
+                            "value": ""
+                        }, 
+                        "timeout": {
+                            "required": false, 
+                            "type": "Integer", 
+                            "value": 600
+                        }, 
+                        "number_of_vms": {
                             "required": true, 
-                            "type": "String", 
-                            "value": "AWS"
+                            "type": "Integer", 
+                            "value": 1
                         }, 
                         "user_data": {
                             "required": false, 
@@ -677,7 +677,11 @@
                         }
                     }, 
                     "position": 3, 
-                    "source": null, 
+                    "sources": [
+                        {
+                            name: "AWS Account"
+                        }
+                    ], 
                     "task_id": 18, 
                     "updated_at": "2012-02-08T12:50:34-05:00"
                 }, 
@@ -796,38 +800,33 @@
                     "composition_id": 7, 
                     "created_at": "2012-02-08T12:05:54-05:00", 
                     "id": 129, 
-                    "name": "ec2 deprovision", 
+                    "name": "AWS deprovision", 
                     "options": {
-                        "key": {
-                            "required": true, 
+                        "secret_access_key": {
+                            "required": false, 
                             "type": "Password", 
-                            "value": "<%= @ec2_key %>"
+                            "value": ""
                         }, 
-                        "key_id": {
-                            "required": true, 
-                            "type": "Password", 
-                            "value": "<%= @ec2_key_id %>"
-                        }, 
-                        "key_name": {
-                            "required": true, 
+                        "access_key_id": {
+                            "required": false, 
                             "type": "String", 
-                            "value": "lucee-demo-keypair"
+                            "value": ""
                         }, 
-                        "ssh_commands": {
-                            "required": true, 
+                        "region": {
+                            "required": false, 
+                            "type": "String", 
+                            "value": ""
+                        }, 
+                        "instance_ids": {
+                            "required": false, 
                             "type": "Array", 
                             "value": [
-                                "ls"
                             ]
-                        }, 
-                        "ssh_user": {
-                            "required": true, 
-                            "type": "String", 
-                            "value": "root"
                         }
                     }, 
                     "position": 7, 
-                    "source": null, 
+                    "sources": [
+                    ],
                     "task_id": 19, 
                     "updated_at": "2012-02-08T12:50:34-05:00"
                 }
