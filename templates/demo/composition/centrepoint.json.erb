@@ -645,6 +645,7 @@
                             "required": false, 
                             "type": "Array", 
                             "value": [
+                                "until sudo ~/stack/ctlscript.sh status tomcat | grep "tomcat already running"; do sleep 5; done",
                                 "sudo sed -i 's/localhost:8009\//localhost:8009/' ~/stack/apache-tomcat/conf/tomcat.conf",
                                 "sudo sed -i 's/admin-gui/admin-gui,manager-script/' ~/stack/apache-tomcat/conf/tomcat-users.xml",
                                 "sudo /home/bitnami/stack/ctlscript.sh restart tomcat"
@@ -694,7 +695,7 @@
                         "host": {
                             "required": false, 
                             "type": "String", 
-                            "value": "#{fields[:instance_dns]}"
+                            "value": "#{fields[:aws_ips].first}"
                         }, 
                         "open_timeout": {
                             "required": false, 
@@ -741,7 +742,7 @@
                         "host": {
                             "required": true, 
                             "type": "String", 
-                            "value": "#{fields[:instance_dns]}"
+                            "value": "#{fields[:aws_ips].first}"
                         }, 
                         "password": {
                             "required": true, 
@@ -783,7 +784,7 @@
                         "body": {
                             "required": true, 
                             "type": "String", 
-                            "value": "Please Run QA Test On http://#{fields[:instance_dns]}:#{fields[:port]}#{fields[:web_path]}"
+                            "value": "Please Run QA Test On http://#{fields[:aws_ips].first}/centrepoint"
                         }, 
                         "fail_on_cancel": {
                             "required": false, 
