@@ -186,7 +186,7 @@
                         "host": {
                             "required": true, 
                             "type": "String", 
-                            "value": "#{fields[:instance_dns]}"
+                            "value": "#{fields[:aws_ips].first}"
                         }, 
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -249,7 +249,7 @@
                         "host": {
                             "required": false, 
                             "type": "String", 
-                            "value": "#{fields[:instance_dns]}"
+                            "value": "#{fields[:aws_ips].first}"
                         }, 
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -303,7 +303,7 @@
                         "host": {
                             "required": false, 
                             "type": "String", 
-                            "value": "#{fields[:instance_dns]}"
+                            "value": "#{fields[:aws_ips].first}"
                         }, 
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -356,7 +356,7 @@
                         "host": {
                             "required": false, 
                             "type": "String", 
-                            "value": "#{fields[:instance_dns]}"
+                            "value": "#{fields[:aws_ips].first}"
                         }, 
                         "port": {
                             "description": "Port Of The Server To Run Remote Commands",
@@ -400,7 +400,7 @@
                         "body": {
                             "required": true, 
                             "type": "String", 
-                            "value": "Validation complete of <a href=http://#{fields[:instance_dns]}:#{fields[:port]}#{fields[:web_path]}>http://#{fields[:instance_dns]}:#{fields[:port]}#{fields[:web_path]}</a>?"
+                            "value": "Validation complete of <a href='http://#{fields[:aws_ips].first}'>http://#{fields[:aws_ips].first}</a>?"
                         }, 
                         "fail_on_cancel": {
                             "required": false, 
