@@ -646,7 +646,7 @@
                             "type": "Array", 
                             "value": [
                                 "until sudo ~/stack/ctlscript.sh status tomcat | grep 'tomcat already running'; do sleep 5; done",
-                                "sudo sed -i 's/localhost:8009\//localhost:8009/' ~/stack/apache-tomcat/conf/tomcat.conf",
+                                "sudo sed -i 's@localhost:8009/@localhost:8009@' ~/stack/apache-tomcat/conf/tomcat.conf",
                                 "sudo sed -i 's/admin-gui/admin-gui,manager-script/' ~/stack/apache-tomcat/conf/tomcat-users.xml",
                                 "sudo /home/bitnami/stack/ctlscript.sh restart tomcat"
                             ]
