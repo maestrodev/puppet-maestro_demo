@@ -3,10 +3,10 @@
 # Configures demo sources, types, projects, compositions, etc.
 #
 class maestro_demo (
-  $user             = hiera("maestro::params::user", "maestro"),
-  $group            = hiera("maestro::params::group", "maestro"),
-  $agent_user       = hiera("maestro::params::agent_user", "maestro_agent"),
-  $agent_group      = hiera("maestro::params::agent_group", "maestro_agent"),
+  $user             = $maestro::params::user,
+  $group            = $maestro::params::group,
+  $agent_user       = $maestro::params::agent_user,
+  $agent_group      = $maestro::params::agent_group,
   $use_sonar        = undef,
   $use_archiva      = undef,
   $ec2_key_id       = '',
@@ -22,7 +22,7 @@ class maestro_demo (
   $demo_home        = "/usr/local/maestro/apps/lucee/WEB-INF/config/demo",
   $agent_home       = '/var/local/maestro-agent/',
   $working_copy_dir = '/var/local/maestro-agent/wc',
-  $demo_keypair     = '/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem' ) {
+  $demo_keypair     = '/var/local/maestro-agent/.ssh/lucee-demo-keypair.pem' ) inherits maestro::params {
 
   include maestro_demo::demo
 
