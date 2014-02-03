@@ -11,7 +11,7 @@ end
 
 def file_content(file)
   should contain_file("/usr/local/maestro/apps/lucee/WEB-INF/config/demo/#{file}.json")
-  catalogue.resource('file', "/usr/local/maestro/apps/lucee/WEB-INF/config/demo/#{file}.json").send(:parameters)[:content]
+  subject.resource('file', "/usr/local/maestro/apps/lucee/WEB-INF/config/demo/#{file}.json").send(:parameters)[:content]
 end
 
 def json_content(file)
