@@ -2,13 +2,18 @@ require 'spec_helper'
 require 'json'
 
 describe 'maestro_demo' do
-  let(:facts) {{
-    :kernel => "Linux",
-    :postgres_default_version => "90",
-    :osfamily => "RedHat",
-  }}
+  let(:pre_condition) { "class { 'maestro::maestro': }" }
 
-  context "centrepoint when not using sonar, archiva" do
+  context "default", :compile do
+    it "should generate Jenkins source with default values" do
+      options = json_content("sources/jenkins")[0]["options"]
+      options["host"].should eq('localhost')
+      options["port"].should eq("8181")
+      options["web_path"].should eq('/')
+    end
+  end
+
+  context "centrepoint when not using sonar, archiva", :compile do
     let(:params) {{ }}
     let(:title) { 'centrepoint' }
 
@@ -40,7 +45,7 @@ describe 'maestro_demo' do
     #end
   #end
 
-  context "wordpress when not using irc" do
+  context "wordpress when not using irc", :compile do
     let(:params) {{ }}
     let(:title) { 'wordpress' }
 
@@ -53,22 +58,13 @@ describe 'maestro_demo' do
     end
   end
 
-  context "centrepoint when using sonar and archiva" do
+  context "centrepoint when using sonar and archiva", :compile do
     let(:params) {{ :use_sonar => true, :use_archiva => true }}
     let(:title) { 'centrepoint' }
 
     it "should generate demo composition with sonar goals using deploy" do
       file_content("centrepoint").should =~ /org.codehaus.mojo:sonar-maven-plugin:2.0:sonar/
       file_content("centrepoint").should =~ /mvn deploy/
-    end
-  end
-
-  context "jenkins source" do
-    it "should generate Jenkins source with default values" do
-      options = json_content("sources/jenkins")[0]["options"]
-      options["host"].should eq('localhost')
-      options["port"].should eq("8181")
-      options["web_path"].should eq('/')
     end
   end
 end
