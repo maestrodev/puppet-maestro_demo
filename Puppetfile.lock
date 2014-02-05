@@ -1,7 +1,7 @@
 FORGE
   remote: http://forge.puppetlabs.com
   specs:
-    maestrodev/android (1.1.2)
+    maestrodev/android (1.1.9)
       maestrodev/wget (>= 1.0.0)
       puppetlabs/stdlib (>= 3.2.0)
     maestrodev/maestro (1.4.4)
@@ -24,7 +24,7 @@ FORGE
     ripienaar/concat (0.2.0)
 
 DEPENDENCIES
-  maestrodev/android (>= 1.1.0)
+  maestrodev/android (>= 1.1.6)
   maestrodev/maestro (>= 1.4.4)
   puppetlabs/postgresql (>= 2.0.1)
 

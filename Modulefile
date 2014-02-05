@@ -8,6 +8,6 @@ source 'http://github.com/maestrodev/puppet-maestro_demo'
 summary 'MaestroDev Maestro Demo Compositions and Projects'
 description 'Install and configure Maestro demo Projects'
 
-dependency 'maestrodev/android', '>=1.1.0'
+dependency 'maestrodev/android', '>=1.1.6'
 dependency 'puppetlabs/postgresql', '>= 2.0.1'
 dependency 'maestrodev/maestro', '>= 1.4.4'
