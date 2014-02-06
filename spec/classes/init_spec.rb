@@ -11,6 +11,26 @@ describe 'maestro_demo' do
       options["port"].should eq("8181")
       options["web_path"].should eq('/')
     end
+
+    it "should generate Archiva source with default values" do
+      options = json_content("sources/archiva")[0]["options"]
+      options["username"].should eq("admin")
+      options["password"].should eq("admin1")
+    end
+  end
+
+  context "when using custom maestro admin" do
+    let(:pre_condition) { %Q[
+      class { 'maestro::params':
+        admin_username => 'myuser',
+        admin_password => 'mypassword',
+      }
+    ]}
+    it "should generate Archiva source with correct values" do
+      options = json_content("sources/archiva")[0]["options"]
+      options["username"].should eq("myuser")
+      options["password"].should eq("mypassword")
+    end
   end
 
   context "centrepoint when not using sonar, archiva", :compile do

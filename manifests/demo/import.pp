@@ -17,7 +17,9 @@ define maestro_demo::demo::import(
   $sonar_context_path   = $maestro_demo::sonar_context_path,
   $working_copy_dir     = $maestro_demo::working_copy_dir,
   $demo_keypair         = $maestro_demo::demo_keypair) {
-  
+
+  include maestro::params
+
   if $use_sonar == undef {
     $sonar = defined(Service['sonar'])
   } else {

@@ -10,4 +10,4 @@ description 'Install and configure Maestro demo Projects'
 
 dependency 'maestrodev/android', '>=1.1.6'
 dependency 'puppetlabs/postgresql', '>= 2.0.1'
-dependency 'maestrodev/maestro', '>= 1.4.4'
+dependency 'maestrodev/maestro', '>= 1.4.6'
