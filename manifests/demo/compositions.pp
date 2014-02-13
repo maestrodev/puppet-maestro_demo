@@ -4,7 +4,7 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   # maestro_demo::demo::composition::<composition_name>
 
   # Generics - no special sauce required
-  maestro_demo::demo::composition::generic { '_templates': }
+  maestro_demo::demo::composition::generic { '_templates': enabled => false }
   maestro_demo::demo::composition::generic { 'alm': enabled => false }
   maestro_demo::demo::composition::generic { 'antwithivy': }
   maestro_demo::demo::composition::generic { 'centrepoint': }
