@@ -7,6 +7,7 @@ RSpec.configure do |c|
     :postgres_default_version => "90",
     :osfamily => "RedHat",
     :operatingsystem => "CentOS",
+    :operatingsystemrelease => '6.5',
     :concat_basedir => "/tmp"
   }
 
