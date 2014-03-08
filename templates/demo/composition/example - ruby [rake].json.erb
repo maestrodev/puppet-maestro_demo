@@ -1,0 +1,615 @@
+{
+  "id": 12,
+  "name": "Example - Ruby [rake]",
+  "description": "A Ruby application built with Rake",
+  "home_url": "/projects/12",
+  "scm_url": null,
+  "tags": null,
+  "parameters": {
+    "scmUsername": "",
+    "pomPassword": "",
+    "groupId": "",
+    "pomUrl": "",
+    "scmUrl": "",
+    "pomUsername": "",
+    "scmPassword": ""
+  },
+  "created_at": "2014-02-11T22:09:57+00:00",
+  "updated_at": "2014-02-17T20:10:38+00:00",
+  "compositions": [
+    {
+      "id": 62,
+      "name": "1 - Build",
+      "description": "Rails Web Application - built with Rake",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-18T20:36:07+00:00",
+      "updated_at": "2014-03-04T01:51:11+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 194,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}",
+              "value": ""
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository",
+              "value": "https://github.com/maestrodev/eval-demo-rails-webapp.git"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout",
+              "value": ""
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": true,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "position": 0,
+          "name": "git clone",
+          "is_from_parent": false,
+          "created_at": "2014-02-18T20:37:08+00:00",
+          "updated_at": "2014-03-04T01:51:11+00:00",
+          "task_id": 51,
+          "composition_id": 62,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 195,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "path to execute from",
+              "value": ""
+            },
+            "tasks": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "list of rake tasks to execute"
+            },
+            "use_rvm": {
+              "type": "Boolean",
+              "value": true,
+              "required": true,
+              "description": "should we run rake in a rvm environment"
+            },
+            "ruby_version": {
+              "type": "String",
+              "value": "ruby-1.9.3",
+              "required": false,
+              "description": "version of ruby tu use with rvm"
+            },
+            "rubygems_version": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "version of rubygems to use"
+            },
+            "use_bundle": {
+              "type": "Boolean",
+              "value": true,
+              "required": true,
+              "description": "run rake with bundler"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "environment variables to set for the execution"
+            },
+            "gems": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "other gems to install"
+            }
+          },
+          "position": 1,
+          "name": "rake",
+          "is_from_parent": false,
+          "created_at": "2014-02-18T20:37:08+00:00",
+          "updated_at": "2014-03-04T01:51:12+00:00",
+          "task_id": 72,
+          "composition_id": 62,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 51,
+          "name": "git clone",
+          "description": "Clone A Git Repository",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout"
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "type": "remote",
+          "command": "/git/clone",
+          "tool_name": [
+            "SCM"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::GitWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "git.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:48+00:00",
+          "updated_at": "2014-02-07T16:36:48+00:00",
+          "plugin_id": 52
+        },
+        {
+          "id": 72,
+          "name": "rake",
+          "description": "Run A Rake Task",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "path to execute from"
+            },
+            "tasks": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "list of rake tasks to execute"
+            },
+            "use_rvm": {
+              "type": "Boolean",
+              "value": false,
+              "required": true,
+              "description": "should we run rake in a rvm environment"
+            },
+            "ruby_version": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "version of ruby tu use with rvm"
+            },
+            "rubygems_version": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "version of rubygems to use"
+            },
+            "use_bundle": {
+              "type": "Boolean",
+              "value": false,
+              "required": true,
+              "description": "run rake with bundler"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "environment variables to set for the execution"
+            },
+            "gems": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "other gems to install"
+            }
+          },
+          "type": "remote",
+          "command": "/rake/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::RakeWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "rake.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:55+00:00",
+          "updated_at": "2014-02-07T16:36:55+00:00",
+          "plugin_id": 73
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    },
+    {
+      "id": 63,
+      "name": "2 - Test",
+      "description": "Test Rails app",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-19T19:41:45+00:00",
+      "updated_at": "2014-03-04T02:09:46+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 204,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}",
+              "value": null
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository",
+              "value": "https://github.com/maestrodev/eval-demo-rails-webapp.git"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout",
+              "value": null
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": true,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "position": 0,
+          "name": "git clone",
+          "is_from_parent": false,
+          "created_at": "2014-02-24T04:31:46+00:00",
+          "updated_at": "2014-03-04T02:09:46+00:00",
+          "task_id": 51,
+          "composition_id": 63,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 205,
+          "options": {
+            "path": {
+              "type": "String",
+              "value": "#{fields[:scm_path]}",
+              "required": true
+            },
+            "use_rvm": {
+              "type": "Boolean",
+              "value": true,
+              "required": false
+            },
+            "ruby_version": {
+              "type": "String",
+              "value": "ruby-1.9.3",
+              "required": false
+            },
+            "rubygems_version": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "use_bundler": {
+              "type": "Boolean",
+              "value": true,
+              "required": false
+            },
+            "environment": {
+              "type": "String",
+              "value": "HEADLESS=true",
+              "required": false
+            },
+            "gems": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false
+            },
+            "features": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "tags": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false
+            },
+            "profile": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "strict": {
+              "type": "Boolean",
+              "value": false,
+              "required": false
+            }
+          },
+          "position": 1,
+          "name": "cucumber (forked)",
+          "is_from_parent": false,
+          "created_at": "2014-02-24T09:52:13+00:00",
+          "updated_at": "2014-03-04T02:09:46+00:00",
+          "task_id": 15,
+          "composition_id": 63,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 15,
+          "name": "cucumber (forked)",
+          "description": "Run Cucumber tests in a forked process.<br>[path] the path from which to run cucumber.<br>[use_rvm] tell the agent to use rvm.<br>[ruby_version] the version of ruby to use.<br>[rubygems_version] the version of rubygems to use.<br>[use_bundler] tell the agent to use bundler (bundle exec).<br>[environment] environment variables.<br>[features] The directory or file containing the features.<br>[tags] Only execute the features or scenarios with matching tags<br>[profile] the cucumber profile to use as defined in cucumber.yml<br>[strict] enable/disable strict mode<br>",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "value": "",
+              "required": true
+            },
+            "use_rvm": {
+              "type": "Boolean",
+              "value": false,
+              "required": false
+            },
+            "ruby_version": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "rubygems_version": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "use_bundler": {
+              "type": "Boolean",
+              "value": false,
+              "required": false
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "gems": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false
+            },
+            "features": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "tags": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false
+            },
+            "profile": {
+              "type": "String",
+              "value": "",
+              "required": false
+            },
+            "strict": {
+              "type": "Boolean",
+              "value": false,
+              "required": false
+            }
+          },
+          "type": "remote",
+          "command": "/forkedcucumberplugin/execute",
+          "tool_name": [
+            "Test"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::ForkedCucumberWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "cucumber.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:31+00:00",
+          "updated_at": "2014-02-07T16:36:31+00:00",
+          "plugin_id": 16
+        },
+        {
+          "id": 51,
+          "name": "git clone",
+          "description": "Clone A Git Repository",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout"
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "type": "remote",
+          "command": "/git/clone",
+          "tool_name": [
+            "SCM"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::GitWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "git.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:48+00:00",
+          "updated_at": "2014-02-07T16:36:48+00:00",
+          "plugin_id": 52
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "Examples: Ruby"
+    }
+  ]
+}

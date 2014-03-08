@@ -1,0 +1,131 @@
+{
+  "id": 15,
+  "name": "Example - Shell Scripts",
+  "description": "Simple shell scripts showing how Maestro can integrate with existing command-line tools",
+  "home_url": "/projects/15",
+  "scm_url": null,
+  "tags": null,
+  "parameters": {
+    "scmUsername": "",
+    "pomPassword": "",
+    "groupId": "",
+    "pomUrl": "",
+    "scmUrl": "",
+    "pomUsername": "",
+    "scmPassword": ""
+  },
+  "created_at": "2014-02-11T22:11:47+00:00",
+  "updated_at": "2014-02-17T20:12:22+00:00",
+  "compositions": [
+    {
+      "id": 73,
+      "name": "1 - Simple Shell Script",
+      "description": "A simple shell script illustrating how Maestro can integrate with any tool that has a CLI",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-03-04T20:31:47+00:00",
+      "updated_at": "2014-03-04T20:39:50+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 236,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "# The shell execute task can operate on its own, or as part\n# of a bigger composition.  For example, you may have an SCM\n# tool like GIT clone a file (using the 'git clone' task) and\n# than manually manipulate files before committing an update using\n# the shell task. (i.e. update a version # as part of a release\n# composition).\n#\n# Allied to the shell-command task is the ssh-execute, which\n# can perform similar things over an ssh connection.\n#\n# These tasks can be as simple or as complex as you desire.",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "position": 0,
+          "name": "shell execute",
+          "is_from_parent": false,
+          "created_at": "2014-03-04T20:34:13+00:00",
+          "updated_at": "2014-03-04T20:39:50+00:00",
+          "task_id": 10,
+          "composition_id": 73,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 10,
+          "name": "shell execute",
+          "description": "Run An Shell Task",
+          "position": 1,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "whoami",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "type": "remote",
+          "command": "/shell/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::ShellWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "shell.png",
+          "tags": [
+            "shell",
+            "cmd",
+            "bash"
+          ],
+          "created_at": "2014-02-07T16:36:29+00:00",
+          "updated_at": "2014-02-12T02:02:58+00:00",
+          "plugin_id": 75
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "Examples: Script Files"
+    }
+  ]
+}

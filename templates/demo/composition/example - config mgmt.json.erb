@@ -1,0 +1,129 @@
+{
+  "id": 16,
+  "name": "Example - Configuration Management [puppet]",
+  "description": "Shows how Maestro can integrate with Puppet",
+  "home_url": "/projects/16",
+  "scm_url": null,
+  "tags": null,
+  "parameters": {
+    "scmUsername": "",
+    "pomPassword": "",
+    "groupId": "",
+    "pomUrl": "",
+    "scmUrl": "",
+    "pomUsername": "",
+    "scmPassword": ""
+  },
+  "created_at": "2014-02-11T22:12:34+00:00",
+  "updated_at": "2014-02-20T02:50:55+00:00",
+  "compositions": [
+    {
+      "id": 34,
+      "name": "1 - Invoke puppet via MCollective",
+      "description": "Use MCollective to invoke puppet agent",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-11T22:29:20+00:00",
+      "updated_at": "2014-03-04T06:21:41+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 111,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "# If this server was connected to an mcollective,\n# we could invoke it here using the 'mco' command, or we\n# could use the 'puppet runonce' task",
+              "required": true,
+              "description": ""
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            }
+          },
+          "position": 0,
+          "name": "shell execute",
+          "is_from_parent": false,
+          "created_at": "2014-02-11T22:31:25+00:00",
+          "updated_at": "2014-03-04T06:21:41+00:00",
+          "task_id": 10,
+          "composition_id": 34,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 10,
+          "name": "shell execute",
+          "description": "Run An Shell Task",
+          "position": 1,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "whoami",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "type": "remote",
+          "command": "/shell/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::ShellWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "shell.png",
+          "tags": [
+            "shell",
+            "cmd",
+            "bash"
+          ],
+          "created_at": "2014-02-07T16:36:29+00:00",
+          "updated_at": "2014-02-12T02:02:58+00:00",
+          "plugin_id": 75
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "Examples: Configuration Management"
+    }
+  ]
+}

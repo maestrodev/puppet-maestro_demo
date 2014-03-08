@@ -3,6 +3,16 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   # Add any compositions here... ideally in the form
   # maestro_demo::demo::composition::<composition_name>
 
+  # New eval compositions
+  # Uncomment these, and comment/remove the rest once we're happy
+  # maestro_demo::demo::composition::generic { 'example - config mgmt': }
+  # maestro_demo::demo::composition::generic { 'example - java [ant]': }
+  # maestro_demo::demo::composition::generic { 'example - java [maven]': }
+  # maestro_demo::demo::composition::generic { 'example - java [jenkins]': }
+  # maestro_demo::demo::composition::generic { 'example - ruby [rake]': }
+  # maestro_demo::demo::composition::generic { 'example - rubygem [rake]': }
+  # maestro_demo::demo::composition::generic { 'example - shell': }
+
   # Generics - no special sauce required
   maestro_demo::demo::composition::generic { '_templates': enabled => false }
   maestro_demo::demo::composition::generic { 'alm': enabled => false }

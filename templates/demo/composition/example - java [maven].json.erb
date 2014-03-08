@@ -1,0 +1,2162 @@
+{
+  "id": 10,
+  "name": "Example - Java [maven]",
+  "description": "A java web application, built with maven",
+  "home_url": "/projects/10",
+  "scm_url": null,
+  "tags": null,
+  "parameters": {
+    "scmUsername": "",
+    "pomPassword": "",
+    "groupId": "",
+    "pomUrl": "",
+    "scmUrl": "",
+    "pomUsername": "",
+    "scmPassword": ""
+  },
+  "created_at": "2014-02-10T17:04:50+00:00",
+  "updated_at": "2014-02-17T20:09:58+00:00",
+  "compositions": [
+    {
+      "id": 24,
+      "name": "1 - Standard Maven Build",
+      "description": "Build the application, including any tests, then run selenium tests (via Maven)",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-10T17:05:49+00:00",
+      "updated_at": "2014-03-05T00:50:15+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 92,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}",
+              "value": "/tmp/maven-webapp"
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository",
+              "value": "https://github.com/maestrodev/eval-demo-maven-webapp.git"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout",
+              "value": ""
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": true,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "position": 0,
+          "name": "git clone",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:13:55+00:00",
+          "updated_at": "2014-03-03T17:16:17+00:00",
+          "task_id": 51,
+          "composition_id": 24,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 93,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Maven",
+              "value": "/tmp/maven-webapp"
+            },
+            "goals": {
+              "type": "Array",
+              "value": [
+                "clean",
+                "deploy"
+              ],
+              "required": true,
+              "description": "Set of Maven goals"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "settingsfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location of a Maven settings.xml file"
+            },
+            "profiles": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Profiles To Activate"
+            },
+            "properties": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Settings To Pass Maven"
+            }
+          },
+          "position": 1,
+          "name": "maven",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:18:41+00:00",
+          "updated_at": "2014-03-03T17:16:17+00:00",
+          "task_id": 57,
+          "composition_id": 24,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 203,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Maven",
+              "value": "/tmp/maven-webapp"
+            },
+            "goals": {
+              "type": "Array",
+              "value": [
+                "integration-test",
+                "-Dintegration.test"
+              ],
+              "required": true,
+              "description": "Set of Maven goals"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "settingsfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location of a Maven settings.xml file"
+            },
+            "profiles": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Profiles To Activate"
+            },
+            "properties": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Settings To Pass Maven"
+            }
+          },
+          "position": 2,
+          "name": "maven",
+          "is_from_parent": false,
+          "created_at": "2014-02-22T01:24:10+00:00",
+          "updated_at": "2014-03-03T17:16:17+00:00",
+          "task_id": 57,
+          "composition_id": 24,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 51,
+          "name": "git clone",
+          "description": "Clone A Git Repository",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout"
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "type": "remote",
+          "command": "/git/clone",
+          "tool_name": [
+            "SCM"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::GitWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "git.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:48+00:00",
+          "updated_at": "2014-02-07T16:36:48+00:00",
+          "plugin_id": 52
+        },
+        {
+          "id": 57,
+          "name": "maven",
+          "description": "Run A Maven Task",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Maven"
+            },
+            "goals": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": true,
+              "description": "Set of Maven goals"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "settingsfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location of a Maven settings.xml file"
+            },
+            "profiles": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Profiles To Activate"
+            },
+            "properties": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Settings To Pass Maven"
+            }
+          },
+          "type": "remote",
+          "command": "/maven/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::MavenWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "maven.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:50+00:00",
+          "updated_at": "2014-02-07T16:36:50+00:00",
+          "plugin_id": 58
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    },
+    {
+      "id": 26,
+      "name": "2 - Acceptance Tests (post Maven build)",
+      "description": "Perform Automated tests in a clean virtual environment, then wait for QA to perform manual tests before finishing.",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-10T17:08:12+00:00",
+      "updated_at": "2014-03-04T00:59:19+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": 59,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 227,
+          "options": {
+            "username": {
+              "type": "String",
+              "required": false,
+              "description": "Repository Username",
+              "value": null
+            },
+            "password": {
+              "type": "Password",
+              "required": false,
+              "description": "Repository Password",
+              "value": null
+            },
+            "path": {
+              "type": "String",
+              "value": "/tmp",
+              "required": true,
+              "description": "Local Folder For File Download. File will be named $artifactId.$packaging"
+            },
+            "packaging": {
+              "type": "String",
+              "value": "war",
+              "required": true,
+              "description": "Artifact Packaging Type"
+            },
+            "url": {
+              "type": "Url",
+              "value": "http://localhost:8082/archiva/repository/snapshots/com/maestrodev/eval/maven-webapp/1.0-SNAPSHOT",
+              "required": true,
+              "description": "Remote Repository Location Of The Project Containing The Artifact, ie. http://localhost/repository/com/acme/foo/1.0-SNAPSHOT/"
+            }
+          },
+          "position": 0,
+          "name": "wget latest snapshot",
+          "is_from_parent": false,
+          "created_at": "2014-03-03T17:18:23+00:00",
+          "updated_at": "2014-03-03T17:18:23+00:00",
+          "task_id": 58,
+          "composition_id": 26,
+          "sources": [
+            {
+              "name": "Archiva"
+            }
+          ]
+        },
+        {
+          "id": 94,
+          "options": {
+            "access_key_id": {
+              "type": "String",
+              "required": true,
+              "description": "AWS access key id",
+              "value": "1"
+            },
+            "secret_access_key": {
+              "type": "Password",
+              "required": true,
+              "description": "AWS secret access key",
+              "value": "2"
+            },
+            "region": {
+              "type": "String",
+              "value": "us-east-1",
+              "required": false,
+              "description": "AWS region identifier"
+            },
+            "availability_zone": {
+              "type": "String",
+              "required": false,
+              "description": "AWS availability zone, ie. us-east-1a",
+              "value": ""
+            },
+            "image_id": {
+              "type": "String",
+              "value": "ami-1624987f",
+              "required": true,
+              "description": "ami id of the image to use"
+            },
+            "flavor_id": {
+              "type": "String",
+              "value": "t1.micro",
+              "required": true,
+              "description": "Flavor id that defines ram, cpu,..."
+            },
+            "key_name": {
+              "type": "String",
+              "required": false,
+              "description": "AWS keypair name to use for the instance",
+              "value": ""
+            },
+            "groups": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "the name of the security groups to add this VM to"
+            },
+            "user_data": {
+              "type": "String",
+              "required": false,
+              "description": "user data to set for the instance",
+              "value": ""
+            },
+            "name": {
+              "type": "String",
+              "required": false,
+              "description": "name of the started vm, a unique name will be generated if it already exists",
+              "value": ""
+            },
+            "number_of_vms": {
+              "type": "Integer",
+              "value": 1,
+              "required": true,
+              "description": "number of instances to start"
+            },
+            "private_key": {
+              "type": "String",
+              "required": false,
+              "description": "ssh private key content to use to connect to the server",
+              "value": ""
+            },
+            "private_key_path": {
+              "type": "String",
+              "value": "~/.ssh/id_rsa",
+              "required": false,
+              "description": "ssh private key path in the agent to use to connect to the server (instead of private_key content)"
+            },
+            "ssh_commands": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "commands to execute in the server once it is started"
+            },
+            "ssh_user": {
+              "type": "String",
+              "value": "root",
+              "required": false,
+              "description": "username to use for ssh connection"
+            },
+            "ssh_password": {
+              "type": "Password",
+              "required": false,
+              "description": "password to use for ssh connections if not using the ssh key (keys take precedence)",
+              "value": ""
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 600,
+              "required": false,
+              "description": "number of seconds to wait for a server to be up"
+            }
+          },
+          "position": 1,
+          "name": "AWS provision",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:19:29+00:00",
+          "updated_at": "2014-03-03T17:18:21+00:00",
+          "task_id": 31,
+          "composition_id": 26,
+          "sources": [
+            {
+              "name": "AWS Account"
+            }
+          ]
+        },
+        {
+          "id": 95,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "localhost",
+              "required": false,
+              "description": "Hostname Of The Server Running Tomcat"
+            },
+            "port": {
+              "type": "Integer",
+              "value": 8080,
+              "required": false,
+              "description": "Port Tomcat Is Bound To"
+            },
+            "tomcat_root_url": {
+              "type": "String",
+              "value": "/",
+              "label": "Tomcat URL",
+              "required": true,
+              "description": "Complete URL of Tomcat root page.  Alternatively, if 'host' and 'port' fields used, the path to Tomcat - usually '/')"
+            },
+            "path": {
+              "type": "String",
+              "value": "/tmp/maven-webapp/target/maven-webapp-1.0-SNAPSHOT.war",
+              "required": true,
+              "description": "Location Of The WAR File"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "/",
+              "required": true,
+              "description": "Context Path Of The Manager Application"
+            },
+            "user": {
+              "type": "String",
+              "value": "tomcat",
+              "required": true,
+              "description": "Tomcat User"
+            },
+            "password": {
+              "type": "Password",
+              "value": "password",
+              "required": true,
+              "description": "Tomcat Manager Password"
+            },
+            "max_connect_attempts": {
+              "type": "Integer",
+              "value": 5,
+              "label": "Max Retries",
+              "required": true,
+              "description": "Number of times the task will attempt to connect to Tomcat"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 90,
+              "label": "Retry Delay",
+              "required": true,
+              "description": "How long to delay between connection retries"
+            }
+          },
+          "position": 2,
+          "name": "tomcat deploy",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:22:18+00:00",
+          "updated_at": "2014-03-03T17:18:22+00:00",
+          "task_id": 63,
+          "composition_id": 26,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 96,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "localhost",
+              "required": true,
+              "description": "Hostname Of The Bamboo Server"
+            },
+            "port": {
+              "type": "Integer",
+              "value": 8080,
+              "required": true,
+              "description": "Port That Bamboo Is Running On"
+            },
+            "use_ssl": {
+              "type": "Boolean",
+              "value": false,
+              "required": true,
+              "description": "Connect to Bamboo using SSL"
+            },
+            "username": {
+              "type": "String",
+              "value": "dhenderson",
+              "required": true,
+              "description": "Bamboo User"
+            },
+            "password": {
+              "type": "Password",
+              "value": "87CED6A1",
+              "required": true,
+              "description": "Password For The Bamboo User"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Path to the Bamboo webapp in the server"
+            },
+            "plan_key": {
+              "type": "String",
+              "value": "12",
+              "required": true,
+              "description": "Key of the plan to queue"
+            },
+            "project_key": {
+              "type": "String",
+              "value": "34",
+              "required": true,
+              "description": "Key For The Project to queue"
+            }
+          },
+          "position": 3,
+          "name": "bamboo",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:22:18+00:00",
+          "updated_at": "2014-03-03T17:18:22+00:00",
+          "task_id": 13,
+          "composition_id": 26,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 188,
+          "options": {
+            "body": {
+              "label": "Message",
+              "description": "The message to be displayed in the action list",
+              "required": true,
+              "type": "String",
+              "value": "Did QA Tests pass?"
+            },
+            "fail_on_cancel": {
+              "label": "Fail if declined?",
+              "description": "If the user declines the action, fail the composition (otherwise it will continue)",
+              "required": false,
+              "type": "Boolean",
+              "value": true
+            }
+          },
+          "position": 4,
+          "name": "confirmation",
+          "is_from_parent": false,
+          "created_at": "2014-02-17T22:25:51+00:00",
+          "updated_at": "2014-03-03T17:18:23+00:00",
+          "task_id": 73,
+          "composition_id": 26,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 97,
+          "options": {
+            "access_key_id": {
+              "type": "String",
+              "required": false,
+              "description": "AWS access key id",
+              "value": ""
+            },
+            "secret_access_key": {
+              "type": "Password",
+              "required": false,
+              "description": "AWS secret access key",
+              "value": ""
+            },
+            "region": {
+              "type": "String",
+              "required": false,
+              "description": "AWS region identifier",
+              "value": ""
+            },
+            "instance_ids": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "ids or names of instances to deprovision. If not set it will deprovision the vms provisioned in previous steps"
+            }
+          },
+          "position": 5,
+          "name": "AWS deprovision",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:22:19+00:00",
+          "updated_at": "2014-03-03T17:18:22+00:00",
+          "task_id": 38,
+          "composition_id": 26,
+          "sources": [
+            {
+              "name": "AWS Account"
+            }
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "on_error_composition": {
+        "name": "2a - Acceptance Tests Failed [maven]"
+      },
+      "tasks": [
+        {
+          "id": 13,
+          "name": "bamboo",
+          "description": "Puts A Bamboo Plan In The Build Queue",
+          "position": 1,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "localhost",
+              "required": true,
+              "description": "Hostname Of The Bamboo Server"
+            },
+            "port": {
+              "type": "Integer",
+              "value": 8080,
+              "required": true,
+              "description": "Port That Bamboo Is Running On"
+            },
+            "use_ssl": {
+              "type": "Boolean",
+              "value": false,
+              "required": true,
+              "description": "Connect to Bamboo using SSL"
+            },
+            "username": {
+              "type": "String",
+              "value": "",
+              "required": true,
+              "description": "Bamboo User"
+            },
+            "password": {
+              "type": "Password",
+              "value": "",
+              "required": true,
+              "description": "Password For The Bamboo User"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Path to the Bamboo webapp in the server"
+            },
+            "plan_key": {
+              "type": "String",
+              "value": "",
+              "required": true,
+              "description": "Key of the plan to queue"
+            },
+            "project_key": {
+              "type": "String",
+              "value": "",
+              "required": true,
+              "description": "Key For The Project to queue"
+            }
+          },
+          "type": "remote",
+          "command": "/bambooplugin/build",
+          "tool_name": [
+            "Build"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::BambooWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "bamboo.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:30+00:00",
+          "updated_at": "2014-02-07T16:36:30+00:00",
+          "plugin_id": 14
+        },
+        {
+          "id": 31,
+          "name": "AWS provision",
+          "description": "Provision servers on Amazon Web Services EC2",
+          "position": 1,
+          "options": {
+            "access_key_id": {
+              "type": "String",
+              "required": true,
+              "description": "AWS access key id"
+            },
+            "secret_access_key": {
+              "type": "Password",
+              "required": true,
+              "description": "AWS secret access key"
+            },
+            "region": {
+              "type": "String",
+              "value": "us-east-1",
+              "required": false,
+              "description": "AWS region identifier"
+            },
+            "availability_zone": {
+              "type": "String",
+              "required": false,
+              "description": "AWS availability zone, ie. us-east-1a"
+            },
+            "image_id": {
+              "type": "String",
+              "value": "ami-1624987f",
+              "required": true,
+              "description": "ami id of the image to use"
+            },
+            "flavor_id": {
+              "type": "String",
+              "value": "t1.micro",
+              "required": true,
+              "description": "Flavor id that defines ram, cpu,..."
+            },
+            "key_name": {
+              "type": "String",
+              "required": false,
+              "description": "AWS keypair name to use for the instance"
+            },
+            "groups": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "the name of the security groups to add this VM to"
+            },
+            "user_data": {
+              "type": "String",
+              "required": false,
+              "description": "user data to set for the instance"
+            },
+            "name": {
+              "type": "String",
+              "required": false,
+              "description": "name of the started vm, a unique name will be generated if it already exists"
+            },
+            "number_of_vms": {
+              "type": "Integer",
+              "value": 1,
+              "required": true,
+              "description": "number of instances to start"
+            },
+            "private_key": {
+              "type": "String",
+              "required": false,
+              "description": "ssh private key content to use to connect to the server"
+            },
+            "private_key_path": {
+              "type": "String",
+              "value": "~/.ssh/id_rsa",
+              "required": false,
+              "description": "ssh private key path in the agent to use to connect to the server (instead of private_key content)"
+            },
+            "ssh_commands": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "commands to execute in the server once it is started"
+            },
+            "ssh_user": {
+              "type": "String",
+              "value": "root",
+              "required": false,
+              "description": "username to use for ssh connection"
+            },
+            "ssh_password": {
+              "type": "Password",
+              "required": false,
+              "description": "password to use for ssh connections if not using the ssh key (keys take precedence)"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 600,
+              "required": false,
+              "description": "number of seconds to wait for a server to be up"
+            }
+          },
+          "type": "remote",
+          "command": "/aws/provision",
+          "tool_name": [
+            "Cloud"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::AwsWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "aws.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:38+00:00",
+          "updated_at": "2014-02-07T16:36:38+00:00",
+          "plugin_id": 32
+        },
+        {
+          "id": 38,
+          "name": "AWS deprovision",
+          "description": "Deprovision servers on Amazon Web Services EC2. Deprovisions all servers started in a previous provision tasks.",
+          "position": 1,
+          "options": {
+            "access_key_id": {
+              "type": "String",
+              "required": false,
+              "description": "AWS access key id"
+            },
+            "secret_access_key": {
+              "type": "Password",
+              "required": false,
+              "description": "AWS secret access key"
+            },
+            "region": {
+              "type": "String",
+              "required": false,
+              "description": "AWS region identifier"
+            },
+            "instance_ids": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "ids or names of instances to deprovision. If not set it will deprovision the vms provisioned in previous steps"
+            }
+          },
+          "type": "remote",
+          "command": "/aws/deprovision",
+          "tool_name": [
+            "Cloud"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::AwsWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "aws.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:41+00:00",
+          "updated_at": "2014-02-07T16:36:41+00:00",
+          "plugin_id": 39
+        },
+        {
+          "id": 58,
+          "name": "wget latest snapshot",
+          "description": "Downloads The Latest Snapshot From A Maven Artifact Repository Using Wget",
+          "position": 1,
+          "options": {
+            "username": {
+              "type": "String",
+              "required": false,
+              "description": "Repository Username"
+            },
+            "password": {
+              "type": "Password",
+              "required": false,
+              "description": "Repository Password"
+            },
+            "path": {
+              "type": "String",
+              "value": "/tmp",
+              "required": true,
+              "description": "Local Folder For File Download. File will be named $artifactId.$packaging"
+            },
+            "packaging": {
+              "type": "String",
+              "value": "jar",
+              "required": true,
+              "description": "Artifact Packaging Type"
+            },
+            "url": {
+              "type": "Url",
+              "value": "http://localhost/repository/com/acme/foo/1.0-SNAPSHOT/",
+              "required": true,
+              "description": "Remote Repository Location Of The Project Containing The Artifact, ie. http://localhost/repository/com/acme/foo/1.0-SNAPSHOT/"
+            }
+          },
+          "type": "remote",
+          "command": "/maven/wget_latest_snapshot",
+          "tool_name": [
+            "Deploy"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::MavenWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "maven.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:50+00:00",
+          "updated_at": "2014-02-07T16:36:50+00:00",
+          "plugin_id": 59
+        },
+        {
+          "id": 63,
+          "name": "tomcat deploy",
+          "description": "Deploy A Web Application To Tomcat With A Given Context",
+          "position": 1,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "localhost",
+              "label": "Tomcat Host",
+              "required": false,
+              "description": "Hostname of the server running Tomcat (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "port": {
+              "type": "Integer",
+              "value": 8080,
+              "label": "Tomcat Port",
+              "required": false,
+              "description": "Port Tomcat is bound to (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "tomcat_root_url": {
+              "type": "String",
+              "value": "/",
+              "label": "Tomcat URL",
+              "required": true,
+              "description": "Complete URL of Tomcat root page.  Alternatively, if 'host' and 'port' fields used, the path to Tomcat - usually '/')"
+            },
+            "path": {
+              "type": "String",
+              "value": "",
+              "label": "WAR file (local)",
+              "required": true,
+              "description": "Location of the WAR file (on local filesystem)"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "",
+              "label": "Context Path (tomcat)",
+              "required": true,
+              "description": "Context path to deploy application to"
+            },
+            "user": {
+              "type": "String",
+              "value": "",
+              "label": "Tomcat User",
+              "required": true,
+              "description": "Username that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "password": {
+              "type": "Password",
+              "value": "",
+              "label": "Tomcat Password",
+              "required": true,
+              "description": "Password for user that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "max_connect_attempts": {
+              "type": "Integer",
+              "value": 5,
+              "label": "Max Retries",
+              "required": true,
+              "description": "Number of times the task will attempt to connect to Tomcat"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 90,
+              "label": "Retry Delay",
+              "required": true,
+              "description": "How long to delay between connection retries"
+            }
+          },
+          "type": "remote",
+          "command": "/tomcat/deploy",
+          "tool_name": [
+            "Deploy"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::TomcatWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "tomcat.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:52+00:00",
+          "updated_at": "2014-02-21T18:59:14+00:00",
+          "plugin_id": 64
+        },
+        {
+          "id": 73,
+          "name": "confirmation",
+          "description": "Allows user confirmation before continuing.  A notification will be displayed in the User Interface.  Confirming will allow the composition to continue, rejecting will cancel the composition if configured",
+          "position": 1,
+          "options": {
+            "body": {
+              "label": "Message",
+              "description": "The message to be displayed in the action list",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "fail_on_cancel": {
+              "label": "Fail if declined?",
+              "description": "If the user declines the action, fail the composition (otherwise it will continue)",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            }
+          },
+          "type": "confirmation",
+          "command": "/confirmation/work",
+          "tool_name": [
+            "Actions"
+          ],
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "confirm.png",
+          "tags": [
+            "maestro",
+            "user",
+            "continue",
+            "pause"
+          ],
+          "created_at": "2014-02-07T16:36:56+00:00",
+          "updated_at": "2014-02-12T02:15:34+00:00",
+          "plugin_id": null
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+        {
+          "id": 7,
+          "name": "Archiva",
+          "description": "Archiva credentials",
+          "uri": "some uri",
+          "options": {
+            "username": "admin",
+            "password": "updated_at_install"
+          },
+          "created_at": "2014-02-07T16:36:57+00:00",
+          "updated_at": "2014-02-28T23:18:04+00:00",
+          "project_id": 0,
+          "source_type_id": 20,
+          "source_type": "Maven download"
+        },
+        {
+          "id": 6,
+          "name": "AWS Account",
+          "description": "AWS account credentials",
+          "uri": "some uri",
+          "options": {
+            "access_key_id": "your aws key",
+            "secret_access_key": "your aws secret key"
+          },
+          "created_at": "2014-02-07T16:36:57+00:00",
+          "updated_at": "2014-02-10T17:19:55+00:00",
+          "project_id": 0,
+          "source_type_id": 9,
+          "source_type": "aws"
+        },
+        {
+          "id": 6,
+          "name": "AWS Account",
+          "description": "AWS account credentials",
+          "uri": "some uri",
+          "options": {
+            "access_key_id": "your aws key",
+            "secret_access_key": "your aws secret key"
+          },
+          "created_at": "2014-02-07T16:36:57+00:00",
+          "updated_at": "2014-02-10T17:19:55+00:00",
+          "project_id": 0,
+          "source_type_id": 9,
+          "source_type": "aws"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "3 - Deploy",
+      "description": "Deploy to production",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-10T17:08:39+00:00",
+      "updated_at": "2014-03-03T17:19:06+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 228,
+          "options": {
+            "username": {
+              "type": "String",
+              "required": false,
+              "description": "Repository Username",
+              "value": null
+            },
+            "password": {
+              "type": "Password",
+              "required": false,
+              "description": "Repository Password",
+              "value": null
+            },
+            "path": {
+              "type": "String",
+              "value": "/tmp",
+              "required": true,
+              "description": "Local Folder For File Download. File will be named $artifactId.$packaging"
+            },
+            "packaging": {
+              "type": "String",
+              "value": "war",
+              "required": true,
+              "description": "Artifact Packaging Type"
+            },
+            "url": {
+              "type": "Url",
+              "value": "http://localhost:8082/archiva/repository/snapshots/com/maestrodev/eval/maven-webapp/1.0-SNAPSHOT",
+              "required": true,
+              "description": "Remote Repository Location Of The Project Containing The Artifact, ie. http://localhost/repository/com/acme/foo/1.0-SNAPSHOT/"
+            }
+          },
+          "position": 0,
+          "name": "wget latest snapshot",
+          "is_from_parent": false,
+          "created_at": "2014-03-03T17:18:53+00:00",
+          "updated_at": "2014-03-03T17:19:09+00:00",
+          "task_id": 58,
+          "composition_id": 27,
+          "sources": [
+            {
+              "name": "Archiva"
+            }
+          ]
+        },
+        {
+          "id": 200,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "",
+              "label": "Tomcat Host",
+              "required": false,
+              "description": "Hostname of the server running Tomcat (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "port": {
+              "type": "Integer",
+              "value": null,
+              "label": "Tomcat Port",
+              "required": false,
+              "description": "Port Tomcat is bound to (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "tomcat_root_url": {
+              "type": "String",
+              "value": "https://localhost/tomcat",
+              "label": "Tomcat URL",
+              "required": true,
+              "description": "Complete URL of Tomcat root page.  Alternatively, if 'host' and 'port' fields used, the path to Tomcat - usually '/')"
+            },
+            "path": {
+              "type": "String",
+              "value": "/tmp/maven-webapp/target/maven-webapp-1.0-SNAPSHOT.war",
+              "label": "WAR file (local)",
+              "required": true,
+              "description": "Location of the WAR file (on local filesystem)"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "/maven_hello",
+              "label": "Context Path (tomcat)",
+              "required": true,
+              "description": "Context path to deploy application to"
+            },
+            "user": {
+              "type": "String",
+              "value": "tomcat",
+              "label": "Tomcat User",
+              "required": true,
+              "description": "Username that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "password": {
+              "type": "Password",
+              "value": "password",
+              "label": "Tomcat Password",
+              "required": true,
+              "description": "Password for user that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "max_connect_attempts": {
+              "type": "Integer",
+              "value": 5,
+              "label": "Max Retries",
+              "required": true,
+              "description": "Number of times the task will attempt to connect to Tomcat"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 90,
+              "label": "Retry Delay",
+              "required": true,
+              "description": "How long to delay between connection retries"
+            }
+          },
+          "position": 1,
+          "name": "tomcat deploy",
+          "is_from_parent": false,
+          "created_at": "2014-02-21T19:01:53+00:00",
+          "updated_at": "2014-03-03T17:19:07+00:00",
+          "task_id": 63,
+          "composition_id": 27,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 201,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "echo \"Maven webapp example available at http://<this_server>/tomcat/maven_webapp/\"",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "position": 2,
+          "name": "shell execute",
+          "is_from_parent": false,
+          "created_at": "2014-02-21T19:47:27+00:00",
+          "updated_at": "2014-03-03T17:19:07+00:00",
+          "task_id": 10,
+          "composition_id": 27,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 10,
+          "name": "shell execute",
+          "description": "Run An Shell Task",
+          "position": 1,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "whoami",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "type": "remote",
+          "command": "/shell/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::ShellWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "shell.png",
+          "tags": [
+            "shell",
+            "cmd",
+            "bash"
+          ],
+          "created_at": "2014-02-07T16:36:29+00:00",
+          "updated_at": "2014-02-12T02:02:58+00:00",
+          "plugin_id": 75
+        },
+        {
+          "id": 58,
+          "name": "wget latest snapshot",
+          "description": "Downloads The Latest Snapshot From A Maven Artifact Repository Using Wget",
+          "position": 1,
+          "options": {
+            "username": {
+              "type": "String",
+              "required": false,
+              "description": "Repository Username"
+            },
+            "password": {
+              "type": "Password",
+              "required": false,
+              "description": "Repository Password"
+            },
+            "path": {
+              "type": "String",
+              "value": "/tmp",
+              "required": true,
+              "description": "Local Folder For File Download. File will be named $artifactId.$packaging"
+            },
+            "packaging": {
+              "type": "String",
+              "value": "jar",
+              "required": true,
+              "description": "Artifact Packaging Type"
+            },
+            "url": {
+              "type": "Url",
+              "value": "http://localhost/repository/com/acme/foo/1.0-SNAPSHOT/",
+              "required": true,
+              "description": "Remote Repository Location Of The Project Containing The Artifact, ie. http://localhost/repository/com/acme/foo/1.0-SNAPSHOT/"
+            }
+          },
+          "type": "remote",
+          "command": "/maven/wget_latest_snapshot",
+          "tool_name": [
+            "Deploy"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::MavenWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "maven.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:50+00:00",
+          "updated_at": "2014-02-07T16:36:50+00:00",
+          "plugin_id": 59
+        },
+        {
+          "id": 63,
+          "name": "tomcat deploy",
+          "description": "Deploy A Web Application To Tomcat With A Given Context",
+          "position": 1,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "localhost",
+              "label": "Tomcat Host",
+              "required": false,
+              "description": "Hostname of the server running Tomcat (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "port": {
+              "type": "Integer",
+              "value": 8080,
+              "label": "Tomcat Port",
+              "required": false,
+              "description": "Port Tomcat is bound to (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "tomcat_root_url": {
+              "type": "String",
+              "value": "/",
+              "label": "Tomcat URL",
+              "required": true,
+              "description": "Complete URL of Tomcat root page.  Alternatively, if 'host' and 'port' fields used, the path to Tomcat - usually '/')"
+            },
+            "path": {
+              "type": "String",
+              "value": "",
+              "label": "WAR file (local)",
+              "required": true,
+              "description": "Location of the WAR file (on local filesystem)"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "",
+              "label": "Context Path (tomcat)",
+              "required": true,
+              "description": "Context path to deploy application to"
+            },
+            "user": {
+              "type": "String",
+              "value": "",
+              "label": "Tomcat User",
+              "required": true,
+              "description": "Username that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "password": {
+              "type": "Password",
+              "value": "",
+              "label": "Tomcat Password",
+              "required": true,
+              "description": "Password for user that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "max_connect_attempts": {
+              "type": "Integer",
+              "value": 5,
+              "label": "Max Retries",
+              "required": true,
+              "description": "Number of times the task will attempt to connect to Tomcat"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 90,
+              "label": "Retry Delay",
+              "required": true,
+              "description": "How long to delay between connection retries"
+            }
+          },
+          "type": "remote",
+          "command": "/tomcat/deploy",
+          "tool_name": [
+            "Deploy"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::TomcatWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "tomcat.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:52+00:00",
+          "updated_at": "2014-02-21T18:59:14+00:00",
+          "plugin_id": 64
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+        {
+          "id": 7,
+          "name": "Archiva",
+          "description": "Archiva credentials",
+          "uri": "some uri",
+          "options": {
+            "username": "admin",
+            "password": "updated_at_install"
+          },
+          "created_at": "2014-02-07T16:36:57+00:00",
+          "updated_at": "2014-02-28T23:18:04+00:00",
+          "project_id": 0,
+          "source_type_id": 20,
+          "source_type": "Maven download"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "* - Standard Build + Acceptance Tests",
+      "description": "Perform a 'Standard Build', and if that succeeds move onto 'Acceptance Tests'",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-10T17:10:39+00:00",
+      "updated_at": "2014-03-04T01:01:48+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 88,
+          "options": {
+            "composition": {
+              "description": "Composition name or id to be scheduled",
+              "required": true,
+              "type": "String",
+              "value": "1 - Standard Maven Build"
+            },
+            "wait_for_completion": {
+              "description": "Pause this Composition until completion of the scheduled composition",
+              "required": false,
+              "type": "Boolean",
+              "value": true
+            },
+            "Force Schedule Build": {
+              "description": "Force build the scheduled composition",
+              "required": true,
+              "type": "Boolean",
+              "value": true
+            }
+          },
+          "position": 0,
+          "name": "schedule",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:11:35+00:00",
+          "updated_at": "2014-03-04T01:01:48+00:00",
+          "task_id": 76,
+          "composition_id": 28,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 89,
+          "options": {
+            "composition": {
+              "description": "Composition name or id to be scheduled",
+              "required": true,
+              "type": "String",
+              "value": "2 - Acceptance Tests (post Maven build)"
+            },
+            "wait_for_completion": {
+              "description": "Pause this Composition until completion of the scheduled composition",
+              "required": false,
+              "type": "Boolean",
+              "value": true
+            },
+            "Force Schedule Build": {
+              "description": "Force build the scheduled composition",
+              "required": true,
+              "type": "Boolean",
+              "value": true
+            }
+          },
+          "position": 1,
+          "name": "schedule",
+          "is_from_parent": false,
+          "created_at": "2014-02-10T17:11:35+00:00",
+          "updated_at": "2014-03-04T01:01:48+00:00",
+          "task_id": 76,
+          "composition_id": 28,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 76,
+          "name": "schedule",
+          "description": "Schedule a single composition to execute",
+          "position": 5,
+          "options": {
+            "composition": {
+              "label": "Composition",
+              "description": "Composition name or id to be scheduled",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "wait_for_completion": {
+              "label": "Wait until complete?",
+              "description": "Pause this Composition until completion of the scheduled composition",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            },
+            "Force Schedule Build": {
+              "label": "Force Schedule Build",
+              "description": "Force build the scheduled composition",
+              "required": true,
+              "type": "Boolean",
+              "value": true
+            }
+          },
+          "type": "schedule",
+          "command": "/schedule/schedule_single",
+          "tool_name": [
+            "Management"
+          ],
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "fork.png",
+          "tags": [
+            "maestro",
+            "fork",
+            "schedule"
+          ],
+          "created_at": "2014-02-07T16:36:56+00:00",
+          "updated_at": "2014-02-12T02:15:30+00:00",
+          "plugin_id": null
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    },
+    {
+      "id": 59,
+      "name": "2a - Acceptance Tests Failed [maven]",
+      "description": "Automatically run when Acceptance tests fail",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-17T22:26:35+00:00",
+      "updated_at": "2014-02-22T01:27:10+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 189,
+          "options": {
+            "access_key_id": {
+              "type": "String",
+              "required": false,
+              "description": "AWS access key id",
+              "value": null
+            },
+            "secret_access_key": {
+              "type": "Password",
+              "required": false,
+              "description": "AWS secret access key",
+              "value": null
+            },
+            "region": {
+              "type": "String",
+              "required": false,
+              "description": "AWS region identifier",
+              "value": null
+            },
+            "instance_ids": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "ids or names of instances to deprovision. If not set it will deprovision the vms provisioned in previous steps"
+            }
+          },
+          "position": 0,
+          "name": "AWS deprovision",
+          "is_from_parent": false,
+          "created_at": "2014-02-17T22:27:59+00:00",
+          "updated_at": "2014-02-21T19:56:19+00:00",
+          "task_id": 38,
+          "composition_id": 59,
+          "sources": [
+            {
+              "name": "AWS Account"
+            }
+          ]
+        },
+        {
+          "id": 190,
+          "options": {
+            "server": {
+              "label": "Server",
+              "description": "Delivery server",
+              "required": false,
+              "type": "String",
+              "value": "localhost"
+            },
+            "port": {
+              "label": "Port",
+              "description": "Delivery port",
+              "required": false,
+              "type": "Integer",
+              "value": 25
+            },
+            "ssl": {
+              "label": "Use SSL?",
+              "description": "Use SSL Encryption",
+              "required": true,
+              "type": "Boolean",
+              "value": true
+            },
+            "domain": {
+              "label": "Domain",
+              "description": "Delivery domain",
+              "required": false,
+              "type": "String",
+              "value": "localhost"
+            },
+            "from": {
+              "label": "From",
+              "description": "From email address",
+              "required": true,
+              "type": "String",
+              "value": "qa@localhost"
+            },
+            "from_name": {
+              "label": "From Name",
+              "description": "Human readable name the message is from",
+              "required": true,
+              "type": "String",
+              "value": "QA"
+            },
+            "use_authentication": {
+              "label": "Authentication Required?",
+              "description": "Use username and password to authenticate on mailserver",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            },
+            "user": {
+              "label": "Username",
+              "description": "Username for server",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "pass": {
+              "label": "Password",
+              "description": "Password for server",
+              "required": false,
+              "type": "Password",
+              "value": ""
+            },
+            "body": {
+              "label": "Content",
+              "description": "Message content (body)",
+              "required": true,
+              "type": "Text",
+              "value": "QA Tests failed for Java [maven]"
+            },
+            "subject": {
+              "label": "Subject",
+              "description": "Message subject",
+              "required": true,
+              "type": "String",
+              "value": "Test Failure"
+            },
+            "to": {
+              "label": "To",
+              "description": "Recipient email address",
+              "required": true,
+              "type": "String",
+              "value": "root@localhost"
+            },
+            "cc": {
+              "label": "CC",
+              "description": "Recipient CC email address",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "bcc": {
+              "label": "BCC",
+              "description": "Recipient BCC email address",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "file": {
+              "label": "File to attach",
+              "description": "File path for file to attach to the message",
+              "required": false,
+              "type": "String",
+              "value": ""
+            }
+          },
+          "position": 1,
+          "name": "email",
+          "is_from_parent": false,
+          "created_at": "2014-02-17T22:27:59+00:00",
+          "updated_at": "2014-02-21T19:56:20+00:00",
+          "task_id": 74,
+          "composition_id": 59,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 38,
+          "name": "AWS deprovision",
+          "description": "Deprovision servers on Amazon Web Services EC2. Deprovisions all servers started in a previous provision tasks.",
+          "position": 1,
+          "options": {
+            "access_key_id": {
+              "type": "String",
+              "required": false,
+              "description": "AWS access key id"
+            },
+            "secret_access_key": {
+              "type": "Password",
+              "required": false,
+              "description": "AWS secret access key"
+            },
+            "region": {
+              "type": "String",
+              "required": false,
+              "description": "AWS region identifier"
+            },
+            "instance_ids": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "ids or names of instances to deprovision. If not set it will deprovision the vms provisioned in previous steps"
+            }
+          },
+          "type": "remote",
+          "command": "/aws/deprovision",
+          "tool_name": [
+            "Cloud"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::AwsWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "aws.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:41+00:00",
+          "updated_at": "2014-02-07T16:36:41+00:00",
+          "plugin_id": 39
+        },
+        {
+          "id": 74,
+          "name": "email",
+          "description": "Send an email",
+          "position": 1,
+          "options": {
+            "server": {
+              "label": "Server",
+              "description": "Delivery server",
+              "required": false,
+              "type": "String",
+              "value": "localhost"
+            },
+            "port": {
+              "label": "Port",
+              "description": "Delivery port",
+              "required": false,
+              "type": "Integer",
+              "value": 25
+            },
+            "ssl": {
+              "label": "Use SSL?",
+              "description": "Use SSL Encryption",
+              "required": true,
+              "type": "Boolean",
+              "value": true
+            },
+            "domain": {
+              "label": "Domain",
+              "description": "Delivery domain",
+              "required": false,
+              "type": "String",
+              "value": "localhost"
+            },
+            "from": {
+              "label": "From",
+              "description": "From email address",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "from_name": {
+              "label": "From Name",
+              "description": "Human readable name the message is from",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "use_authentication": {
+              "label": "Authentication Required?",
+              "description": "Use username and password to authenticate on mailserver",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            },
+            "user": {
+              "label": "Username",
+              "description": "Username for server",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "pass": {
+              "label": "Password",
+              "description": "Password for server",
+              "required": false,
+              "type": "Password",
+              "value": ""
+            },
+            "body": {
+              "label": "Content",
+              "description": "Message content (body)",
+              "required": true,
+              "type": "Text",
+              "value": ""
+            },
+            "subject": {
+              "label": "Subject",
+              "description": "Message subject",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "to": {
+              "label": "To",
+              "description": "Recipient email address",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "cc": {
+              "label": "CC",
+              "description": "Recipient CC email address",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "bcc": {
+              "label": "BCC",
+              "description": "Recipient BCC email address",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "file": {
+              "label": "File to attach",
+              "description": "File path for file to attach to the message",
+              "required": false,
+              "type": "String",
+              "value": ""
+            }
+          },
+          "type": "email",
+          "command": "/email/notify",
+          "tool_name": [
+            "Notification"
+          ],
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "email.png",
+          "tags": [
+            "maestro"
+          ],
+          "created_at": "2014-02-07T16:36:56+00:00",
+          "updated_at": "2014-02-12T02:15:41+00:00",
+          "plugin_id": null
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+        {
+          "id": 6,
+          "name": "AWS Account",
+          "description": "AWS account credentials",
+          "uri": "some uri",
+          "options": {
+            "access_key_id": "your aws key",
+            "secret_access_key": "your aws secret key"
+          },
+          "created_at": "2014-02-07T16:36:57+00:00",
+          "updated_at": "2014-02-10T17:19:55+00:00",
+          "project_id": 0,
+          "source_type_id": 9,
+          "source_type": "aws"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "Examples: Java"
+    }
+  ]
+}

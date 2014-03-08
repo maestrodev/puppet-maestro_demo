@@ -1,0 +1,527 @@
+{
+  "id": 11,
+  "name": "Example - Java [ant]",
+  "description": "A Java application built with Ant",
+  "home_url": "/projects/11",
+  "scm_url": null,
+  "tags": null,
+  "parameters": {
+    "scmUsername": "",
+    "pomPassword": "",
+    "groupId": "",
+    "pomUrl": "",
+    "scmUrl": "",
+    "pomUsername": "",
+    "scmPassword": ""
+  },
+  "created_at": "2014-02-11T18:29:08+00:00",
+  "updated_at": "2014-02-17T20:09:45+00:00",
+  "compositions": [
+    {
+      "id": 32,
+      "name": "1 - Build + Test",
+      "description": "Build the App using Ant, deploy to a Tomcat server, and perform a simple HTTP GET to confirm connectivity",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2014-02-11T18:29:35+00:00",
+      "updated_at": "2014-03-04T01:35:04+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 108,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}",
+              "value": "/tmp/ant-webapp"
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository",
+              "value": "https://github.com/maestrodev/eval-demo-ant-webapp.git"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout",
+              "value": ""
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "position": 0,
+          "name": "git clone",
+          "is_from_parent": false,
+          "created_at": "2014-02-11T18:47:04+00:00",
+          "updated_at": "2014-03-04T01:35:04+00:00",
+          "task_id": 51,
+          "composition_id": 32,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 109,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Ant",
+              "value": "/tmp/ant-webapp"
+            },
+            "tasks": {
+              "type": "Array",
+              "value": [
+                "all"
+              ],
+              "required": false,
+              "description": "Set Of Ant Tasks"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "propertyfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location Of The Ant Property File"
+            }
+          },
+          "position": 1,
+          "name": "ant",
+          "is_from_parent": false,
+          "created_at": "2014-02-11T18:47:05+00:00",
+          "updated_at": "2014-03-04T01:35:04+00:00",
+          "task_id": 26,
+          "composition_id": 32,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 231,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "",
+              "label": "Tomcat Host",
+              "required": false,
+              "description": "Hostname of the server running Tomcat (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "port": {
+              "type": "Integer",
+              "value": null,
+              "label": "Tomcat Port",
+              "required": false,
+              "description": "Port Tomcat is bound to (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "tomcat_root_url": {
+              "type": "String",
+              "value": "https://localhost/tomcat",
+              "label": "Tomcat URL",
+              "required": true,
+              "description": "Complete URL of Tomcat root page.  Alternatively, if 'host' and 'port' fields used, the path to Tomcat - usually '/')"
+            },
+            "path": {
+              "type": "String",
+              "value": "/tmp/ant-webapp/dist/hello.war",
+              "label": "WAR file (local)",
+              "required": true,
+              "description": "Location of the WAR file (on local filesystem)"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "/ant-webapp",
+              "label": "Context Path (tomcat)",
+              "required": true,
+              "description": "Context path to deploy application to"
+            },
+            "user": {
+              "type": "String",
+              "value": "tomcat",
+              "label": "Tomcat User",
+              "required": true,
+              "description": "Username that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "password": {
+              "type": "Password",
+              "value": "password",
+              "label": "Tomcat Password",
+              "required": true,
+              "description": "Password for user that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "max_connect_attempts": {
+              "type": "Integer",
+              "value": 5,
+              "label": "Max Retries",
+              "required": true,
+              "description": "Number of times the task will attempt to connect to Tomcat"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 90,
+              "label": "Retry Delay",
+              "required": true,
+              "description": "How long to delay between connection retries"
+            }
+          },
+          "position": 2,
+          "name": "tomcat deploy",
+          "is_from_parent": false,
+          "created_at": "2014-03-04T01:35:04+00:00",
+          "updated_at": "2014-03-04T01:35:04+00:00",
+          "task_id": 63,
+          "composition_id": 32,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 232,
+          "options": {
+            "url": {
+              "type": "String",
+              "value": "https://localhost/tomcat/ant-hello/",
+              "required": true,
+              "description": "URL of Resource"
+            },
+            "user": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Username For Application Server"
+            },
+            "password": {
+              "type": "Password",
+              "value": "",
+              "required": false,
+              "description": "Password For Application User"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 60,
+              "required": false,
+              "description": "Time To Wait For Connection Response"
+            },
+            "content_type": {
+              "type": "String",
+              "value": "application/text",
+              "required": false,
+              "description": "HTTP content type to place in Accept header"
+            }
+          },
+          "position": 3,
+          "name": "REST GET",
+          "is_from_parent": false,
+          "created_at": "2014-03-04T01:35:05+00:00",
+          "updated_at": "2014-03-04T01:35:05+00:00",
+          "task_id": 2,
+          "composition_id": 32,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 2,
+          "name": "REST GET",
+          "description": "GET a specified resource from a server",
+          "position": 1,
+          "options": {
+            "url": {
+              "type": "String",
+              "value": "/",
+              "required": true,
+              "description": "URL of Resource"
+            },
+            "user": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Username For Application Server"
+            },
+            "password": {
+              "type": "Password",
+              "value": "",
+              "required": false,
+              "description": "Password For Application User"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 60,
+              "required": false,
+              "description": "Time To Wait For Connection Response"
+            },
+            "content_type": {
+              "type": "String",
+              "value": "application/json",
+              "required": false,
+              "description": "HTTP content type to place in Accept header"
+            }
+          },
+          "type": "remote",
+          "command": "/rest/rest_get",
+          "tool_name": [
+            "Deploy"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::RestWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "globe.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:23+00:00",
+          "updated_at": "2014-02-07T16:36:23+00:00",
+          "plugin_id": 2
+        },
+        {
+          "id": 26,
+          "name": "ant",
+          "description": "Run An Ant Task",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Ant"
+            },
+            "tasks": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Set Of Ant Tasks"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "propertyfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location Of The Ant Property File"
+            }
+          },
+          "type": "remote",
+          "command": "/ant/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::AntWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "ant.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:36+00:00",
+          "updated_at": "2014-02-07T16:36:36+00:00",
+          "plugin_id": 27
+        },
+        {
+          "id": 51,
+          "name": "git clone",
+          "description": "Clone A Git Repository",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
+            },
+            "url": {
+              "type": "Url",
+              "required": true,
+              "description": "Remote Location Of The Git Repository"
+            },
+            "branch": {
+              "type": "String",
+              "required": false,
+              "description": "Branch Of The Repository To Checkout"
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Remove Local Working Copy"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Build If No Update Is Found"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "required": false,
+              "description": "Auto-Build This Composition If Repository Trigger Fired"
+            }
+          },
+          "type": "remote",
+          "command": "/git/clone",
+          "tool_name": [
+            "SCM"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::GitWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "git.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:48+00:00",
+          "updated_at": "2014-02-07T16:36:48+00:00",
+          "plugin_id": 52
+        },
+        {
+          "id": 63,
+          "name": "tomcat deploy",
+          "description": "Deploy A Web Application To Tomcat With A Given Context",
+          "position": 1,
+          "options": {
+            "host": {
+              "type": "String",
+              "value": "localhost",
+              "label": "Tomcat Host",
+              "required": false,
+              "description": "Hostname of the server running Tomcat (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "port": {
+              "type": "Integer",
+              "value": 8080,
+              "label": "Tomcat Port",
+              "required": false,
+              "description": "Port Tomcat is bound to (this field is only used if 'tomcat_root_url' does not contain a valid url)"
+            },
+            "tomcat_root_url": {
+              "type": "String",
+              "value": "/",
+              "label": "Tomcat URL",
+              "required": true,
+              "description": "Complete URL of Tomcat root page.  Alternatively, if 'host' and 'port' fields used, the path to Tomcat - usually '/')"
+            },
+            "path": {
+              "type": "String",
+              "value": "",
+              "label": "WAR file (local)",
+              "required": true,
+              "description": "Location of the WAR file (on local filesystem)"
+            },
+            "web_path": {
+              "type": "String",
+              "value": "",
+              "label": "Context Path (tomcat)",
+              "required": true,
+              "description": "Context path to deploy application to"
+            },
+            "user": {
+              "type": "String",
+              "value": "",
+              "label": "Tomcat User",
+              "required": true,
+              "description": "Username that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "password": {
+              "type": "Password",
+              "value": "",
+              "label": "Tomcat Password",
+              "required": true,
+              "description": "Password for user that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
+            },
+            "max_connect_attempts": {
+              "type": "Integer",
+              "value": 5,
+              "label": "Max Retries",
+              "required": true,
+              "description": "Number of times the task will attempt to connect to Tomcat"
+            },
+            "timeout": {
+              "type": "Integer",
+              "value": 90,
+              "label": "Retry Delay",
+              "required": true,
+              "description": "How long to delay between connection retries"
+            }
+          },
+          "type": "remote",
+          "command": "/tomcat/deploy",
+          "tool_name": [
+            "Deploy"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::TomcatWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "tomcat.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:52+00:00",
+          "updated_at": "2014-02-21T18:59:14+00:00",
+          "plugin_id": 64
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "Examples: Java"
+    }
+  ]
+}
