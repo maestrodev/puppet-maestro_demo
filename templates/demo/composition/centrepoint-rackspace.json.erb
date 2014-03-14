@@ -108,7 +108,7 @@
                             "description": "Remote Repository Location Of The Project Containing The Artifact", 
                             "required": true, 
                             "type": "Url", 
-                            "value": "http://localhost:8082/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+                            "value": "http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
                         }, 
                         "username": {
                             "description": "Repository User", 
@@ -663,7 +663,7 @@
                             "description": "Remote Repository Location Of The Project Containing The Artifact", 
                             "required": true, 
                             "type": "Url", 
-                            "value": ""
+                            "value": "http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
                         }, 
                         "username": {
                             "description": "Repository User", 

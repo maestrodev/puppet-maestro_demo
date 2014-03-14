@@ -4,8 +4,7 @@
     "description": "Archiva credentials",
     "options": {
       "username": "<%= scope['maestro::params::admin_username'] %>",
-      "password": "<%= scope['maestro::params::admin_password'] %>",
-      "url": "http://<%= @archiva_host %>:<%= @archiva_port %>/archiva/repository/snapshots/com/effectivemaven/centrepoint/webapp/1.0-SNAPSHOT/"
+      "password": "<%= scope['maestro::params::admin_password'] %>"
     },
     "project_id": 0,
     "source_type": "Maven download"
