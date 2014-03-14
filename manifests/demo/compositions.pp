@@ -4,14 +4,13 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   # maestro_demo::demo::composition::<composition_name>
 
   # New eval compositions
-  # Uncomment these, and comment/remove the rest once we're happy
-  # maestro_demo::demo::composition::generic { 'example - config mgmt': }
-  # maestro_demo::demo::composition::generic { 'example - java [ant]': }
-  # maestro_demo::demo::composition::generic { 'example - java [maven]': }
-  # maestro_demo::demo::composition::generic { 'example - java [jenkins]': }
-  # maestro_demo::demo::composition::generic { 'example - ruby [rake]': }
-  # maestro_demo::demo::composition::generic { 'example - rubygem [rake]': }
-  # maestro_demo::demo::composition::generic { 'example - shell': }
+  maestro_demo::demo::composition::generic { 'example_config_mgmt': }
+  maestro_demo::demo::composition::generic { 'example_java_ant': }
+  maestro_demo::demo::composition::generic { 'example_java_maven': }
+  maestro_demo::demo::composition::generic { 'example_java_jenkins': }
+  maestro_demo::demo::composition::generic { 'example_ruby_rake': }
+  maestro_demo::demo::composition::generic { 'example_rubygem_rake': }
+  maestro_demo::demo::composition::generic { 'example_shell': }
 
   # Generics - no special sauce required
   maestro_demo::demo::composition::generic { '_templates': enabled => false }
