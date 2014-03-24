@@ -4,7 +4,6 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
   # maestro_demo::demo::composition::<composition_name>
 
   # Generics - no special sauce required
-  maestro_demo::demo::composition::generic { 'example_config_mgmt': }
   maestro_demo::demo::composition::generic { 'example_java_ant': }
   maestro_demo::demo::composition::generic { 'example_java_maven': }
   maestro_demo::demo::composition::generic { 'example_java_jenkins': }
@@ -16,6 +15,9 @@ class maestro_demo::demo::compositions ( $basename = $maestro_demo::demo_home ) 
 
   # Non-generics - extra stuff makes these work
   class { 'maestro_demo::demo::composition::database': }
+
+  # Not shipped until we have this configured
+#  maestro_demo::demo::composition::generic { 'example_config_mgmt': }
 
   # Old compositions we no longer ship by default
 #  maestro_demo::demo::composition::generic { '_templates': enabled => false }
