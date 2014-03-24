@@ -1,5 +1,5 @@
 {
-  "id": 28,
+  "id": 12,
   "name": "Example - Java [jenkins]",
   "description": "Use Jenkins to build and test a Java Webapp",
   "home_url": "/projects/28",
@@ -15,10 +15,10 @@
     "scmPassword": null
   },
   "created_at": "2014-02-17T18:32:50+00:00",
-  "updated_at": "2014-02-17T20:09:15+00:00",
+  "updated_at": "2014-03-15T10:50:41+00:00",
   "compositions": [
     {
-      "id": 58,
+      "id": 26,
       "name": "1 - Standard Jenkins Build",
       "description": "Build the application, including any tests, then run selenium tests (Maven via Jenkins)",
       "schedule": "",
@@ -34,7 +34,7 @@
       "fail_on_cancel": false,
       "reuse_agent": true,
       "created_at": "2014-02-17T21:58:55+00:00",
-      "updated_at": "2014-02-28T23:56:32+00:00",
+      "updated_at": "2014-03-15T10:50:41+00:00",
       "max_queued_runs": 1,
       "max_concurrent_runs": 1,
       "agent_pool_id": 1,
@@ -42,7 +42,7 @@
       "parent_id": null,
       "composition_tasks": [
         {
-          "id": 187,
+          "id": 93,
           "options": {
             "host": {
               "type": "String",
@@ -170,9 +170,9 @@
           "name": "jenkins plugin",
           "is_from_parent": false,
           "created_at": "2014-02-17T22:08:24+00:00",
-          "updated_at": "2014-02-28T22:41:58+00:00",
+          "updated_at": "2014-03-15T10:50:41+00:00",
           "task_id": 27,
-          "composition_id": 58,
+          "composition_id": 26,
           "sources": [
             {
               "name": "jenkins"
@@ -180,7 +180,7 @@
           ]
         }
       ],
-      "fail_type": "fast",
+      "fail_type": null,
       "tasks": [
         {
           "id": 27,
@@ -325,8 +325,8 @@
             "hudson"
           ],
           "created_at": "2014-02-07T16:36:36+00:00",
-          "updated_at": "2014-02-12T02:02:56+00:00",
-          "plugin_id": 74
+          "updated_at": "2014-02-13T21:03:28+00:00",
+          "plugin_id": 76
         }
       ],
       "composition_configurations": [
@@ -334,7 +334,7 @@
       ]
     },
     {
-      "id": 67,
+      "id": 30,
       "name": "2 - Acceptance Tests (post Jenkins build)",
       "description": "Perform Automated tests in a clean virtual environment, then wait for QA to confirm",
       "schedule": "",
@@ -350,15 +350,15 @@
       "fail_on_cancel": false,
       "reuse_agent": true,
       "created_at": "2014-02-28T22:37:23+00:00",
-      "updated_at": "2014-02-28T23:56:22+00:00",
+      "updated_at": "2014-03-17T09:15:52+00:00",
       "max_queued_runs": 1,
       "max_concurrent_runs": 1,
       "agent_pool_id": 1,
-      "on_error_id": 69,
+      "on_error_id": 27,
       "parent_id": null,
       "composition_tasks": [
         {
-          "id": 211,
+          "id": 101,
           "options": {
             "username": {
               "type": "String",
@@ -395,9 +395,9 @@
           "name": "wget latest snapshot",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:18:41+00:00",
-          "updated_at": "2014-02-28T23:25:38+00:00",
+          "updated_at": "2014-03-17T09:15:52+00:00",
           "task_id": 58,
-          "composition_id": 67,
+          "composition_id": 30,
           "sources": [
             {
               "name": "Archiva"
@@ -405,7 +405,7 @@
           ]
         },
         {
-          "id": 215,
+          "id": 102,
           "options": {
             "access_key_id": {
               "type": "String",
@@ -433,13 +433,13 @@
             },
             "image_id": {
               "type": "String",
-              "value": "ami-1624987f",
+              "value": "ami-632f290a",
               "required": true,
               "description": "ami id of the image to use"
             },
             "flavor_id": {
               "type": "String",
-              "value": "t1.micro",
+              "value": "m1.small",
               "required": true,
               "description": "Flavor id that defines ram, cpu,..."
             },
@@ -490,14 +490,16 @@
             "ssh_commands": {
               "type": "Array",
               "value": [
-
+                "sudo sed -i 's/localhost:8009\\//localhost:8009/' ~/stack/apache-tomcat/conf/tomcat.conf",
+                "sudo sed -i 's/admin-gui\"/admin-gui,manager-script\"/' ~/stack/apache-tomcat/conf/tomcat-users.xml",
+                "sudo /home/bitnami/stack/ctlscript.sh restart tomcat"
               ],
               "required": false,
               "description": "commands to execute in the server once it is started"
             },
             "ssh_user": {
               "type": "String",
-              "value": "root",
+              "value": "bitnami",
               "required": false,
               "description": "username to use for ssh connection"
             },
@@ -518,9 +520,9 @@
           "name": "AWS provision",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:25:40+00:00",
-          "updated_at": "2014-02-28T23:25:40+00:00",
+          "updated_at": "2014-03-17T09:15:53+00:00",
           "task_id": 31,
-          "composition_id": 67,
+          "composition_id": 30,
           "sources": [
             {
               "name": "AWS Account"
@@ -528,18 +530,18 @@
           ]
         },
         {
-          "id": 216,
+          "id": 103,
           "options": {
             "host": {
               "type": "String",
-              "value": "localhost",
+              "value": "#{fields[:cloud_ips].first}",
               "label": "Tomcat Host",
               "required": false,
               "description": "Hostname of the server running Tomcat (this field is only used if 'tomcat_root_url' does not contain a valid url)"
             },
             "port": {
               "type": "Integer",
-              "value": 8080,
+              "value": 80,
               "label": "Tomcat Port",
               "required": false,
               "description": "Port Tomcat is bound to (this field is only used if 'tomcat_root_url' does not contain a valid url)"
@@ -560,21 +562,21 @@
             },
             "web_path": {
               "type": "String",
-              "value": "/",
+              "value": "/maven-webapp",
               "label": "Context Path (tomcat)",
               "required": true,
               "description": "Context path to deploy application to"
             },
             "user": {
               "type": "String",
-              "value": "tomcat",
+              "value": "manager",
               "label": "Tomcat User",
               "required": true,
               "description": "Username that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
             },
             "password": {
               "type": "Password",
-              "value": "password",
+              "value": "bitnami",
               "label": "Tomcat Password",
               "required": true,
               "description": "Password for user that has manager role on Tomcat (do not include in 'tomcat_root_url' field as password would be visible)"
@@ -598,78 +600,131 @@
           "name": "tomcat deploy",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:25:40+00:00",
-          "updated_at": "2014-02-28T23:25:40+00:00",
+          "updated_at": "2014-03-17T09:15:55+00:00",
           "task_id": 63,
-          "composition_id": 67,
+          "composition_id": 30,
           "sources": [
 
           ]
         },
         {
-          "id": 217,
+          "id": 136,
           "options": {
-            "host": {
+            "path": {
               "type": "String",
-              "value": "localhost",
-              "required": true,
-              "description": "Hostname Of The Bamboo Server"
+              "label": "Path",
+              "required": false,
+              "description": "Local path to clone the Git repository to. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}",
+              "value": "/tmp/eval-demo-sauce-project"
             },
-            "port": {
-              "type": "Integer",
-              "value": 8080,
+            "url": {
+              "type": "Url",
+              "label": "GIT URL",
               "required": true,
-              "description": "Port That Bamboo Is Running On"
+              "description": "Remote location of Git repository",
+              "value": "https://github.com/maestrodev/eval-demo-sauce-project.git"
             },
-            "use_ssl": {
+            "branch": {
+              "type": "String",
+              "label": "Branch",
+              "required": false,
+              "description": "Branch to checkout",
+              "value": null
+            },
+            "clean_working_copy": {
               "type": "Boolean",
               "value": false,
-              "required": true,
-              "description": "Connect to Bamboo using SSL"
-            },
-            "username": {
-              "type": "String",
-              "value": "bamboo username",
-              "required": true,
-              "description": "Bamboo User"
-            },
-            "password": {
-              "type": "Password",
-              "value": "[asswprd",
-              "required": true,
-              "description": "Password For The Bamboo User"
-            },
-            "web_path": {
-              "type": "String",
-              "value": "/",
+              "label": "Clean Working Copy?",
               "required": false,
-              "description": "Path to the Bamboo webapp in the server"
+              "description": "Remove local working copy before clone"
             },
-            "plan_key": {
-              "type": "String",
-              "value": "plan key",
-              "required": true,
-              "description": "Key of the plan to queue"
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Force Build?",
+              "required": false,
+              "description": "Build if no changes detected?"
             },
-            "project_key": {
-              "type": "String",
-              "value": "project key",
-              "required": true,
-              "description": "Key For The Project to queue"
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Enable Repo Trigger?",
+              "required": false,
+              "description": "Auto-Build this composition if repository trigger fired"
             }
           },
           "position": 3,
-          "name": "bamboo",
+          "name": "git clone",
           "is_from_parent": false,
-          "created_at": "2014-02-28T23:25:41+00:00",
-          "updated_at": "2014-02-28T23:25:41+00:00",
-          "task_id": 13,
-          "composition_id": 67,
+          "created_at": "2014-03-17T09:07:41+00:00",
+          "updated_at": "2014-03-17T09:15:56+00:00",
+          "task_id": 51,
+          "composition_id": 30,
           "sources": [
 
           ]
         },
         {
-          "id": 218,
+          "id": 137,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Maven",
+              "value": "/tmp/eval-demo-sauce-project"
+            },
+            "goals": {
+              "type": "Array",
+              "value": [
+                "test"
+              ],
+              "required": true,
+              "description": "Set of Maven goals"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "settingsfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location of a Maven settings.xml file"
+            },
+            "profiles": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Profiles To Activate"
+            },
+            "properties": {
+              "type": "Array",
+              "value": [
+                "SAUCE_USER_NAME=xxx",
+                "SAUCE_API_KEY=xxx",
+                "appUrl=http://#{fields[:cloud_ips].first}/maven-webapp/"
+              ],
+              "required": false,
+              "description": "Settings To Pass Maven"
+            }
+          },
+          "position": 4,
+          "name": "maven",
+          "is_from_parent": false,
+          "created_at": "2014-03-17T09:07:41+00:00",
+          "updated_at": "2014-03-17T09:15:58+00:00",
+          "task_id": 57,
+          "composition_id": 30,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 105,
           "options": {
             "body": {
               "label": "Message",
@@ -686,19 +741,19 @@
               "value": false
             }
           },
-          "position": 4,
+          "position": 5,
           "name": "confirmation",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:25:41+00:00",
-          "updated_at": "2014-02-28T23:25:41+00:00",
+          "updated_at": "2014-03-17T09:15:55+00:00",
           "task_id": 73,
-          "composition_id": 67,
+          "composition_id": 30,
           "sources": [
 
           ]
         },
         {
-          "id": 219,
+          "id": 106,
           "options": {
             "access_key_id": {
               "type": "String",
@@ -727,13 +782,13 @@
               "description": "ids or names of instances to deprovision. If not set it will deprovision the vms provisioned in previous steps"
             }
           },
-          "position": 5,
+          "position": 6,
           "name": "AWS deprovision",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:25:41+00:00",
-          "updated_at": "2014-02-28T23:25:41+00:00",
+          "updated_at": "2014-03-17T09:15:55+00:00",
           "task_id": 38,
-          "composition_id": 67,
+          "composition_id": 30,
           "sources": [
             {
               "name": "AWS Account"
@@ -741,84 +796,11 @@
           ]
         }
       ],
-      "fail_type": "fast",
+      "fail_type": null,
       "on_error_composition": {
         "name": "2a - Acceptance Tests Failed [jenkins]"
       },
       "tasks": [
-        {
-          "id": 13,
-          "name": "bamboo",
-          "description": "Puts A Bamboo Plan In The Build Queue",
-          "position": 1,
-          "options": {
-            "host": {
-              "type": "String",
-              "value": "localhost",
-              "required": true,
-              "description": "Hostname Of The Bamboo Server"
-            },
-            "port": {
-              "type": "Integer",
-              "value": 8080,
-              "required": true,
-              "description": "Port That Bamboo Is Running On"
-            },
-            "use_ssl": {
-              "type": "Boolean",
-              "value": false,
-              "required": true,
-              "description": "Connect to Bamboo using SSL"
-            },
-            "username": {
-              "type": "String",
-              "value": "",
-              "required": true,
-              "description": "Bamboo User"
-            },
-            "password": {
-              "type": "Password",
-              "value": "",
-              "required": true,
-              "description": "Password For The Bamboo User"
-            },
-            "web_path": {
-              "type": "String",
-              "value": "",
-              "required": false,
-              "description": "Path to the Bamboo webapp in the server"
-            },
-            "plan_key": {
-              "type": "String",
-              "value": "",
-              "required": true,
-              "description": "Key of the plan to queue"
-            },
-            "project_key": {
-              "type": "String",
-              "value": "",
-              "required": true,
-              "description": "Key For The Project to queue"
-            }
-          },
-          "type": "remote",
-          "command": "/bambooplugin/build",
-          "tool_name": [
-            "Build"
-          ],
-          "code": null,
-          "klass": "MaestroDev::Plugin::BambooWorker",
-          "dependencies": null,
-          "language": "ruby",
-          "pom": null,
-          "image": "bamboo.png",
-          "tags": [
-
-          ],
-          "created_at": "2014-02-07T16:36:30+00:00",
-          "updated_at": "2014-02-07T16:36:30+00:00",
-          "plugin_id": 14
-        },
         {
           "id": 31,
           "name": "AWS provision",
@@ -991,6 +973,139 @@
           "plugin_id": 39
         },
         {
+          "id": 51,
+          "name": "git clone",
+          "description": "Clone a Git repository",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "label": "Path",
+              "required": false,
+              "description": "Local path to clone the Git repository to. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
+            },
+            "url": {
+              "type": "Url",
+              "label": "GIT URL",
+              "required": true,
+              "description": "Remote location of Git repository"
+            },
+            "branch": {
+              "type": "String",
+              "label": "Branch",
+              "required": false,
+              "description": "Branch to checkout"
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Clean Working Copy?",
+              "required": false,
+              "description": "Remove local working copy before clone"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Force Build?",
+              "required": false,
+              "description": "Build if no changes detected?"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Enable Repo Trigger?",
+              "required": false,
+              "description": "Auto-Build this composition if repository trigger fired"
+            }
+          },
+          "type": "remote",
+          "command": "/git/clone",
+          "tool_name": [
+            "SCM"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::GitWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "git.png",
+          "tags": [
+            "git",
+            "scm",
+            "rcs",
+            "vcs"
+          ],
+          "created_at": "2014-02-07T16:36:48+00:00",
+          "updated_at": "2014-03-15T10:50:29+00:00",
+          "plugin_id": 78
+        },
+        {
+          "id": 57,
+          "name": "maven",
+          "description": "Run A Maven Task",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Maven"
+            },
+            "goals": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": true,
+              "description": "Set of Maven goals"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "settingsfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location of a Maven settings.xml file"
+            },
+            "profiles": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Profiles To Activate"
+            },
+            "properties": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Settings To Pass Maven"
+            }
+          },
+          "type": "remote",
+          "command": "/maven/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::MavenWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "maven.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:50+00:00",
+          "updated_at": "2014-02-07T16:36:50+00:00",
+          "plugin_id": 58
+        },
+        {
           "id": 58,
           "name": "wget latest snapshot",
           "description": "Downloads The Latest Snapshot From A Maven Artifact Repository Using Wget",
@@ -1128,7 +1243,7 @@
 
           ],
           "created_at": "2014-02-07T16:36:52+00:00",
-          "updated_at": "2014-02-21T18:59:14+00:00",
+          "updated_at": "2014-03-15T10:49:55+00:00",
           "plugin_id": 64
         },
         {
@@ -1170,7 +1285,7 @@
             "pause"
           ],
           "created_at": "2014-02-07T16:36:56+00:00",
-          "updated_at": "2014-02-12T02:15:34+00:00",
+          "updated_at": "2014-03-16T23:27:14+00:00",
           "plugin_id": null
         }
       ],
@@ -1179,7 +1294,7 @@
       ]
     },
     {
-      "id": 69,
+      "id": 27,
       "name": "2a - Acceptance Tests Failed [jenkins]",
       "description": "The Acceptance Tests must have failed - clean up and send an email",
       "schedule": "",
@@ -1195,7 +1310,7 @@
       "fail_on_cancel": false,
       "reuse_agent": true,
       "created_at": "2014-02-28T23:51:31+00:00",
-      "updated_at": "2014-02-28T23:52:57+00:00",
+      "updated_at": "2014-03-17T05:45:43+00:00",
       "max_queued_runs": 1,
       "max_concurrent_runs": 1,
       "agent_pool_id": 1,
@@ -1203,7 +1318,36 @@
       "parent_id": null,
       "composition_tasks": [
         {
-          "id": 220,
+          "id": 134,
+          "options": {
+            "body": {
+              "label": "Message",
+              "description": "The message to be displayed in the action list",
+              "required": true,
+              "type": "String",
+              "value": "Ready to deprovision instance due to failure: please troubleshoot failure and then confirm"
+            },
+            "fail_on_cancel": {
+              "label": "Fail if declined?",
+              "description": "If the user declines the action, fail the composition (otherwise it will continue)",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            }
+          },
+          "position": 0,
+          "name": "confirmation",
+          "is_from_parent": false,
+          "created_at": "2014-03-17T05:45:44+00:00",
+          "updated_at": "2014-03-17T05:45:44+00:00",
+          "task_id": 73,
+          "composition_id": 27,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 94,
           "options": {
             "access_key_id": {
               "type": "String",
@@ -1226,19 +1370,19 @@
             "instance_ids": {
               "type": "Array",
               "value": [
-
+                "#{context_inputs[:servers].first['id']}"
               ],
               "required": false,
               "description": "ids or names of instances to deprovision. If not set it will deprovision the vms provisioned in previous steps"
             }
           },
-          "position": 0,
+          "position": 1,
           "name": "AWS deprovision",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:52:57+00:00",
-          "updated_at": "2014-02-28T23:52:57+00:00",
+          "updated_at": "2014-03-17T05:45:43+00:00",
           "task_id": 38,
-          "composition_id": 69,
+          "composition_id": 27,
           "sources": [
             {
               "name": "AWS Account"
@@ -1246,7 +1390,7 @@
           ]
         },
         {
-          "id": 221,
+          "id": 95,
           "options": {
             "server": {
               "label": "Server",
@@ -1267,7 +1411,7 @@
               "description": "Use SSL Encryption",
               "required": true,
               "type": "Boolean",
-              "value": true
+              "value": false
             },
             "domain": {
               "label": "Domain",
@@ -1354,19 +1498,19 @@
               "value": ""
             }
           },
-          "position": 1,
+          "position": 2,
           "name": "email",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:52:58+00:00",
-          "updated_at": "2014-02-28T23:52:58+00:00",
+          "updated_at": "2014-03-17T05:45:44+00:00",
           "task_id": 74,
-          "composition_id": 69,
+          "composition_id": 27,
           "sources": [
 
           ]
         }
       ],
-      "fail_type": "fast",
+      "fail_type": null,
       "tasks": [
         {
           "id": 38,
@@ -1415,6 +1559,48 @@
           "created_at": "2014-02-07T16:36:41+00:00",
           "updated_at": "2014-02-07T16:36:41+00:00",
           "plugin_id": 39
+        },
+        {
+          "id": 73,
+          "name": "confirmation",
+          "description": "Allows user confirmation before continuing.  A notification will be displayed in the User Interface.  Confirming will allow the composition to continue, rejecting will cancel the composition if configured",
+          "position": 1,
+          "options": {
+            "body": {
+              "label": "Message",
+              "description": "The message to be displayed in the action list",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "fail_on_cancel": {
+              "label": "Fail if declined?",
+              "description": "If the user declines the action, fail the composition (otherwise it will continue)",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            }
+          },
+          "type": "confirmation",
+          "command": "/confirmation/work",
+          "tool_name": [
+            "Actions"
+          ],
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "confirm.png",
+          "tags": [
+            "maestro",
+            "user",
+            "continue",
+            "pause"
+          ],
+          "created_at": "2014-02-07T16:36:56+00:00",
+          "updated_at": "2014-03-16T23:27:14+00:00",
+          "plugin_id": null
         },
         {
           "id": 74,
@@ -1543,7 +1729,7 @@
             "maestro"
           ],
           "created_at": "2014-02-07T16:36:56+00:00",
-          "updated_at": "2014-02-12T02:15:41+00:00",
+          "updated_at": "2014-03-16T23:27:21+00:00",
           "plugin_id": null
         }
       ],
@@ -1552,7 +1738,7 @@
       ]
     },
     {
-      "id": 70,
+      "id": 28,
       "name": "* - Standard Build + Acceptance Tests",
       "description": "Run the Jenkins Build which include selenium tests, then run the Acceptance Tests",
       "schedule": "",
@@ -1568,7 +1754,7 @@
       "fail_on_cancel": false,
       "reuse_agent": true,
       "created_at": "2014-02-28T23:54:41+00:00",
-      "updated_at": "2014-02-28T23:56:44+00:00",
+      "updated_at": "2014-03-15T10:50:44+00:00",
       "max_queued_runs": 1,
       "max_concurrent_runs": 1,
       "agent_pool_id": 1,
@@ -1576,7 +1762,7 @@
       "parent_id": null,
       "composition_tasks": [
         {
-          "id": 222,
+          "id": 96,
           "options": {
             "composition": {
               "label": "Composition",
@@ -1604,15 +1790,15 @@
           "name": "schedule",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:56:06+00:00",
-          "updated_at": "2014-02-28T23:56:44+00:00",
+          "updated_at": "2014-03-16T23:27:11+00:00",
           "task_id": 76,
-          "composition_id": 70,
+          "composition_id": 28,
           "sources": [
 
           ]
         },
         {
-          "id": 223,
+          "id": 97,
           "options": {
             "composition": {
               "label": "Composition",
@@ -1640,15 +1826,15 @@
           "name": "schedule",
           "is_from_parent": false,
           "created_at": "2014-02-28T23:56:06+00:00",
-          "updated_at": "2014-02-28T23:56:45+00:00",
+          "updated_at": "2014-03-16T23:27:11+00:00",
           "task_id": 76,
-          "composition_id": 70,
+          "composition_id": 28,
           "sources": [
 
           ]
         }
       ],
-      "fail_type": "fast",
+      "fail_type": null,
       "tasks": [
         {
           "id": 76,
@@ -1695,7 +1881,7 @@
             "schedule"
           ],
           "created_at": "2014-02-07T16:36:56+00:00",
-          "updated_at": "2014-02-12T02:15:30+00:00",
+          "updated_at": "2014-03-16T23:27:08+00:00",
           "plugin_id": null
         }
       ],
@@ -1707,7 +1893,7 @@
       ]
     },
     {
-      "id": 71,
+      "id": 29,
       "name": "3 - Deploy",
       "description": "Deploy the app to production",
       "schedule": "",
@@ -1723,7 +1909,7 @@
       "fail_on_cancel": false,
       "reuse_agent": true,
       "created_at": "2014-03-01T01:41:00+00:00",
-      "updated_at": "2014-03-01T01:46:55+00:00",
+      "updated_at": "2014-03-16T23:49:51+00:00",
       "max_queued_runs": 1,
       "max_concurrent_runs": 1,
       "agent_pool_id": 1,
@@ -1731,7 +1917,7 @@
       "parent_id": null,
       "composition_tasks": [
         {
-          "id": 224,
+          "id": 98,
           "options": {
             "username": {
               "type": "String",
@@ -1768,9 +1954,9 @@
           "name": "wget latest snapshot",
           "is_from_parent": false,
           "created_at": "2014-03-01T01:42:52+00:00",
-          "updated_at": "2014-03-01T01:46:56+00:00",
+          "updated_at": "2014-03-16T23:49:53+00:00",
           "task_id": 58,
-          "composition_id": 71,
+          "composition_id": 29,
           "sources": [
             {
               "name": "Archiva"
@@ -1778,7 +1964,7 @@
           ]
         },
         {
-          "id": 225,
+          "id": 99,
           "options": {
             "host": {
               "type": "String",
@@ -1796,7 +1982,7 @@
             },
             "tomcat_root_url": {
               "type": "String",
-              "value": "https://localhost/tomcat",
+              "value": "http://localhost:8484/",
               "label": "Tomcat URL",
               "required": true,
               "description": "Complete URL of Tomcat root page.  Alternatively, if 'host' and 'port' fields used, the path to Tomcat - usually '/')"
@@ -1848,15 +2034,15 @@
           "name": "tomcat deploy",
           "is_from_parent": false,
           "created_at": "2014-03-01T01:42:53+00:00",
-          "updated_at": "2014-03-01T01:46:57+00:00",
+          "updated_at": "2014-03-16T23:49:53+00:00",
           "task_id": 63,
-          "composition_id": 71,
+          "composition_id": 29,
           "sources": [
 
           ]
         },
         {
-          "id": 226,
+          "id": 100,
           "options": {
             "url": {
               "type": "String",
@@ -1893,15 +2079,15 @@
           "name": "REST GET",
           "is_from_parent": false,
           "created_at": "2014-03-01T01:43:55+00:00",
-          "updated_at": "2014-03-01T01:46:57+00:00",
+          "updated_at": "2014-03-16T23:49:53+00:00",
           "task_id": 2,
-          "composition_id": 71,
+          "composition_id": 29,
           "sources": [
 
           ]
         }
       ],
-      "fail_type": "fast",
+      "fail_type": null,
       "tasks": [
         {
           "id": 2,
@@ -2096,7 +2282,7 @@
 
           ],
           "created_at": "2014-02-07T16:36:52+00:00",
-          "updated_at": "2014-02-21T18:59:14+00:00",
+          "updated_at": "2014-03-15T10:49:55+00:00",
           "plugin_id": 64
         }
       ],

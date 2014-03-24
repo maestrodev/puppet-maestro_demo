@@ -1,782 +1,569 @@
 {
-  "compositions":[
+  "id": 6,
+  "name": "Other Examples - Orchestration Tasks",
+  "description": "Maestro examples",
+  "home_url": "/projects/6",
+  "scm_url": null,
+  "tags": null,
+  "parameters": null,
+  "created_at": "2012-09-11T22:49:48+00:00",
+  "updated_at": "2014-03-17T02:29:13+00:00",
+  "compositions": [
     {
-      "agent_facts":{
-        "hostname":"localhost"
+      "id": 12,
+      "name": "Sample 1",
+      "description": "Simple sample to use as a building block",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
       },
-      "composition_tasks":[
-        {
-          "created_at":"2012-09-12T00:51:25+02:00",
-          "is_from_parent":false,
-          "name":"shell execute",
-          "options":{
-            "command_string":{
-              "description":"String Of Shell Commands ",
-              "required":true,
-              "type":"String",
-              "value":"hostname"
-            },
-            "environment":{
-              "description":"Environment settings",
-              "required":false,
-              "type":"String",
-              "value":""
-            }
-          },
-          "position":1,
-          "sources":[
-
-          ],
-          "updated_at":"2012-09-20T19:56:30+02:00"
-        }
-      ],
-      "created_at":"2012-09-12T00:51:02+02:00",
-      "description":"Illustrate targeting an agent based on a fact (hostname)",
-      "fail_on_cancel":false,
-      "fail_type":"fast",
-      "fail_type_id":1,
-      "name":"Agent Example",
-      "on_error_composition":null,
-      "on_error_id":null,
-      "parent_id":null,
-      "reuse_agent":true,
-      "schedule":"",
-      "sources":[
-
-      ],
-      "state":null,
-      "tags":[
+      "tags": [
         ""
       ],
-      "tasks":[
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2012-09-13T03:39:00+00:00",
+      "updated_at": "2014-03-17T02:56:14+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
         {
-          "code":null,
-          "command":"/shell/execute",
-          "created_at":"2011-08-22T15:57:59+02:00",
-          "dependencies":null,
-          "description":"Execute A Shell Command Locally ",
-          "image":null,
-          "klass":null,
-          "language":null,
-          "name":"shell execute",
-          "options":{
-            "command_string":{
-              "description":"String Of Shell Commands ",
-              "required":true,
-              "type":"String",
-              "value":""
+          "id": 131,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "sleep 5",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
             },
-            "environment":{
-              "description":"Environment settings",
-              "required":false,
-              "type":"String",
-              "value":""
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
             }
           },
-          "plugin_id":null,
-          "pom":null,
-          "position":5,
-          "tool_name":[
+          "position": 0,
+          "name": "shell execute",
+          "is_from_parent": false,
+          "created_at": "2014-03-17T02:56:14+00:00",
+          "updated_at": "2014-03-17T02:56:14+00:00",
+          "task_id": 10,
+          "composition_id": 12,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 10,
+          "name": "shell execute",
+          "description": "Run An Shell Task",
+          "position": 1,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "whoami",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "type": "remote",
+          "command": "/shell/execute",
+          "tool_name": [
             "Shell"
           ],
-          "type":"remote",
-          "updated_at":"2012-09-20T19:56:30+02:00"
+          "code": null,
+          "klass": "MaestroDev::Plugin::ShellWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "shell.png",
+          "tags": [
+            "shell",
+            "cmd",
+            "bash"
+          ],
+          "created_at": "2014-02-07T16:36:29+00:00",
+          "updated_at": "2014-02-13T21:03:35+00:00",
+          "plugin_id": 77
         }
       ],
-      "updated_at":"2012-09-12T00:57:29+02:00"
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
     },
     {
-      "agent_facts":{
+      "id": 13,
+      "name": "Sample 2",
+      "description": "Simple sample to use as a building block",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
 
       },
-      "composition_tasks":[
-        {
-          "created_at":"2012-09-13T05:39:35+02:00",
-          "is_from_parent":false,
-          "name":"timer",
-          "options":{
-            "delay":{
-              "description":"Time In Seconds",
-              "required":true,
-              "type":"Integer",
-              "value":5
-            }
-          },
-          "position":1,
-          "sources":[
-
-          ],
-          "updated_at":"2012-09-20T19:56:31+02:00"
-        }
-      ],
-      "created_at":"2012-09-13T05:39:00+02:00",
-      "description":"Simple sample to use as a building block",
-      "fail_on_cancel":false,
-      "fail_type":"fast",
-      "fail_type_id":1,
-      "name":"Sample 1",
-      "on_error_composition":null,
-      "on_error_id":null,
-      "parent_id":null,
-      "reuse_agent":true,
-      "schedule":"",
-      "sources":[
-
-      ],
-      "state":null,
-      "tags":[
+      "tags": [
         ""
       ],
-      "tasks":[
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2012-09-13T03:39:45+00:00",
+      "updated_at": "2014-03-17T02:56:33+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
         {
-          "code":null,
-          "command":"/timer/timer",
-          "created_at":"2011-08-22T15:57:59+02:00",
-          "dependencies":null,
-          "description":"Wait For A Specified Amount Of Seconds",
-          "image":null,
-          "klass":null,
-          "language":null,
-          "name":"timer",
-          "options":{
-            "delay":{
-              "description":"Time In Seconds",
-              "required":true,
-              "type":"Integer",
-              "value":60
+          "id": 132,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "sleep 15",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
             }
           },
-          "plugin_id":null,
-          "pom":null,
-          "position":5,
-          "tool_name":[
-            "Notification"
-          ],
-          "type":"remote",
-          "updated_at":"2012-09-20T19:56:31+02:00"
+          "position": 0,
+          "name": "shell execute",
+          "is_from_parent": false,
+          "created_at": "2014-03-17T02:56:33+00:00",
+          "updated_at": "2014-03-17T02:56:33+00:00",
+          "task_id": 10,
+          "composition_id": 13,
+          "sources": [
+
+          ]
         }
       ],
-      "updated_at":"2012-09-13T05:39:00+02:00"
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 10,
+          "name": "shell execute",
+          "description": "Run An Shell Task",
+          "position": 1,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "whoami",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "type": "remote",
+          "command": "/shell/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::ShellWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "shell.png",
+          "tags": [
+            "shell",
+            "cmd",
+            "bash"
+          ],
+          "created_at": "2014-02-07T16:36:29+00:00",
+          "updated_at": "2014-02-13T21:03:35+00:00",
+          "plugin_id": 77
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
     },
     {
-      "agent_facts":{
+      "id": 14,
+      "name": "Parallel",
+      "description": "Run two compositions in parallel, and wait for completion of both before proceeding",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
 
       },
-      "composition_tasks":[
-        {
-          "created_at":"2012-09-13T05:39:54+02:00",
-          "is_from_parent":false,
-          "name":"timer",
-          "options":{
-            "delay":{
-              "description":"Time In Seconds",
-              "required":true,
-              "type":"Integer",
-              "value":15
-            }
-          },
-          "position":1,
-          "sources":[
-
-          ],
-          "updated_at":"2012-09-20T19:56:31+02:00"
-        }
-      ],
-      "created_at":"2012-09-13T05:39:45+02:00",
-      "description":"Simple sample to use as a building block",
-      "fail_on_cancel":false,
-      "fail_type":"fast",
-      "fail_type_id":1,
-      "name":"Sample 2",
-      "on_error_composition":null,
-      "on_error_id":null,
-      "parent_id":null,
-      "reuse_agent":true,
-      "schedule":"",
-      "sources":[
-
-      ],
-      "state":null,
-      "tags":[
+      "tags": [
         ""
       ],
-      "tasks":[
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2012-09-13T03:40:13+00:00",
+      "updated_at": "2014-03-17T02:57:59+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
         {
-          "code":null,
-          "command":"/timer/timer",
-          "created_at":"2011-08-22T15:57:59+02:00",
-          "dependencies":null,
-          "description":"Wait For A Specified Amount Of Seconds",
-          "image":null,
-          "klass":null,
-          "language":null,
-          "name":"timer",
-          "options":{
-            "delay":{
-              "description":"Time In Seconds",
-              "required":true,
-              "type":"Integer",
-              "value":60
-            }
-          },
-          "plugin_id":null,
-          "pom":null,
-          "position":5,
-          "tool_name":[
-            "Notification"
-          ],
-          "type":"remote",
-          "updated_at":"2012-09-20T19:56:31+02:00"
-        }
-      ],
-      "updated_at":"2012-09-13T05:39:45+02:00"
-    },
-    {
-      "agent_facts":{
-
-      },
-      "composition_tasks":[
-        {
-          "created_at":"2012-09-13T05:40:31+02:00",
-          "is_from_parent":false,
-          "name":"fork compositions",
-          "options":{
-            "compositions":{
-              "description":"Composition names or ids to be scheduled",
-              "required":true,
-              "type":"Array",
-              "value":[
+          "id": 42,
+          "options": {
+            "compositions": {
+              "description": "Composition names or ids to be scheduled",
+              "required": true,
+              "type": "Array",
+              "value": [
                 "Sample 1",
                 "Sample 2"
               ]
             },
-            "Force Schedule Build":{
-              "description":"Force build the scheduled composition",
-              "required":true,
-              "type":"Boolean",
-              "value":true
+            "Force Schedule Build": {
+              "description": "Force build the scheduled composition",
+              "required": true,
+              "type": "Boolean",
+              "value": true
             }
           },
-          "position":1,
-          "sources":[
+          "position": 0,
+          "name": "fork compositions",
+          "is_from_parent": false,
+          "created_at": "2012-09-13T03:40:31+00:00",
+          "updated_at": "2014-03-17T02:57:59+00:00",
+          "task_id": 78,
+          "composition_id": 14,
+          "sources": [
 
-          ],
-          "updated_at":"2012-09-20T19:56:31+02:00"
+          ]
         },
         {
-          "created_at":"2012-09-13T05:40:50+02:00",
-          "is_from_parent":false,
-          "name":"join compositions",
-          "options":{
+          "id": 133,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "echo \"Task would happen in parallel to others if there are enough agents\"",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "position": 1,
+          "name": "shell execute",
+          "is_from_parent": false,
+          "created_at": "2014-03-17T02:57:59+00:00",
+          "updated_at": "2014-03-17T02:57:59+00:00",
+          "task_id": 10,
+          "composition_id": 14,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 43,
+          "options": {
 
           },
-          "position":2,
-          "sources":[
+          "position": 2,
+          "name": "join compositions",
+          "is_from_parent": false,
+          "created_at": "2012-09-13T03:40:50+00:00",
+          "updated_at": "2014-03-17T02:57:59+00:00",
+          "task_id": 79,
+          "composition_id": 14,
+          "sources": [
 
-          ],
-          "updated_at":"2012-09-20T19:56:31+02:00"
+          ]
         }
       ],
-      "created_at":"2012-09-13T05:40:13+02:00",
-      "description":"Run two compositions in parallel, and wait for completion of both before proceeding",
-      "fail_on_cancel":false,
-      "fail_type":"fast",
-      "fail_type_id":1,
-      "name":"Parallel",
-      "on_error_composition":null,
-      "on_error_id":null,
-      "parent_id":null,
-      "reuse_agent":true,
-      "schedule":"",
-      "sources":[
-
-      ],
-      "state":null,
-      "tags":[
-        ""
-      ],
-      "tasks":[
+      "fail_type": "fast",
+      "tasks": [
         {
-          "code":null,
-          "command":"/fork/fork",
-          "created_at":"2012-04-11T15:57:59+02:00",
-          "dependencies":null,
-          "description":"Fork a composition to execute",
-          "image":null,
-          "klass":null,
-          "language":null,
-          "name":"fork compositions",
-          "options":{
-            "compositions":{
-              "description":"Composition names or ids to be scheduled",
-              "required":true,
-              "type":"Array",
-              "value":[
+          "id": 10,
+          "name": "shell execute",
+          "description": "Run An Shell Task",
+          "position": 1,
+          "options": {
+            "command_string": {
+              "type": "Text",
+              "value": "whoami",
+              "label": "Commands",
+              "required": true,
+              "description": "The shell commands to execute"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "label": "Environment",
+              "required": false,
+              "description": "Environment Variables to set"
+            }
+          },
+          "type": "remote",
+          "command": "/shell/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::ShellWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "shell.png",
+          "tags": [
+            "shell",
+            "cmd",
+            "bash"
+          ],
+          "created_at": "2014-02-07T16:36:29+00:00",
+          "updated_at": "2014-02-13T21:03:35+00:00",
+          "plugin_id": 77
+        },
+        {
+          "id": 78,
+          "name": "fork compositions",
+          "description": "Fork a composition to execute",
+          "position": 5,
+          "options": {
+            "compositions": {
+              "label": "Composition List",
+              "description": "Composition names or ids to be scheduled",
+              "required": true,
+              "type": "Array",
+              "value": [
 
               ]
             },
-            "Force Schedule Build":{
-              "description":"Force build the scheduled composition",
-              "required":true,
-              "type":"Boolean",
-              "value":true
+            "Force Schedule Build": {
+              "label": "Force Schedule Build",
+              "description": "Force build the scheduled composition",
+              "required": true,
+              "type": "Boolean",
+              "value": true
             }
           },
-          "plugin_id":null,
-          "pom":null,
-          "position":5,
-          "tool_name":[
+          "type": "fork",
+          "command": "/fork/fork",
+          "tool_name": [
             "Management"
           ],
-          "type":"fork",
-          "updated_at":"2012-09-20T19:56:31+02:00"
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "fork-multiple.png",
+          "tags": [
+            "maestro",
+            "fork",
+            "schedule"
+          ],
+          "created_at": "2014-02-07T16:36:57+00:00",
+          "updated_at": "2014-03-16T23:27:07+00:00",
+          "plugin_id": null
         },
         {
-          "code":null,
-          "command":"/fork/wait",
-          "created_at":"2012-04-11T15:57:59+02:00",
-          "dependencies":null,
-          "description":"Join a forked set of compositions",
-          "image":null,
-          "klass":null,
-          "language":null,
-          "name":"join compositions",
-          "options":{
+          "id": 79,
+          "name": "join compositions",
+          "description": "Join a forked set of compositions",
+          "position": 5,
+          "options": {
 
           },
-          "plugin_id":null,
-          "pom":null,
-          "position":5,
-          "tool_name":[
+          "type": "fork",
+          "command": "/fork/wait",
+          "tool_name": [
             "Management"
           ],
-          "type":"fork",
-          "updated_at":"2012-09-20T19:56:31+02:00"
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "join.png",
+          "tags": [
+            "maestro",
+            "fork",
+            "schedule"
+          ],
+          "created_at": "2014-02-07T16:36:57+00:00",
+          "updated_at": "2014-03-16T23:27:08+00:00",
+          "plugin_id": null
         }
       ],
-      "updated_at":"2012-09-13T05:40:13+02:00"
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
     },
     {
-      "agent_facts":{
+      "id": 15,
+      "name": "Cascaded",
+      "description": "Run two compositions in sequence",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
 
       },
-      "composition_tasks":[
+      "tags": [
+        ""
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2012-09-13T03:41:10+00:00",
+      "updated_at": "2014-02-07T16:40:08+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
         {
-          "created_at":"2012-09-13T05:41:29+02:00",
-          "is_from_parent":false,
-          "name":"schedule multiple",
-          "options":{
-            "compositions":{
-              "description":"Composition names or ids to be scheduled",
-              "required":true,
-              "type":"Array",
-              "value":[
+          "id": 44,
+          "options": {
+            "compositions": {
+              "description": "Composition names or ids to be scheduled",
+              "required": true,
+              "type": "Array",
+              "value": [
                 "Sample 1",
                 "Sample 2"
               ]
             },
-            "wait_for_completion":{
-              "description":"Pause this Composition until completion of the scheduled compositions",
-              "required":false,
-              "type":"Boolean",
-              "value":false
+            "wait_for_completion": {
+              "description": "Pause this Composition until completion of the scheduled compositions",
+              "required": false,
+              "type": "Boolean",
+              "value": false
             },
-            "Force Schedule Build":{
-              "description":"Force build the scheduled composition",
-              "required":true,
-              "type":"Boolean",
-              "value":true
+            "Force Schedule Build": {
+              "description": "Force build the scheduled composition",
+              "required": true,
+              "type": "Boolean",
+              "value": true
             }
           },
-          "position":1,
-          "sources":[
+          "position": 1,
+          "name": "schedule multiple",
+          "is_from_parent": false,
+          "created_at": "2012-09-13T03:41:29+00:00",
+          "updated_at": "2014-03-16T23:27:13+00:00",
+          "task_id": 77,
+          "composition_id": 15,
+          "sources": [
 
-          ],
-          "updated_at":"2012-09-20T19:56:31+02:00"
+          ]
         }
       ],
-      "created_at":"2012-09-13T05:41:10+02:00",
-      "description":"Run two compositions in sequence",
-      "fail_on_cancel":false,
-      "fail_type":"fast",
-      "fail_type_id":1,
-      "name":"Cascaded",
-      "on_error_composition":null,
-      "on_error_id":null,
-      "parent_id":null,
-      "reuse_agent":true,
-      "schedule":"",
-      "sources":[
-
-      ],
-      "state":null,
-      "tags":[
-        ""
-      ],
-      "tasks":[
+      "fail_type": "fast",
+      "tasks": [
         {
-          "code":null,
-          "command":"/schedule/schedule_multiple",
-          "created_at":"2012-04-11T15:57:59+02:00",
-          "dependencies":null,
-          "description":"Schedule compositions to execute",
-          "image":null,
-          "klass":null,
-          "language":null,
-          "name":"schedule multiple",
-          "options":{
-            "compositions":{
-              "description":"Composition names or ids to be scheduled",
-              "required":true,
-              "type":"Array",
-              "value":[
+          "id": 77,
+          "name": "schedule multiple",
+          "description": "Schedule compositions to execute",
+          "position": 5,
+          "options": {
+            "compositions": {
+              "label": "Composition List",
+              "description": "Composition names or ids to be scheduled",
+              "required": true,
+              "type": "Array",
+              "value": [
 
               ]
             },
-            "wait_for_completion":{
-              "description":"Pause this Composition until completion of the scheduled compositions",
-              "required":false,
-              "type":"Boolean",
-              "value":false
+            "wait_for_completion": {
+              "label": "Wait until all complete?",
+              "description": "Pause this Composition until completion of the scheduled compositions",
+              "required": false,
+              "type": "Boolean",
+              "value": false
             },
-            "Force Schedule Build":{
-              "description":"Force build the scheduled composition",
-              "required":true,
-              "type":"Boolean",
-              "value":true
+            "Force Schedule Build": {
+              "label": "Force Schedule Build",
+              "description": "Force build the scheduled composition",
+              "required": true,
+              "type": "Boolean",
+              "value": true
             }
           },
-          "plugin_id":null,
-          "pom":null,
-          "position":5,
-          "tool_name":[
+          "type": "schedule",
+          "command": "/schedule/schedule_multiple",
+          "tool_name": [
             "Management"
           ],
-          "type":"schedule",
-          "updated_at":"2012-09-20T19:56:31+02:00"
-        }
-      ],
-      "updated_at":"2012-09-13T05:41:10+02:00"
-    },
-    {
-      "name":"Maven Release test",
-      "description":"Should how to use the Maven Release plugin to do a project release from GitHub (requires credentials)",
-      "schedule":"",
-      "enabled":true,
-      "state":null,
-      "agent_facts":{
-
-      },
-      "tags":[
-        ""
-      ],
-      "fail_on_cancel":false,
-      "reuse_agent":true,
-      "created_at":"2013-01-09T18:27:59-08:00",
-      "updated_at":"2013-01-09T19:42:06-08:00",
-      "on_error_id":null,
-      "fail_type_id":null,
-      "parent_id":null,
-      "composition_tasks":[
-        {
-          "options":{
-            "path":{
-              "description":"local file location",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "url":{
-              "description":"Remote Location Of The Git Repositiory",
-              "required":true,
-              "type":"Url",
-              "value":"git@github.com:your-username/release-test.git"
-            },
-            "branch":{
-              "description":"Branch Of The Repository To Checkout",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "clean_working_copy":{
-              "description":"Remove Local Working Copy",
-              "required":false,
-              "type":"Boolean",
-              "value":false
-            },
-            "force_build":{
-              "description":"Build If No Update Is Found",
-              "required":false,
-              "type":"Boolean",
-              "value":false
-            }
-          },
-          "position":1,
-          "name":"git clone",
-          "is_from_parent":false,
-          "created_at":"2013-01-09T19:08:35-08:00",
-          "updated_at":"2013-01-09T19:42:06-08:00",
-          "task_id":1,
-          "sources":[
-
-          ]
-        },
-        {
-          "options":{
-            "path":{
-              "description":"Location To Run Maven ",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "goals":{
-              "description":"Set of Maven goals",
-              "required":true,
-              "type":"Array",
-              "value":[
-                "release:prepare"
-              ]
-            },
-            "environment":{
-              "description":"Environment Variables",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "settingsfile":{
-              "description":"Location of a Maven settings.xml file",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "profiles":{
-              "description":"Profiles To Activate",
-              "required":false,
-              "type":"Array",
-              "value":[
-
-              ]
-            },
-            "properties":{
-              "description":"Settings To Pass Maven",
-              "required":false,
-              "type":"Array",
-              "value":[
-                "releaseVersion=#{maestro.releaseVersion}",
-                "developmentVersion=#{maestro.developmentVersion}"
-              ]
-            }
-          },
-          "position":2,
-          "name":"maven",
-          "is_from_parent":false,
-          "created_at":"2013-01-09T19:08:35-08:00",
-          "updated_at":"2013-01-09T19:42:06-08:00",
-          "sources":[
-
-          ]
-        },
-        {
-          "options":{
-            "path":{
-              "description":"Location To Run Maven ",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "goals":{
-              "description":"Set of Maven goals",
-              "required":true,
-              "type":"Array",
-              "value":[
-                "release:perform"
-              ]
-            },
-            "environment":{
-              "description":"Environment Variables",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "settingsfile":{
-              "description":"Location of a Maven settings.xml file",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "profiles":{
-              "description":"Profiles To Activate",
-              "required":false,
-              "type":"Array",
-              "value":[
-
-              ]
-            },
-            "properties":{
-              "description":"Settings To Pass Maven",
-              "required":false,
-              "type":"Array",
-              "value":[
-                "arguments=\"-DaltDeploymentRepository=maestro-deploy::default::http://localhost:8082/archiva/repository/snapshots\""
-              ]
-            }
-          },
-          "position":3,
-          "name":"maven",
-          "is_from_parent":false,
-          "created_at":"2013-01-09T19:08:35-08:00",
-          "updated_at":"2013-01-09T19:42:06-08:00",
-          "sources":[
-
-          ]
-        }
-      ],
-      "fail_type":null,
-      "on_error_composition":null,
-      "tasks":[
-        {
-          "name":"git clone",
-          "description":"Clone A Git Repository",
-          "position":1,
-          "options":{
-            "path":{
-              "description":"local file location",
-              "required":false,
-              "type":"String",
-              "value":null
-            },
-            "url":{
-              "description":"Remote Location Of The Git Repositiory",
-              "required":true,
-              "type":"Url",
-              "value":null
-            },
-            "branch":{
-              "description":"Branch Of The Repository To Checkout",
-              "required":false,
-              "type":"String",
-              "value":null
-            },
-            "clean_working_copy":{
-              "description":"Remove Local Working Copy",
-              "required":false,
-              "type":"Boolean",
-              "value":false
-            },
-            "force_build":{
-              "description":"Build If No Update Is Found",
-              "required":false,
-              "type":"Boolean",
-              "value":false
-            }
-          },
-          "type":"remote",
-          "command":"/git/clone",
-          "tool_name":[
-            "SCM"
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "fork-multiple.png",
+          "tags": [
+            "maestro",
+            "fork",
+            "schedule"
           ],
-          "code":null,
-          "klass":null,
-          "dependencies":null,
-          "language":null,
-          "pom":null,
-          "image":null,
-          "created_at":"2011-08-04T15:31:28-07:00",
-          "updated_at":"2013-01-09T12:05:04-08:00",
-          "plugin_id":null
-        },
-        {
-          "name":"maven",
-          "description":"Run A Specified Set Of Maven Goals",
-          "position":1,
-          "options":{
-            "path":{
-              "description":"Location To Run Maven ",
-              "required":false,
-              "type":"String",
-              "value":null
-            },
-            "goals":{
-              "description":"Set of Maven goals",
-              "required":true,
-              "type":"Array",
-              "value":[
-
-              ]
-            },
-            "environment":{
-              "description":"Environment Variables",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "settingsfile":{
-              "description":"Location of a Maven settings.xml file",
-              "required":false,
-              "type":"String",
-              "value":""
-            },
-            "profiles":{
-              "description":"Profiles To Activate",
-              "required":false,
-              "type":"Array",
-              "value":[
-
-              ]
-            },
-            "properties":{
-              "description":"Settings To Pass Maven",
-              "required":false,
-              "type":"Array",
-              "value":[
-
-              ]
-            }
-          },
-          "type":"remote",
-          "command":"/maven/execute",
-          "tool_name":[
-            "Shell"
-          ],
-          "code":null,
-          "klass":null,
-          "dependencies":null,
-          "language":null,
-          "pom":null,
-          "image":null,
-          "created_at":"2011-10-14T15:31:29-07:00",
-          "updated_at":"2013-01-09T12:05:24-08:00",
-          "plugin_id":null
+          "created_at": "2014-02-07T16:36:56+00:00",
+          "updated_at": "2014-03-16T23:27:13+00:00",
+          "plugin_id": null
         }
       ],
-      "composition_configurations":[
-        {
-          "name":"releaseVersion",
-          "value":"2.0",
-          "is_from_parent":false,
-          "created_at":"2013-01-09T18:40:18-08:00",
-          "updated_at":"2013-01-09T18:40:18-08:00"
-        },
-        {
-          "name":"developmentVersion",
-          "value":"2.1-SNAPSHOT",
-          "is_from_parent":false,
-          "created_at":"2013-01-09T18:40:27-08:00",
-          "updated_at":"2013-01-09T18:40:27-08:00"
-        }
+      "composition_configurations": [
+
       ],
-      "sources":[
+      "sources": [
 
       ]
     }
   ],
-  "created_at":"2012-09-12T00:49:48+02:00",
-  "description":"Maestro examples",
-  "home_url":null,
-  "name":"Maestro Built-in Task Examples",
-  "scm_url":null,
-  "tags":[
-    ""
-  ],
-  "updated_at":"2012-09-12T00:49:48+02:00"
+  "groups": [
+
+  ]
 }

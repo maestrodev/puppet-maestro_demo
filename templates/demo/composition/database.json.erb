@@ -1,673 +1,638 @@
 {
-    "compositions": [
-        {
-            "agent_facts": {}, 
-            "composition_tasks": [
-                {
-                    "composition_id": 20, 
-                    "created_at": "2012-09-12T23:01:53+02:00", 
-                    "id": 102, 
-                    "is_from_parent": false, 
-                    "name": "maven", 
-                    "options": {
-                        "environment": {
-                            "description": "Environment Variables", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "goals": {
-                            "description": "Set of Maven goals", 
-                            "required": true, 
-                            "type": "Array", 
-                            "value": [
-                                "liquibase:rollback"
-                            ]
-                        }, 
-                        "path": {
-                            "description": "Location To Run Maven ", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": "/var/local/maestro-agent/wc/liquibase-examples"
-                        }, 
-                        "profiles": {
-                            "description": "Profiles To Activate", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "properties": {
-                            "description": "Settings To Pass Maven", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": [
-                                "liquibase.rollbackCount=1"
-                            ]
-                        }, 
-                        "settingsfile": {
-                            "description": "Location of a Maven settings.xml file", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }
-                    }, 
-                    "position": 1, 
-                    "sources": [], 
-                    "task_id": 25, 
-                    "updated_at": "2012-09-20T19:56:29+02:00"
-                }, 
-                {
-                    "composition_id": 20, 
-                    "created_at": "2012-09-12T23:07:12+02:00", 
-                    "id": 107, 
-                    "is_from_parent": false, 
-                    "name": "maven", 
-                    "options": {
-                        "environment": {
-                            "description": "Environment Variables", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "goals": {
-                            "description": "Set of Maven goals", 
-                            "required": true, 
-                            "type": "Array", 
-                            "value": [
-                                "sql:execute"
-                            ]
-                        }, 
-                        "path": {
-                            "description": "Location To Run Maven ", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": "/var/local/maestro-agent/wc/liquibase-examples"
-                        }, 
-                        "profiles": {
-                            "description": "Profiles To Activate", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "properties": {
-                            "description": "Settings To Pass Maven", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": [
-                                "sqlCommand=\"SELECT count(*) FROM department\"", 
-                                "onError=continue"
-                            ]
-                        }, 
-                        "settingsfile": {
-                            "description": "Location of a Maven settings.xml file", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }
-                    }, 
-                    "position": 2, 
-                    "sources": [], 
-                    "task_id": 25, 
-                    "updated_at": "2012-09-20T19:56:29+02:00"
-                }
-            ], 
-            "created_at": "2012-09-12T23:00:50+02:00", 
-            "description": "", 
-            "fail_on_cancel": false, 
-            "fail_type": "fast", 
-            "fail_type_id": 1, 
-            "id": 20, 
-            "name": "Rollback Last Changeset", 
-            "on_error_composition": null, 
-            "on_error_id": null, 
-            "parent_id": null, 
-            "reuse_agent": true, 
-            "schedule": "", 
-            "sources": [], 
-            "state": null, 
-            "tags": [
-                ""
-            ], 
-            "tasks": [
-                {
-                    "code": null, 
-                    "command": "/maven/execute", 
-                    "created_at": "2011-10-14T15:31:29+02:00", 
-                    "dependencies": null, 
-                    "description": "Run A Specified Set Of Maven Goals", 
-                    "id": 25, 
-                    "image": null, 
-                    "klass": null, 
-                    "language": null, 
-                    "name": "maven", 
-                    "options": {
-                        "environment": {
-                            "description": "Environment Variables", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "goals": {
-                            "description": "Set of Maven goals", 
-                            "required": true, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "path": {
-                            "description": "Location To Run Maven ", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "profiles": {
-                            "description": "Profiles To Activate", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "properties": {
-                            "description": "Settings To Pass Maven", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "settingsfile": {
-                            "description": "Location of a Maven settings.xml file", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }
-                    }, 
-                    "plugin_id": null, 
-                    "pom": null, 
-                    "position": 1, 
-                    "tool_name": [
-                        "Shell"
-                    ], 
-                    "type": "remote", 
-                    "updated_at": "2012-09-20T19:56:28+02:00"
-                }
-            ], 
-            "updated_at": "2012-09-12T23:00:50+02:00"
-        }, 
-        {
-            "agent_facts": {}, 
-            "composition_tasks": [
-                {
-                    "composition_id": 21, 
-                    "created_at": "2012-09-12T23:05:46+02:00", 
-                    "id": 103, 
-                    "is_from_parent": false, 
-                    "name": "git clone", 
-                    "options": {
-                        "branch": {
-                            "description": "Branch Of The Repository To Checkout", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "clean_working_copy": {
-                            "description": "Remove Local Working Copy", 
-                            "required": false, 
-                            "type": "Boolean", 
-                            "value": false
-                        }, 
-                        "path": {
-                            "description": "local file location", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": "/var/local/maestro-agent/wc/liquibase-examples"
-                        }, 
-                        "url": {
-                            "description": "Remote Location Of The Git Repositiory", 
-                            "required": true, 
-                            "type": "Url", 
-                            "value": "https://github.com/maestrodev/liquibase-examples.git"
-							},
-			            "force_build": {
-			                "description": "Build If No Update Is Found",
-			                "required": false,
-			                "type": "Boolean",
-			                "value": false
-			            }
-                    }, 
-                    "position": 1, 
-                    "sources": [], 
-                    "task_id": 1, 
-                    "updated_at": "2012-09-20T19:56:24+02:00"
-                }, 
-                {
-                    "composition_id": 21, 
-                    "created_at": "2012-09-12T23:05:46+02:00", 
-                    "id": 104, 
-                    "is_from_parent": false, 
-                    "name": "maven", 
-                    "options": {
-                        "environment": {
-                            "description": "Environment Variables", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "goals": {
-                            "description": "Set of Maven goals", 
-                            "required": true, 
-                            "type": "Array", 
-                            "value": [
-                                "liquibase:update"
-                            ]
-                        }, 
-                        "path": {
-                            "description": "Location To Run Maven ", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": "/var/local/maestro-agent/wc/liquibase-examples"
-                        }, 
-                        "profiles": {
-                            "description": "Profiles To Activate", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "properties": {
-                            "description": "Settings To Pass Maven", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "settingsfile": {
-                            "description": "Location of a Maven settings.xml file", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }
-                    }, 
-                    "position": 2, 
-                    "sources": [], 
-                    "task_id": 25, 
-                    "updated_at": "2012-09-20T19:56:29+02:00"
-                }, 
-                {
-                    "composition_id": 21, 
-                    "created_at": "2012-09-12T23:05:46+02:00", 
-                    "id": 105, 
-                    "is_from_parent": false, 
-                    "name": "maven", 
-                    "options": {
-                        "environment": {
-                            "description": "Environment Variables", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "goals": {
-                            "description": "Set of Maven goals", 
-                            "required": true, 
-                            "type": "Array", 
-                            "value": [
-                                "sql:execute"
-                            ]
-                        }, 
-                        "path": {
-                            "description": "Location To Run Maven ", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": "/var/local/maestro-agent/wc/liquibase-examples"
-                        }, 
-                        "profiles": {
-                            "description": "Profiles To Activate", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "properties": {
-                            "description": "Settings To Pass Maven", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": [
-                                "sqlCommand=\"SELECT count(*) FROM department\""
-                            ]
-                        }, 
-                        "settingsfile": {
-                            "description": "Location of a Maven settings.xml file", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }
-                    }, 
-                    "position": 3, 
-                    "sources": [], 
-                    "task_id": 25, 
-                    "updated_at": "2012-09-20T19:56:29+02:00"
-                }, 
-                {
-                    "composition_id": 21, 
-                    "created_at": "2012-09-12T23:05:46+02:00", 
-                    "id": 106, 
-                    "is_from_parent": false, 
-                    "name": "confirmation", 
-                    "options": {
-                        "body": {
-                            "description": "The String To Be Displayed In The Action Pane", 
-                            "required": true, 
-                            "type": "String", 
-                            "value": "Please confirm a successful database upgrade"
-                        }, 
-                        "fail_on_cancel": {
-                            "description": "If The User Declines The Action, The Composition Will Fail", 
-                            "required": false, 
-                            "type": "Boolean", 
-                            "value": false
-                        }
-                    }, 
-                    "position": 4, 
-                    "sources": [], 
-                    "task_id": 6, 
-                    "updated_at": "2012-09-20T19:56:26+02:00"
-                }
-            ], 
-            "created_at": "2012-09-12T23:02:45+02:00", 
-            "description": "Illustrate upgrade with failure", 
-            "fail_on_cancel": true, 
-            "fail_type": "fast", 
-            "fail_type_id": 1, 
-            "id": 21, 
-            "name": "Upgrade", 
-            "on_error_composition": {
-                "agent_facts": {}, 
-                "composition_tasks": [
-                    {
-                        "composition_id": 20, 
-                        "created_at": "2012-09-12T23:01:53+02:00", 
-                        "id": 102, 
-                        "is_from_parent": false, 
-                        "name": "maven", 
-                        "options": {
-                            "environment": {
-                                "description": "Environment Variables", 
-                                "required": false, 
-                                "type": "String", 
-                                "value": ""
-                            }, 
-                            "goals": {
-                                "description": "Set of Maven goals", 
-                                "required": true, 
-                                "type": "Array", 
-                                "value": [
-                                    "liquibase:rollback"
-                                ]
-                            }, 
-                            "path": {
-                                "description": "Location To Run Maven ", 
-                                "required": false, 
-                                "type": "String", 
-                                "value": "/var/local/maestro-agent/wc/liquibase-examples"
-                            }, 
-                            "profiles": {
-                                "description": "Profiles To Activate", 
-                                "required": false, 
-                                "type": "Array", 
-                                "value": []
-                            }, 
-                            "properties": {
-                                "description": "Settings To Pass Maven", 
-                                "required": false, 
-                                "type": "Array", 
-                                "value": [
-                                    "liquibase.rollbackCount=1"
-                                ]
-                            }, 
-                            "settingsfile": {
-                                "description": "Location of a Maven settings.xml file", 
-                                "required": false, 
-                                "type": "String", 
-                                "value": ""
-                            }
-                        }, 
-                        "position": 1, 
-                        "sources": [], 
-                        "task_id": 25, 
-                        "updated_at": "2012-09-20T19:56:29+02:00"
-                    }, 
-                    {
-                        "composition_id": 20, 
-                        "created_at": "2012-09-12T23:07:12+02:00", 
-                        "id": 107, 
-                        "is_from_parent": false, 
-                        "name": "maven", 
-                        "options": {
-                            "environment": {
-                                "description": "Environment Variables", 
-                                "required": false, 
-                                "type": "String", 
-                                "value": ""
-                            }, 
-                            "goals": {
-                                "description": "Set of Maven goals", 
-                                "required": true, 
-                                "type": "Array", 
-                                "value": [
-                                    "sql:execute"
-                                ]
-                            }, 
-                            "path": {
-                                "description": "Location To Run Maven ", 
-                                "required": false, 
-                                "type": "String", 
-                                "value": "/var/local/maestro-agent/wc/liquibase-examples"
-                            }, 
-                            "profiles": {
-                                "description": "Profiles To Activate", 
-                                "required": false, 
-                                "type": "Array", 
-                                "value": []
-                            }, 
-                            "properties": {
-                                "description": "Settings To Pass Maven", 
-                                "required": false, 
-                                "type": "Array", 
-                                "value": [
-                                    "sqlCommand=\"SELECT count(*) FROM department\"", 
-                                    "onError=continue"
-                                ]
-                            }, 
-                            "settingsfile": {
-                                "description": "Location of a Maven settings.xml file", 
-                                "required": false, 
-                                "type": "String", 
-                                "value": ""
-                            }
-                        }, 
-                        "position": 2, 
-                        "sources": [], 
-                        "task_id": 25, 
-                        "updated_at": "2012-09-20T19:56:29+02:00"
-                    }
-                ], 
-                "created_at": "2012-09-12T23:00:50+02:00", 
-                "description": "", 
-                "fail_on_cancel": false, 
-                "fail_type": "fast", 
-                "fail_type_id": 1, 
-                "id": 20, 
-                "name": "Rollback Last Changeset", 
-                "on_error_composition": null, 
-                "on_error_id": null, 
-                "parent_id": null, 
-                "reuse_agent": true, 
-                "schedule": "", 
-                "state": null, 
-                "tags": [
-                    ""
-                ], 
-                "updated_at": "2012-09-12T23:00:50+02:00"
-            }, 
-            "on_error_id": 20, 
-            "parent_id": null, 
-            "reuse_agent": true, 
-            "schedule": "", 
-            "sources": [], 
-            "state": null, 
-            "tags": [
-                ""
-            ], 
-            "tasks": [
-                {
-                    "code": null, 
-                    "command": "/git/clone", 
-                    "created_at": "2011-08-04T15:31:28+02:00", 
-                    "dependencies": null, 
-                    "description": "Clone A Git Repository", 
-                    "id": 1, 
-                    "image": null, 
-                    "klass": null, 
-                    "language": null, 
-                    "name": "git clone", 
-                    "options": {
-                        "branch": {
-                            "description": "Branch Of The Repository To Checkout", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "clean_working_copy": {
-                            "description": "Remove Local Working Copy", 
-                            "required": false, 
-                            "type": "Boolean", 
-                            "value": false
-                        }, 
-                        "path": {
-                            "description": "local file location", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "url": {
-                            "description": "Remote Location Of The Git Repositiory", 
-                            "required": true, 
-                            "type": "Url", 
-                            "value": ""
-						},
-			            "force_build": {
-			                "description": "Build If No Update Is Found",
-			                "required": false,
-			                "type": "Boolean",
-			                "value": false
-			            }
-                    }, 
-                    "plugin_id": null, 
-                    "pom": null, 
-                    "position": 1, 
-                    "tool_name": [
-                        "SCM"
-                    ], 
-                    "type": "remote", 
-                    "updated_at": "2012-09-20T19:56:24+02:00"
-                }, 
-                {
-                    "code": null, 
-                    "command": "/confirmation/work", 
-                    "created_at": "2011-08-04T15:31:28+02:00", 
-                    "dependencies": null, 
-                    "description": "Allows User Confirmation Before Continuing, A Notification Will Be Displayed Below. Confirming Will Allow The Composition To Continue, Rejecting Will Cancel The Composition", 
-                    "id": 6, 
-                    "image": null, 
-                    "klass": null, 
-                    "language": null, 
-                    "name": "confirmation", 
-                    "options": {
-                        "body": {
-                            "description": "The String To Be Displayed In The Action Pane", 
-                            "required": true, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "fail_on_cancel": {
-                            "description": "If The User Declines The Action, The Composition Will Fail", 
-                            "required": false, 
-                            "type": "Boolean", 
-                            "value": false
-                        }
-                    }, 
-                    "plugin_id": null, 
-                    "pom": null, 
-                    "position": 1, 
-                    "tool_name": [
-                        "Actions"
-                    ], 
-                    "type": "confirmation", 
-                    "updated_at": "2012-09-20T19:56:25+02:00"
-                }, 
-                {
-                    "code": null, 
-                    "command": "/maven/execute", 
-                    "created_at": "2011-10-14T15:31:29+02:00", 
-                    "dependencies": null, 
-                    "description": "Run A Specified Set Of Maven Goals", 
-                    "id": 25, 
-                    "image": null, 
-                    "klass": null, 
-                    "language": null, 
-                    "name": "maven", 
-                    "options": {
-                        "environment": {
-                            "description": "Environment Variables", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "goals": {
-                            "description": "Set of Maven goals", 
-                            "required": true, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "path": {
-                            "description": "Location To Run Maven ", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }, 
-                        "profiles": {
-                            "description": "Profiles To Activate", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "properties": {
-                            "description": "Settings To Pass Maven", 
-                            "required": false, 
-                            "type": "Array", 
-                            "value": []
-                        }, 
-                        "settingsfile": {
-                            "description": "Location of a Maven settings.xml file", 
-                            "required": false, 
-                            "type": "String", 
-                            "value": ""
-                        }
-                    }, 
-                    "plugin_id": null, 
-                    "pom": null, 
-                    "position": 1, 
-                    "tool_name": [
-                        "Shell"
-                    ], 
-                    "type": "remote", 
-                    "updated_at": "2012-09-20T19:56:28+02:00"
-                }
-            ], 
-            "updated_at": "2012-09-13T00:49:57+02:00"
-        }
-    ], 
-    "created_at": "2012-09-12T22:29:37+02:00", 
-    "description": "Database migrations", 
-    "home_url": null, 
-    "id": 9, 
-    "name": "Database Examples", 
-    "scm_url": null, 
-    "tags": [
+  "id": 5,
+  "name": "Other Examples - Database Migration and Rollback",
+  "description": "Database migrations",
+  "home_url": "/projects/5",
+  "scm_url": null,
+  "tags": null,
+  "parameters": null,
+  "created_at": "2012-09-12T20:29:37+00:00",
+  "updated_at": "2014-03-17T02:25:32+00:00",
+  "compositions": [
+    {
+      "id": 9,
+      "name": "Rollback Last Changeset",
+      "description": "",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
         ""
-    ], 
-    "updated_at": "2012-09-12T22:29:37+02:00"
+      ],
+      "type": 1,
+      "fail_on_cancel": false,
+      "reuse_agent": true,
+      "created_at": "2012-09-12T21:00:50+00:00",
+      "updated_at": "2014-02-07T16:40:08+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": null,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 33,
+          "options": {
+            "environment": {
+              "description": "Environment Variables",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "goals": {
+              "description": "Set of Maven goals",
+              "required": true,
+              "type": "Array",
+              "value": [
+                "liquibase:rollback"
+              ]
+            },
+            "path": {
+              "description": "Location To Run Maven ",
+              "required": false,
+              "type": "String",
+              "value": "/var/local/maestro-agent/wc/liquibase-examples"
+            },
+            "profiles": {
+              "description": "Profiles To Activate",
+              "required": false,
+              "type": "Array",
+              "value": [
+
+              ]
+            },
+            "properties": {
+              "description": "Settings To Pass Maven",
+              "required": false,
+              "type": "Array",
+              "value": [
+                "liquibase.rollbackCount=1"
+              ]
+            },
+            "settingsfile": {
+              "description": "Location of a Maven settings.xml file",
+              "required": false,
+              "type": "String",
+              "value": ""
+            }
+          },
+          "position": 1,
+          "name": "maven",
+          "is_from_parent": false,
+          "created_at": "2012-09-12T21:01:53+00:00",
+          "updated_at": "2014-02-07T16:37:05+00:00",
+          "task_id": 57,
+          "composition_id": 9,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 34,
+          "options": {
+            "environment": {
+              "description": "Environment Variables",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "goals": {
+              "description": "Set of Maven goals",
+              "required": true,
+              "type": "Array",
+              "value": [
+                "sql:execute"
+              ]
+            },
+            "path": {
+              "description": "Location To Run Maven ",
+              "required": false,
+              "type": "String",
+              "value": "/var/local/maestro-agent/wc/liquibase-examples"
+            },
+            "profiles": {
+              "description": "Profiles To Activate",
+              "required": false,
+              "type": "Array",
+              "value": [
+
+              ]
+            },
+            "properties": {
+              "description": "Settings To Pass Maven",
+              "required": false,
+              "type": "Array",
+              "value": [
+                "sqlCommand=\"SELECT count(*) FROM department\"",
+                "onError=continue"
+              ]
+            },
+            "settingsfile": {
+              "description": "Location of a Maven settings.xml file",
+              "required": false,
+              "type": "String",
+              "value": ""
+            }
+          },
+          "position": 2,
+          "name": "maven",
+          "is_from_parent": false,
+          "created_at": "2012-09-12T21:07:12+00:00",
+          "updated_at": "2014-02-07T16:37:05+00:00",
+          "task_id": 57,
+          "composition_id": 9,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "tasks": [
+        {
+          "id": 57,
+          "name": "maven",
+          "description": "Run A Maven Task",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Maven"
+            },
+            "goals": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": true,
+              "description": "Set of Maven goals"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "settingsfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location of a Maven settings.xml file"
+            },
+            "profiles": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Profiles To Activate"
+            },
+            "properties": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Settings To Pass Maven"
+            }
+          },
+          "type": "remote",
+          "command": "/maven/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::MavenWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "maven.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:50+00:00",
+          "updated_at": "2014-02-07T16:36:50+00:00",
+          "plugin_id": 58
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Upgrade",
+      "description": "Illustrate upgrade with failure",
+      "schedule": "",
+      "enabled": true,
+      "state": null,
+      "agent_facts": {
+
+      },
+      "tags": [
+        ""
+      ],
+      "type": 1,
+      "fail_on_cancel": true,
+      "reuse_agent": true,
+      "created_at": "2012-09-12T21:02:45+00:00",
+      "updated_at": "2014-02-07T16:40:08+00:00",
+      "max_queued_runs": 1,
+      "max_concurrent_runs": 1,
+      "agent_pool_id": 1,
+      "on_error_id": 9,
+      "parent_id": null,
+      "composition_tasks": [
+        {
+          "id": 35,
+          "options": {
+            "branch": {
+              "description": "Branch Of The Repository To Checkout",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "clean_working_copy": {
+              "description": "Remove Local Working Copy",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            },
+            "path": {
+              "description": "local file location",
+              "required": false,
+              "type": "String",
+              "value": "/var/local/maestro-agent/wc/liquibase-examples"
+            },
+            "url": {
+              "description": "Remote Location Of The Git Repositiory",
+              "required": true,
+              "type": "Url",
+              "value": "https://github.com/maestrodev/liquibase-examples.git"
+            },
+            "force_build": {
+              "description": "Build If No Update Is Found",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Enable Repo Trigger?",
+              "required": false,
+              "description": "Auto-Build this composition if repository trigger fired"
+            }
+          },
+          "position": 1,
+          "name": "git clone",
+          "is_from_parent": false,
+          "created_at": "2012-09-12T21:05:46+00:00",
+          "updated_at": "2014-03-15T10:50:31+00:00",
+          "task_id": 51,
+          "composition_id": 10,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 36,
+          "options": {
+            "environment": {
+              "description": "Environment Variables",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "goals": {
+              "description": "Set of Maven goals",
+              "required": true,
+              "type": "Array",
+              "value": [
+                "liquibase:update"
+              ]
+            },
+            "path": {
+              "description": "Location To Run Maven ",
+              "required": false,
+              "type": "String",
+              "value": "/var/local/maestro-agent/wc/liquibase-examples"
+            },
+            "profiles": {
+              "description": "Profiles To Activate",
+              "required": false,
+              "type": "Array",
+              "value": [
+
+              ]
+            },
+            "properties": {
+              "description": "Settings To Pass Maven",
+              "required": false,
+              "type": "Array",
+              "value": [
+
+              ]
+            },
+            "settingsfile": {
+              "description": "Location of a Maven settings.xml file",
+              "required": false,
+              "type": "String",
+              "value": ""
+            }
+          },
+          "position": 2,
+          "name": "maven",
+          "is_from_parent": false,
+          "created_at": "2012-09-12T21:05:46+00:00",
+          "updated_at": "2014-02-07T16:37:05+00:00",
+          "task_id": 57,
+          "composition_id": 10,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 37,
+          "options": {
+            "environment": {
+              "description": "Environment Variables",
+              "required": false,
+              "type": "String",
+              "value": ""
+            },
+            "goals": {
+              "description": "Set of Maven goals",
+              "required": true,
+              "type": "Array",
+              "value": [
+                "sql:execute"
+              ]
+            },
+            "path": {
+              "description": "Location To Run Maven ",
+              "required": false,
+              "type": "String",
+              "value": "/var/local/maestro-agent/wc/liquibase-examples"
+            },
+            "profiles": {
+              "description": "Profiles To Activate",
+              "required": false,
+              "type": "Array",
+              "value": [
+
+              ]
+            },
+            "properties": {
+              "description": "Settings To Pass Maven",
+              "required": false,
+              "type": "Array",
+              "value": [
+                "sqlCommand=\"SELECT count(*) FROM department\""
+              ]
+            },
+            "settingsfile": {
+              "description": "Location of a Maven settings.xml file",
+              "required": false,
+              "type": "String",
+              "value": ""
+            }
+          },
+          "position": 3,
+          "name": "maven",
+          "is_from_parent": false,
+          "created_at": "2012-09-12T21:05:46+00:00",
+          "updated_at": "2014-02-07T16:37:05+00:00",
+          "task_id": 57,
+          "composition_id": 10,
+          "sources": [
+
+          ]
+        },
+        {
+          "id": 38,
+          "options": {
+            "body": {
+              "description": "The String To Be Displayed In The Action Pane",
+              "required": true,
+              "type": "String",
+              "value": "Please confirm a successful database upgrade"
+            },
+            "fail_on_cancel": {
+              "description": "If The User Declines The Action, The Composition Will Fail",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            }
+          },
+          "position": 4,
+          "name": "confirmation",
+          "is_from_parent": false,
+          "created_at": "2012-09-12T21:05:46+00:00",
+          "updated_at": "2014-03-16T23:27:15+00:00",
+          "task_id": 73,
+          "composition_id": 10,
+          "sources": [
+
+          ]
+        }
+      ],
+      "fail_type": "fast",
+      "on_error_composition": {
+        "name": "Rollback Last Changeset"
+      },
+      "tasks": [
+        {
+          "id": 51,
+          "name": "git clone",
+          "description": "Clone a Git repository",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "label": "Path",
+              "required": false,
+              "description": "Local path to clone the Git repository to. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
+            },
+            "url": {
+              "type": "Url",
+              "label": "GIT URL",
+              "required": true,
+              "description": "Remote location of Git repository"
+            },
+            "branch": {
+              "type": "String",
+              "label": "Branch",
+              "required": false,
+              "description": "Branch to checkout"
+            },
+            "clean_working_copy": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Clean Working Copy?",
+              "required": false,
+              "description": "Remove local working copy before clone"
+            },
+            "force_build": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Force Build?",
+              "required": false,
+              "description": "Build if no changes detected?"
+            },
+            "enable_repo_trigger": {
+              "type": "Boolean",
+              "value": false,
+              "label": "Enable Repo Trigger?",
+              "required": false,
+              "description": "Auto-Build this composition if repository trigger fired"
+            }
+          },
+          "type": "remote",
+          "command": "/git/clone",
+          "tool_name": [
+            "SCM"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::GitWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "git.png",
+          "tags": [
+            "git",
+            "scm",
+            "rcs",
+            "vcs"
+          ],
+          "created_at": "2014-02-07T16:36:48+00:00",
+          "updated_at": "2014-03-15T10:50:29+00:00",
+          "plugin_id": 78
+        },
+        {
+          "id": 57,
+          "name": "maven",
+          "description": "Run A Maven Task",
+          "position": 1,
+          "options": {
+            "path": {
+              "type": "String",
+              "required": false,
+              "description": "Location To Run Maven"
+            },
+            "goals": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": true,
+              "description": "Set of Maven goals"
+            },
+            "environment": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Environment Variables"
+            },
+            "settingsfile": {
+              "type": "String",
+              "value": "",
+              "required": false,
+              "description": "Location of a Maven settings.xml file"
+            },
+            "profiles": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Profiles To Activate"
+            },
+            "properties": {
+              "type": "Array",
+              "value": [
+
+              ],
+              "required": false,
+              "description": "Settings To Pass Maven"
+            }
+          },
+          "type": "remote",
+          "command": "/maven/execute",
+          "tool_name": [
+            "Shell"
+          ],
+          "code": null,
+          "klass": "MaestroDev::Plugin::MavenWorker",
+          "dependencies": null,
+          "language": "ruby",
+          "pom": null,
+          "image": "maven.png",
+          "tags": [
+
+          ],
+          "created_at": "2014-02-07T16:36:50+00:00",
+          "updated_at": "2014-02-07T16:36:50+00:00",
+          "plugin_id": 58
+        },
+        {
+          "id": 73,
+          "name": "confirmation",
+          "description": "Allows user confirmation before continuing.  A notification will be displayed in the User Interface.  Confirming will allow the composition to continue, rejecting will cancel the composition if configured",
+          "position": 1,
+          "options": {
+            "body": {
+              "label": "Message",
+              "description": "The message to be displayed in the action list",
+              "required": true,
+              "type": "String",
+              "value": ""
+            },
+            "fail_on_cancel": {
+              "label": "Fail if declined?",
+              "description": "If the user declines the action, fail the composition (otherwise it will continue)",
+              "required": false,
+              "type": "Boolean",
+              "value": false
+            }
+          },
+          "type": "confirmation",
+          "command": "/confirmation/work",
+          "tool_name": [
+            "Actions"
+          ],
+          "code": null,
+          "klass": null,
+          "dependencies": null,
+          "language": null,
+          "pom": null,
+          "image": "confirm.png",
+          "tags": [
+            "maestro",
+            "user",
+            "continue",
+            "pause"
+          ],
+          "created_at": "2014-02-07T16:36:56+00:00",
+          "updated_at": "2014-03-16T23:27:14+00:00",
+          "plugin_id": null
+        }
+      ],
+      "composition_configurations": [
+
+      ],
+      "sources": [
+
+      ]
+    }
+  ],
+  "groups": [
+
+  ]
 }

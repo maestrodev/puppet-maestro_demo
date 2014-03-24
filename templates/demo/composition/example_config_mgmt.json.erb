@@ -1,6 +1,6 @@
 {
-  "id": 16,
-  "name": "Example - Configuration Management [puppet]",
+  "id": 10,
+  "name": "Other Examples - Configuration Management [puppet]",
   "description": "Shows how Maestro can integrate with Puppet",
   "home_url": "/projects/16",
   "scm_url": null,
@@ -15,10 +15,10 @@
     "scmPassword": ""
   },
   "created_at": "2014-02-11T22:12:34+00:00",
-  "updated_at": "2014-02-20T02:50:55+00:00",
+  "updated_at": "2014-03-17T02:25:41+00:00",
   "compositions": [
     {
-      "id": 34,
+      "id": 24,
       "name": "1 - Invoke puppet via MCollective",
       "description": "Use MCollective to invoke puppet agent",
       "schedule": "",
@@ -34,7 +34,7 @@
       "fail_on_cancel": false,
       "reuse_agent": true,
       "created_at": "2014-02-11T22:29:20+00:00",
-      "updated_at": "2014-03-04T06:21:41+00:00",
+      "updated_at": "2014-03-15T10:50:37+00:00",
       "max_queued_runs": 1,
       "max_concurrent_runs": 1,
       "agent_pool_id": 1,
@@ -42,7 +42,7 @@
       "parent_id": null,
       "composition_tasks": [
         {
-          "id": 111,
+          "id": 88,
           "options": {
             "command_string": {
               "type": "Text",
@@ -61,15 +61,15 @@
           "name": "shell execute",
           "is_from_parent": false,
           "created_at": "2014-02-11T22:31:25+00:00",
-          "updated_at": "2014-03-04T06:21:41+00:00",
+          "updated_at": "2014-03-15T10:50:38+00:00",
           "task_id": 10,
-          "composition_id": 34,
+          "composition_id": 24,
           "sources": [
 
           ]
         }
       ],
-      "fail_type": "fast",
+      "fail_type": null,
       "tasks": [
         {
           "id": 10,
@@ -109,8 +109,8 @@
             "bash"
           ],
           "created_at": "2014-02-07T16:36:29+00:00",
-          "updated_at": "2014-02-12T02:02:58+00:00",
-          "plugin_id": 75
+          "updated_at": "2014-02-13T21:03:35+00:00",
+          "plugin_id": 77
         }
       ],
       "composition_configurations": [

@@ -1,5 +1,5 @@
 {
-  "id": 13,
+  "id": 15,
   "name": "Example - RubyGem [rake]",
   "description": "A Ruby Gem built with Rake",
   "home_url": "/projects/13",
@@ -15,10 +15,10 @@
     "scmPassword": ""
   },
   "created_at": "2014-02-11T22:10:27+00:00",
-  "updated_at": "2014-02-17T20:12:04+00:00",
+  "updated_at": "2014-03-15T10:51:08+00:00",
   "compositions": [
     {
-      "id": 64,
+      "id": 38,
       "name": "1 - Build",
       "description": "Build a RubyGem using Rake",
       "schedule": "",
@@ -34,7 +34,7 @@
       "fail_on_cancel": false,
       "reuse_agent": true,
       "created_at": "2014-02-19T22:11:31+00:00",
-      "updated_at": "2014-03-04T06:18:58+00:00",
+      "updated_at": "2014-03-15T10:51:09+00:00",
       "max_queued_runs": 1,
       "max_concurrent_runs": 1,
       "agent_pool_id": 1,
@@ -42,7 +42,7 @@
       "parent_id": null,
       "composition_tasks": [
         {
-          "id": 198,
+          "id": 127,
           "options": {
             "path": {
               "type": "String",
@@ -85,15 +85,15 @@
           "name": "git clone",
           "is_from_parent": false,
           "created_at": "2014-02-19T22:12:21+00:00",
-          "updated_at": "2014-03-04T06:18:58+00:00",
+          "updated_at": "2014-03-15T10:51:09+00:00",
           "task_id": 51,
-          "composition_id": 64,
+          "composition_id": 38,
           "sources": [
 
           ]
         },
         {
-          "id": 199,
+          "id": 128,
           "options": {
             "path": {
               "type": "String",
@@ -152,15 +152,15 @@
           "name": "rake",
           "is_from_parent": false,
           "created_at": "2014-02-19T22:12:21+00:00",
-          "updated_at": "2014-03-04T06:18:58+00:00",
+          "updated_at": "2014-03-15T10:51:09+00:00",
           "task_id": 72,
-          "composition_id": 64,
+          "composition_id": 38,
           "sources": [
 
           ]
         },
         {
-          "id": 233,
+          "id": 129,
           "options": {
             "command_string": {
               "type": "Text",
@@ -181,15 +181,15 @@
           "name": "shell execute",
           "is_from_parent": false,
           "created_at": "2014-03-04T06:18:59+00:00",
-          "updated_at": "2014-03-04T06:18:59+00:00",
+          "updated_at": "2014-03-15T10:51:10+00:00",
           "task_id": 10,
-          "composition_id": 64,
+          "composition_id": 38,
           "sources": [
 
           ]
         }
       ],
-      "fail_type": "fast",
+      "fail_type": null,
       "tasks": [
         {
           "id": 10,
@@ -229,47 +229,53 @@
             "bash"
           ],
           "created_at": "2014-02-07T16:36:29+00:00",
-          "updated_at": "2014-02-12T02:02:58+00:00",
-          "plugin_id": 75
+          "updated_at": "2014-02-13T21:03:35+00:00",
+          "plugin_id": 77
         },
         {
           "id": 51,
           "name": "git clone",
-          "description": "Clone A Git Repository",
+          "description": "Clone a Git repository",
           "position": 1,
           "options": {
             "path": {
               "type": "String",
+              "label": "Path",
               "required": false,
-              "description": "Local Path For Cloning. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
+              "description": "Local path to clone the Git repository to. By default agent's $HOME/wc/composition_name-id and can be referred to with #{fields[:scm_path]} or #{fields[:git_path]}"
             },
             "url": {
               "type": "Url",
+              "label": "GIT URL",
               "required": true,
-              "description": "Remote Location Of The Git Repository"
+              "description": "Remote location of Git repository"
             },
             "branch": {
               "type": "String",
+              "label": "Branch",
               "required": false,
-              "description": "Branch Of The Repository To Checkout"
+              "description": "Branch to checkout"
             },
             "clean_working_copy": {
               "type": "Boolean",
               "value": false,
+              "label": "Clean Working Copy?",
               "required": false,
-              "description": "Remove Local Working Copy"
+              "description": "Remove local working copy before clone"
             },
             "force_build": {
               "type": "Boolean",
               "value": false,
+              "label": "Force Build?",
               "required": false,
-              "description": "Build If No Update Is Found"
+              "description": "Build if no changes detected?"
             },
             "enable_repo_trigger": {
               "type": "Boolean",
               "value": false,
+              "label": "Enable Repo Trigger?",
               "required": false,
-              "description": "Auto-Build This Composition If Repository Trigger Fired"
+              "description": "Auto-Build this composition if repository trigger fired"
             }
           },
           "type": "remote",
@@ -284,11 +290,14 @@
           "pom": null,
           "image": "git.png",
           "tags": [
-
+            "git",
+            "scm",
+            "rcs",
+            "vcs"
           ],
           "created_at": "2014-02-07T16:36:48+00:00",
-          "updated_at": "2014-02-07T16:36:48+00:00",
-          "plugin_id": 52
+          "updated_at": "2014-03-15T10:50:29+00:00",
+          "plugin_id": 78
         },
         {
           "id": 72,

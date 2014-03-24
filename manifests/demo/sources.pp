@@ -4,7 +4,7 @@ class maestro_demo::demo::sources {
   # maestro_demo:source::<source_name>
   
   maestro_demo::demo::source::generic { 'jenkins': }
-  maestro_demo::demo::source::generic { 'rackspace': }
+#  maestro_demo::demo::source::generic { 'rackspace': }
   maestro_demo::demo::source::generic { 'rightscale': }
   maestro_demo::demo::source::generic { 'aws': }
   maestro_demo::demo::source::generic { 'archiva': }
